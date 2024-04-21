@@ -69,7 +69,11 @@
                 </li>
                 <li class="desktop">
                     <a href="tel:18006005" title="" class="info-user js-show-dropdown">
-                        <img src="{{ pare_url_file(Auth::user()->avatar) }}" alt="">
+                        @if (Auth::check() && Auth::user()->avatar)
+                            <img src="{{ pare_url_file(Auth::user()->avatar) }}" alt="">
+                        @else
+                            <img src="{{ asset('images/no-image.jpg') }}" alt="">
+                        @endif
                         <span class="fa fa-angle-down"></span>
                     </a>
                     <ul class="header-menu-user">
