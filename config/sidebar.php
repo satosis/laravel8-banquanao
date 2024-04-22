@@ -109,65 +109,16 @@ return [
             ]
         ]
     ],
-	[
-        'name' => 'Kho',
-        'list-check' => ['inventory','import','export','invoice_entered'],
-        'icon' => 'fa-folder-open-o',
-		'level'  => [1,2],
-        'sub'  => [
-            [
-                'name'  => 'Nhập kho',
-                'namespace' => 'import',
-                'route' => 'admin.invoice_entered.index',
-                'icon'  => 'fa-plus-square',
-				'level'  => [1,2],
-            ],
-			[
-				'name'  => 'Xuất kho',
-				'namespace' => 'export',
-				'route' => 'admin.inventory.out_of_stock',
-				'icon'  => 'fa-plus-square',
-				'level'  => [1,2],
-			],
-        ]
-    ],
-//    [
-//        'name' => 'SystemPay',
-//        'list-check' => ['pay-in'],
-//        'icon' => 'fa  fa-usd',
-//        'sub'  => [
-//            [
-//                'name'  => 'Nạp tiền',
-//                'route' => 'admin.system_pay_in.index',
-//                'namespace' => 'pay-in',
-//                'icon'  => 'fa fa-money'
-//            ]
-//        ]
-//    ],
     [
         'name'  => 'Hệ thống',
         'label' => 'true'
     ],
 	[
 		'name' => 'Admin',
-		'list-check' => ['account-admin','permission','role'],
+		'list-check' => ['account-admin'],
 		'icon' => 'fa-sitemap',
 		'level'  => [1,2],
 		'sub'  => [
-			[
-				'name'  => 'Quyền',
-				'namespace' => 'permission',
-				'route' => 'admin.permission.list',
-				'icon'  => 'fa-ban',
-				'level'  => [1,2],
-			],
-			[
-				'name'  => 'Nhóm quyền',
-				'namespace' => 'role',
-				'route' => 'admin.role.list',
-				'icon'  => 'fa-user',
-				'level'  => [1,2],
-			],
 			[
 				'name'  => 'Admin',
 				'namespace' => 'account-admin',

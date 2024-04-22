@@ -23,9 +23,6 @@ Route::group(['namespace' => 'Auth','prefix' => 'account'], function(){
     Route::post('login','LoginController@postLogin'); // xử lý đăng nhập
 
     Route::get('logout','LoginController@getLogout')->name('get.logout'); // đăng xuất
-
-    Route::get('/{social}/redirect', 'SocialAuthController@redirect')->name('get.login.social'); // callback
-    Route::get('/{social}/callback', 'SocialAuthController@callback')->name('get.login.social_callback'); //
 });
 
 // Login admin
@@ -70,9 +67,6 @@ Route::group(['namespace' => 'Frontend'], function() {
     Route::group(['prefix' => 'comment', 'middleware' => 'check_user_login'], function(){
         Route::post('ajax-comment','CommentsController@store')->name('ajax_post.comment'); // lưu commend
     });
-
-    Route::get('lien-he','ContactController@index')->name('get.contact');
-    Route::post('lien-he','ContactController@store');
 
     Route::get('cache/clear','CacheController@index');
 

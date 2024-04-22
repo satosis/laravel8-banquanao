@@ -59,8 +59,6 @@ class AdminAccountController extends Controller
             $admin->password   =  Hash::make($request->password);
         }
 		$admin->fill($data)->save();
-//		$roles = $request->roles;
-		DB::table('model_has_roles')->where('model_id',$id)->delete();
 		$admin->assignRole($request->input('roles'));
 
 //		if (isset($roles)) {

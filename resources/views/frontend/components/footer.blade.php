@@ -42,7 +42,7 @@
                                 </li>
                             @endforeach
                         @endif
-                        <li><a href="{{ route('get.contact') }}">Liên hệ</a></li>
+                        <li><a href="javascript:;">Liên hệ</a></li>
                     </ul>
                 </div>
                 <div class="item">

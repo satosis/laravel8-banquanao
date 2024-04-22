@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\InvoiceEntered;
 use Illuminate\Http\Request;
 use App\Models\Transaction;
 use App\Models\Order;
@@ -38,7 +37,7 @@ class AdminTransactionController extends Controller
         $transactions = $transactions->orderByDesc('id')
                             ->paginate(10);
         if ($request->export) {
-            // Gọi thới export excel 
+            // Gọi thới export excel
             return \Excel::download(new TransactionExport($transactions), date('Y-m-d').'-don-hang.xlsx');
         }
 
@@ -58,11 +57,11 @@ class AdminTransactionController extends Controller
                 ->get();
 
             $html = view("components.orders", compact('orders'))->render();
-            
+
             return response([
                 'html' => $html
-            ]);    
-        }    
+            ]);
+        }
     }
 
     public function deleteOrderItem(Request $request, $id)
@@ -137,20 +136,8 @@ class AdminTransactionController extends Controller
 				\DB::table('products')
 					->where('id', $order->od_product_id)
 					->decrement("pro_number",$order->od_qty);
-				$this->synImportGoods($order->od_product_id, $order->od_qty);
 			}
 		}
 	}
 
-	protected function synImportGoods($productID, $qty)
-	{
-		$product = Product::find($productID);
-		if ($product) {
-			$invoiceEntered =  InvoiceEntered::where('ie_product_id', $product->id)->first();
-			if ($invoiceEntered) {
-				$invoiceEntered->ie_number_sold += $qty;
-				$invoiceEntered->save();
-			}
-		}
-	}
 }

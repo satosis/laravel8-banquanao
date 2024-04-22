@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 21, 2024 at 10:13 AM
+-- Generation Time: Apr 22, 2024 at 05:25 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.1.25
 
@@ -13,13 +13,14 @@ SET time_zone = "+00:00";
 
 CREATE DATABASE IF NOT EXISTS data_website;
 use data_website;
+
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `datawebsite`
+-- Database: `data_website`
 --
 
 -- --------------------------------------------------------
@@ -200,7 +201,7 @@ INSERT INTO `attributes` (`id`, `atb_name`, `atb_slug`, `atb_type`, `atb_categor
 (7, 'Da lì', 'da-li', 4, 1, '2020-04-29 03:06:56', '2024-04-21 05:32:38'),
 (8, 'Da bóng đen', 'da-bong-den', 4, 1, '2020-04-29 03:07:02', '2024-04-21 05:28:49'),
 (9, '37', '37', 3, 1, '2024-04-21 05:33:34', NULL),
-(10, '38', '38', 3, 1, '2024-04-21 05:33:41', NULL);
+(10, '38', '38', 3, 1, '2024-04-21 05:33:41', '2024-04-22 15:16:35');
 
 -- --------------------------------------------------------
 
@@ -290,122 +291,6 @@ INSERT INTO `comments` (`id`, `cmt_name`, `cmt_email`, `cmt_content`, `cmt_paren
 (28, NULL, NULL, 'Còn đây là thứ 10 nè', 0, '[]', 47, 0, 2, 0, 0, '2020-06-20 00:38:31', NULL),
 (29, NULL, NULL, 'Sao đéo thấy phân trang nghỉ', 0, '[]', 47, 0, 2, 0, 0, '2020-06-20 00:38:40', NULL),
 (30, NULL, NULL, 'Fail cmnr', 0, '[]', 47, 0, 2, 0, 0, '2020-06-20 00:38:44', NULL);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `contacts`
---
-
-CREATE TABLE `contacts` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `c_title` varchar(191) DEFAULT NULL,
-  `c_phone` char(11) DEFAULT NULL,
-  `c_email` varchar(191) DEFAULT NULL,
-  `c_content` text DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `episode`
---
-
-CREATE TABLE `episode` (
-  `id` int(11) NOT NULL,
-  `video_id` int(11) NOT NULL DEFAULT 0,
-  `server` varchar(100) DEFAULT NULL,
-  `link` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
---
--- Dumping data for table `episode`
---
-
-INSERT INTO `episode` (`id`, `video_id`, `server`, `link`) VALUES
-(1, 4, 'videospider.stream', 'https://videospider.stream/getvideo?key=ZP9c7C7vg9zTkv7v&video_id=tt1128075&ticket=geemkgtbtpwlown2cz525vv2tki38u'),
-(2, 4, 'streamvid.co', 'https://streamvid.co/player/zGAR89QZO28qpN1/'),
-(3, 4, 'www.fembed.com', 'https://www.fembed.com/v/z5gwqcj-g38p4w7'),
-(4, 4, 'videospider.stream', 'https://videospider.stream/getvideo?key=ZP9c7C7vg9zTkv7v&video_id=tt1128075&ticket=geemkgtbtpwlown2cz525vv2tki38u'),
-(6, 4, 'www.fembed.com', 'https://www.fembed.com/v/z5gwqcj-g38p4w7'),
-(7, 4, 'kissmovies.xyz', 'https://kissmovies.xyz/v/nxgwlu2q41z0d31');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `events`
---
-
-CREATE TABLE `events` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `e_name` varchar(191) DEFAULT NULL,
-  `e_banner` varchar(191) DEFAULT NULL,
-  `e_link` varchar(191) DEFAULT NULL,
-  `e_position_1` tinyint(4) NOT NULL DEFAULT 0,
-  `e_position_2` tinyint(4) NOT NULL DEFAULT 0,
-  `e_position_3` tinyint(4) NOT NULL DEFAULT 0,
-  `e_position_4` tinyint(4) NOT NULL DEFAULT 0,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `events`
---
-
-INSERT INTO `events` (`id`, `e_name`, `e_banner`, `e_link`, `e_position_1`, `e_position_2`, `e_position_3`, `e_position_4`, `created_at`, `updated_at`) VALUES
-(1, 'Sản phẩm bán chạy', '2024-04-21__bst-web-1.jpg', 'https://www.facebook.com/Support', 1, 0, 0, 0, '2024-04-21 06:14:21', '2024-04-21 06:14:21'),
-(2, 'Sản phẩm mới', '2024-04-21__beachy-sandal-web-doc-scaled.jpg', 'javascript:;', 0, 0, 1, 0, '2024-04-21 06:13:50', '2024-04-21 06:13:50');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `failed_jobs`
---
-
-CREATE TABLE `failed_jobs` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `connection` text NOT NULL,
-  `queue` text NOT NULL,
-  `payload` longtext NOT NULL,
-  `exception` longtext NOT NULL,
-  `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `invoice_entered`
---
-
-CREATE TABLE `invoice_entered` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `ie_suppliere` int(11) NOT NULL DEFAULT 0,
-  `ie_name_product` varchar(255) DEFAULT NULL,
-  `ie_total_money` int(11) NOT NULL DEFAULT 0,
-  `ie_category` int(11) NOT NULL DEFAULT 0,
-  `ie_product_id` int(11) NOT NULL DEFAULT 0,
-  `ie_number` int(11) NOT NULL DEFAULT 0,
-  `ie_number_sold` int(11) NOT NULL DEFAULT 0,
-  `ie_money` int(11) NOT NULL DEFAULT 0,
-  `ie_meta` text DEFAULT NULL,
-  `ie_status` tinyint(4) NOT NULL DEFAULT 0,
-  `ie_the_advance` int(11) NOT NULL DEFAULT 0,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `invoice_entered`
---
-
-INSERT INTO `invoice_entered` (`id`, `ie_suppliere`, `ie_name_product`, `ie_total_money`, `ie_category`, `ie_product_id`, `ie_number`, `ie_number_sold`, `ie_money`, `ie_meta`, `ie_status`, `ie_the_advance`, `created_at`, `updated_at`) VALUES
-(3, 1, NULL, 2200000, 0, 52, 20, 0, 200000, NULL, 0, 200000, '2020-06-18 11:50:30', '2020-06-21 13:10:15'),
-(4, 2, NULL, 300000, 0, 50, 2, 0, 150000, NULL, 0, 100000, '2020-06-18 12:09:56', '2020-06-18 12:09:56'),
-(5, 1, NULL, 390000, 0, 53, 39, 2, 9000, '[{\"price\":\"40000\",\"time\":\"2020-06-21T16:23:10.032824Z\"},{\"price\":\"50000\",\"time\":\"2020-06-21T16:24:16.058442Z\"},{\"price\":\"10000\",\"time\":\"2020-06-21T16:32:31.490517Z\"}]', 0, 50000, '2020-06-18 12:16:31', '2020-06-21 16:32:31'),
-(6, 1, NULL, 25000, 0, 13, 20, 0, 1000, '[{\"price\":\"20000\",\"time\":\"2020-06-21T16:33:12.713852Z\"}]', 0, 20000, '2020-06-21 16:33:12', NULL);
 
 -- --------------------------------------------------------
 
@@ -512,44 +397,6 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `model_has_permissions`
---
-
-CREATE TABLE `model_has_permissions` (
-  `permission_id` int(10) UNSIGNED NOT NULL,
-  `model_type` varchar(191) NOT NULL,
-  `model_id` bigint(20) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `model_has_permissions`
---
-
-INSERT INTO `model_has_permissions` (`permission_id`, `model_type`, `model_id`) VALUES
-(2, 'App\\Models\\Admin', 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `model_has_roles`
---
-
-CREATE TABLE `model_has_roles` (
-  `role_id` int(10) UNSIGNED NOT NULL,
-  `model_type` varchar(191) NOT NULL,
-  `model_id` bigint(20) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `model_has_roles`
---
-
-INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
-(1, 'App\\Models\\Admin', 1);
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `orders`
 --
 
@@ -577,135 +424,6 @@ INSERT INTO `orders` (`id`, `od_transaction_id`, `od_product_id`, `od_sale`, `od
 (6, 6, 50, 2, 2, 11760, '2020-06-15 11:48:55', NULL),
 (7, 7, 53, 20, 2, 8000, '2020-06-18 12:17:30', NULL),
 (8, 8, 52, 12, 2, 220000, '2024-04-21 06:31:26', NULL);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `password_resets`
---
-
-CREATE TABLE `password_resets` (
-  `email` varchar(191) NOT NULL,
-  `token` varchar(191) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `pay_histories`
---
-
-CREATE TABLE `pay_histories` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `ph_code` varchar(191) NOT NULL,
-  `ph_user_id` int(10) UNSIGNED NOT NULL,
-  `ph_credit` int(10) UNSIGNED NOT NULL DEFAULT 0,
-  `ph_debit` int(10) UNSIGNED NOT NULL DEFAULT 0,
-  `ph_balance` int(10) UNSIGNED NOT NULL DEFAULT 0,
-  `ph_meta_detail` text DEFAULT NULL,
-  `ph_status` tinyint(4) NOT NULL DEFAULT 0,
-  `ph_month` tinyint(3) UNSIGNED DEFAULT NULL,
-  `ph_year` smallint(5) UNSIGNED DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `pay_histories`
---
-
-INSERT INTO `pay_histories` (`id`, `ph_code`, `ph_user_id`, `ph_credit`, `ph_debit`, `ph_balance`, `ph_meta_detail`, `ph_status`, `ph_month`, `ph_year`, `created_at`, `updated_at`) VALUES
-(1, 'PAYOUT1', 2, 0, 0, 0, NULL, 1, 6, 2020, '2020-06-07 08:03:48', NULL),
-(2, 'IN1', 2, 10000, 0, 10000, 'Nạp tiền Online', 1, 6, 2020, '2020-06-07 09:32:57', NULL),
-(3, 'PAYOUT2', 2, 0, 440000, 1000000, NULL, 1, 6, 2020, '2020-06-07 09:42:21', NULL),
-(4, 'PAYOUT3', 2, 0, 504400, 560000, NULL, 1, 6, 2020, '2020-06-07 09:45:50', NULL);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `pay_ins`
---
-
-CREATE TABLE `pay_ins` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `pi_user_id` int(10) UNSIGNED NOT NULL,
-  `pi_admin_id` int(10) UNSIGNED NOT NULL,
-  `pi_provider` int(10) UNSIGNED NOT NULL DEFAULT 0,
-  `pi_money` int(10) UNSIGNED NOT NULL DEFAULT 0,
-  `pi_fee` int(10) UNSIGNED NOT NULL DEFAULT 0,
-  `pi_amount` int(10) UNSIGNED NOT NULL DEFAULT 0,
-  `pi_meta_detail` text DEFAULT NULL,
-  `pi_status` tinyint(4) NOT NULL DEFAULT 0,
-  `pi_month` tinyint(3) UNSIGNED DEFAULT NULL,
-  `pi_year` smallint(5) UNSIGNED DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `pay_ins`
---
-
-INSERT INTO `pay_ins` (`id`, `pi_user_id`, `pi_admin_id`, `pi_provider`, `pi_money`, `pi_fee`, `pi_amount`, `pi_meta_detail`, `pi_status`, `pi_month`, `pi_year`, `created_at`, `updated_at`) VALUES
-(1, 2, 0, 3, 10000, 0, 0, NULL, 1, 6, 2020, '2020-06-07 09:32:57', NULL);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `pay_outs`
---
-
-CREATE TABLE `pay_outs` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `po_user_id` int(10) UNSIGNED NOT NULL,
-  `po_transaction_id` int(10) UNSIGNED NOT NULL,
-  `po_money` int(10) UNSIGNED NOT NULL DEFAULT 0,
-  `po_meta_detail` text NOT NULL,
-  `po_status` tinyint(4) NOT NULL DEFAULT 0,
-  `po_month` tinyint(3) UNSIGNED DEFAULT NULL,
-  `po_year` smallint(5) UNSIGNED DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `pay_outs`
---
-
-INSERT INTO `pay_outs` (`id`, `po_user_id`, `po_transaction_id`, `po_money`, `po_meta_detail`, `po_status`, `po_month`, `po_year`, `created_at`, `updated_at`) VALUES
-(1, 2, 2, 0, '', 1, 6, 2020, '2020-06-07 08:03:48', NULL),
-(2, 2, 3, 440000, '', 1, 6, 2020, '2020-06-07 09:42:21', NULL),
-(3, 2, 4, 504400, '', 1, 6, 2020, '2020-06-07 09:45:50', NULL);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `permissions`
---
-
-CREATE TABLE `permissions` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(191) NOT NULL,
-  `description` varchar(191) DEFAULT NULL,
-  `group_permission` tinyint(4) NOT NULL DEFAULT 0,
-  `guard_name` varchar(191) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `permissions`
---
-
-INSERT INTO `permissions` (`id`, `name`, `description`, `group_permission`, `guard_name`, `created_at`, `updated_at`) VALUES
-(1, 'Group Ql sản phẩm', 'Nhóm quản lý sản phẩm', 10, 'admins', '2020-06-21 04:38:19', '2020-06-21 04:38:19'),
-(2, 'full', 'Full quyền', 1, 'admins', '2020-06-21 04:38:50', '2020-06-21 04:38:50'),
-(3, 'Group sản phẩm', 'NHóm sản phẩm', 10, 'admins', '2020-06-21 04:45:49', '2020-06-21 04:45:49'),
-(4, 'Danh sách sản phẩm', 'Danh sách sản phẩm', 10, 'admins', '2020-06-21 04:46:03', '2020-06-21 04:46:03'),
-(5, 'Group Ql bài viết', 'Nhóm quyền quản lsy bài viết', 6, 'admins', '2020-06-21 05:27:46', '2020-06-21 05:27:46'),
-(6, 'Danh sách Menu', 'Danh sách Menu', 5, 'admins', '2020-06-21 05:28:03', '2020-06-21 05:28:03'),
-(7, 'Danh sách bài viết', 'Danh sách bài viết', 6, 'admins', '2020-06-21 05:28:16', '2020-06-21 05:28:16');
 
 -- --------------------------------------------------------
 
@@ -1058,18 +776,6 @@ CREATE TABLE `product_images` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product_invoice_entered`
---
-
-CREATE TABLE `product_invoice_entered` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `pie_product_id` int(11) NOT NULL DEFAULT 0,
-  `pie_invoice_entered_id` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `ratings`
 --
 
@@ -1090,141 +796,6 @@ CREATE TABLE `ratings` (
 
 INSERT INTO `ratings` (`id`, `r_user_id`, `r_product_id`, `r_number`, `r_status`, `r_content`, `created_at`, `updated_at`) VALUES
 (1, 1, 52, 3, 0, 'ew', '2020-04-27 21:06:13', '2020-04-27 21:06:13');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `roles`
---
-
-CREATE TABLE `roles` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(191) NOT NULL,
-  `name_slug` varchar(191) NOT NULL,
-  `guard_name` varchar(191) NOT NULL,
-  `description` varchar(191) DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `roles`
---
-
-INSERT INTO `roles` (`id`, `name`, `name_slug`, `guard_name`, `description`, `created_at`, `updated_at`) VALUES
-(1, 'Full tính năng', 'full-tinh-nang', 'admins', NULL, '2020-06-21 04:58:12', '2020-06-21 05:06:13'),
-(3, 'CTV Viết Bài', 'ctv-viet-bai', 'admins', 'Cộng tác viên viết bài', '2020-06-21 05:31:01', '2020-06-21 05:31:01');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `role_has_permissions`
---
-
-CREATE TABLE `role_has_permissions` (
-  `permission_id` int(10) UNSIGNED NOT NULL,
-  `role_id` int(10) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `role_has_permissions`
---
-
-INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
-(2, 1),
-(5, 3),
-(6, 3),
-(7, 3);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `slides`
---
-
-CREATE TABLE `slides` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `sd_title` varchar(191) DEFAULT NULL,
-  `sd_link` varchar(191) DEFAULT NULL,
-  `sd_image` varchar(191) DEFAULT NULL,
-  `sd_target` tinyint(4) NOT NULL DEFAULT 1,
-  `sd_active` tinyint(4) NOT NULL DEFAULT 1,
-  `sd_sort` tinyint(4) NOT NULL DEFAULT 1,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `slides`
---
-
-INSERT INTO `slides` (`id`, `sd_title`, `sd_link`, `sd_image`, `sd_target`, `sd_active`, `sd_sort`, `created_at`, `updated_at`) VALUES
-(1, 'Mua nhiều giảm nhiều nhanh tay số lượng có hạn', 'javascript:;', '2020-04-25__banner-tgnh-thang3.jpg', 3, 1, 0, '2024-04-21 06:08:42', '2024-04-21 06:08:42'),
-(2, 'Queen Card', 'javascript:;', '2024-04-21__queencard-2048x928.jpg', 1, 1, 1, '2024-04-21 06:09:22', '2024-04-21 06:09:22'),
-(3, 'Hello Summer', 'javascript:;', '2020-04-25__banner-web-bgxshopee.png', 2, 1, 0, '2024-04-21 06:08:50', '2024-04-21 06:08:50');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `social_accounts`
---
-
-CREATE TABLE `social_accounts` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `provider_user_id` varchar(191) NOT NULL,
-  `user_id` varchar(191) NOT NULL,
-  `provider` varchar(191) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `statics`
---
-
-CREATE TABLE `statics` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `s_title` varchar(191) DEFAULT NULL,
-  `s_slug` varchar(191) DEFAULT NULL,
-  `s_type` tinyint(4) NOT NULL DEFAULT 0,
-  `s_md5` varchar(191) DEFAULT NULL,
-  `s_content` text DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `statics`
---
-
-INSERT INTO `statics` (`id`, `s_title`, `s_slug`, `s_type`, `s_md5`, `s_content`, `created_at`, `updated_at`) VALUES
-(1, 'abc', NULL, 2, NULL, '<p>SPF được t&iacute;nh theo thời gian chống tia UV: Rất đơn giản bạn chỉ cần lấy SPF nh&acirc;n với 10 sẽ ra được thời gian bảo vệ da t&iacute;nh bằng ph&uacute;t. V&iacute; dụ SPF chống nắng l&agrave; 20 th&igrave; thời gian bảo vệ da l&agrave; SPF 20 = 20 x 10 = 200 ph&uacute;t = 3h20 ph&uacute;t. Hay SPF 50 th&igrave; thời gian bảo vệ tối đa l&agrave; 500 ph&uacute;t.&nbsp;</p>', '2020-04-25 15:44:06', '2020-04-25 15:44:06');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `supplieres`
---
-
-CREATE TABLE `supplieres` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `sl_name` varchar(191) DEFAULT NULL,
-  `sl_phone` varchar(191) DEFAULT NULL,
-  `sl_email` varchar(191) DEFAULT NULL,
-  `sl_address` varchar(191) DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `supplieres`
---
-
-INSERT INTO `supplieres` (`id`, `sl_name`, `sl_phone`, `sl_email`, `sl_address`, `created_at`, `updated_at`) VALUES
-(1, 'Nhà CC A', '0986420994', 'support@gmail.com', 'Ngách 138, Số nhà 62', '2020-04-24 03:37:05', NULL),
-(2, 'Nhà cc B', '0988232123', 'nhaccb@gmail.com', 'Nghe an', '2020-06-18 11:59:25', NULL);
 
 -- --------------------------------------------------------
 
@@ -1313,26 +884,6 @@ CREATE TABLE `user_favourite` (
 INSERT INTO `user_favourite` (`id`, `uf_product_id`, `uf_user_id`) VALUES
 (1, 50, 1);
 
--- --------------------------------------------------------
-
---
--- Table structure for table `videos`
---
-
-CREATE TABLE `videos` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) DEFAULT NULL,
-  `total` int(11) NOT NULL DEFAULT 0,
-  `link` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
---
--- Dumping data for table `videos`
---
-
-INSERT INTO `videos` (`id`, `name`, `total`, `link`) VALUES
-(4, 'Mãi mãi một tình yêu', 6, NULL);
-
 --
 -- Indexes for dumped tables
 --
@@ -1391,38 +942,6 @@ ALTER TABLE `comments`
   ADD KEY `comments_cmt_user_id_index` (`cmt_user_id`);
 
 --
--- Indexes for table `contacts`
---
-ALTER TABLE `contacts`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `episode`
---
-ALTER TABLE `episode`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `video_id` (`video_id`);
-
---
--- Indexes for table `events`
---
-ALTER TABLE `events`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `failed_jobs`
---
-ALTER TABLE `failed_jobs`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `invoice_entered`
---
-ALTER TABLE `invoice_entered`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `invoice_entered_ie_suppliere_index` (`ie_suppliere`);
-
---
 -- Indexes for table `keywords`
 --
 ALTER TABLE `keywords`
@@ -1443,60 +962,9 @@ ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `model_has_permissions`
---
-ALTER TABLE `model_has_permissions`
-  ADD PRIMARY KEY (`permission_id`,`model_id`,`model_type`),
-  ADD KEY `model_has_permissions_model_id_model_type_index` (`model_id`,`model_type`);
-
---
--- Indexes for table `model_has_roles`
---
-ALTER TABLE `model_has_roles`
-  ADD PRIMARY KEY (`role_id`,`model_id`,`model_type`),
-  ADD KEY `model_has_roles_model_id_model_type_index` (`model_id`,`model_type`);
-
---
 -- Indexes for table `orders`
 --
 ALTER TABLE `orders`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `password_resets`
---
-ALTER TABLE `password_resets`
-  ADD KEY `password_resets_email_index` (`email`);
-
---
--- Indexes for table `pay_histories`
---
-ALTER TABLE `pay_histories`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `pay_histories_ph_code_unique` (`ph_code`),
-  ADD KEY `index_code_user_id` (`ph_code`,`ph_user_id`),
-  ADD KEY `pay_histories_ph_user_id_index` (`ph_user_id`);
-
---
--- Indexes for table `pay_ins`
---
-ALTER TABLE `pay_ins`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `pay_ins_pi_user_id_index` (`pi_user_id`),
-  ADD KEY `pay_ins_pi_admin_id_index` (`pi_admin_id`);
-
---
--- Indexes for table `pay_outs`
---
-ALTER TABLE `pay_outs`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `pay_outs_po_user_id_index` (`po_user_id`),
-  ADD KEY `pay_outs_po_transaction_id_index` (`po_transaction_id`);
-
---
--- Indexes for table `permissions`
---
-ALTER TABLE `permissions`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1532,56 +1000,9 @@ ALTER TABLE `product_images`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `product_invoice_entered`
---
-ALTER TABLE `product_invoice_entered`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `product_invoice_entered_pie_product_id_index` (`pie_product_id`),
-  ADD KEY `product_invoice_entered_pie_invoice_entered_id_index` (`pie_invoice_entered_id`);
-
---
 -- Indexes for table `ratings`
 --
 ALTER TABLE `ratings`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `roles`
---
-ALTER TABLE `roles`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `roles_name_slug_unique` (`name_slug`);
-
---
--- Indexes for table `role_has_permissions`
---
-ALTER TABLE `role_has_permissions`
-  ADD PRIMARY KEY (`permission_id`,`role_id`),
-  ADD KEY `role_has_permissions_role_id_foreign` (`role_id`);
-
---
--- Indexes for table `slides`
---
-ALTER TABLE `slides`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `social_accounts`
---
-ALTER TABLE `social_accounts`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `social_accounts_provider_user_id_provider_unique` (`provider_user_id`,`provider`);
-
---
--- Indexes for table `statics`
---
-ALTER TABLE `statics`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `supplieres`
---
-ALTER TABLE `supplieres`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1607,12 +1028,6 @@ ALTER TABLE `users`
 ALTER TABLE `user_favourite`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `user_favourite_uf_product_id_uf_user_id_unique` (`uf_product_id`,`uf_user_id`);
-
---
--- Indexes for table `videos`
---
-ALTER TABLE `videos`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -1655,36 +1070,6 @@ ALTER TABLE `comments`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
--- AUTO_INCREMENT for table `contacts`
---
-ALTER TABLE `contacts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `episode`
---
-ALTER TABLE `episode`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT for table `events`
---
-ALTER TABLE `events`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `failed_jobs`
---
-ALTER TABLE `failed_jobs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `invoice_entered`
---
-ALTER TABLE `invoice_entered`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
 -- AUTO_INCREMENT for table `keywords`
 --
 ALTER TABLE `keywords`
@@ -1707,30 +1092,6 @@ ALTER TABLE `migrations`
 --
 ALTER TABLE `orders`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
--- AUTO_INCREMENT for table `pay_histories`
---
-ALTER TABLE `pay_histories`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT for table `pay_ins`
---
-ALTER TABLE `pay_ins`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `pay_outs`
---
-ALTER TABLE `pay_outs`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `permissions`
---
-ALTER TABLE `permissions`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `products`
@@ -1757,46 +1118,10 @@ ALTER TABLE `product_images`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `product_invoice_entered`
---
-ALTER TABLE `product_invoice_entered`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `ratings`
 --
 ALTER TABLE `ratings`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `roles`
---
-ALTER TABLE `roles`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `slides`
---
-ALTER TABLE `slides`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `social_accounts`
---
-ALTER TABLE `social_accounts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `statics`
---
-ALTER TABLE `statics`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `supplieres`
---
-ALTER TABLE `supplieres`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `transactions`
@@ -1815,35 +1140,6 @@ ALTER TABLE `users`
 --
 ALTER TABLE `user_favourite`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `videos`
---
-ALTER TABLE `videos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `model_has_permissions`
---
-ALTER TABLE `model_has_permissions`
-  ADD CONSTRAINT `model_has_permissions_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE;
-
---
--- Constraints for table `model_has_roles`
---
-ALTER TABLE `model_has_roles`
-  ADD CONSTRAINT `model_has_roles_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE;
-
---
--- Constraints for table `role_has_permissions`
---
-ALTER TABLE `role_has_permissions`
-  ADD CONSTRAINT `role_has_permissions_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `role_has_permissions_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

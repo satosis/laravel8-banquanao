@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Exports\TransactionInvoiceExport;
+use App\Exports\;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use Illuminate\Http\Request;
@@ -37,10 +37,6 @@ class UserTransactionController extends Controller
 
         $transactions = $transactions->orderByDesc('id')
             ->paginate(10);
-
-        // if ($request->export) {
-        //     return \Excel::download(new TransactionExport($transactions), 'don-hang.xlsx');
-        // }
 
         $viewData = [
             'transactions' => $transactions,
@@ -115,7 +111,5 @@ class UserTransactionController extends Controller
 
 		$html =  view('user.include._inc_invoice_transaction',compact('transaction','orders'))->render();
 		return response()->json(['html' => $html]);
-
-//		return \Excel::download(new TransactionInvoiceExport($transaction), 'don-hang.xlsx');
 	}
 }

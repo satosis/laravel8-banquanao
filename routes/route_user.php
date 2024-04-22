@@ -13,10 +13,8 @@
         Route::get('rating','UserRatingController@index')->name('get.user.rating'); // list đánh giá
         Route::get('rating/delete/{id}','UserRatingController@delete')->name('get.user.rating.delete'); // xoá đánh giá
 
-        Route::get('comment','UserCommentController@index')->name('get.user.comment'); // commend 
-        Route::get('comment/delete/{id}','UserCommentController@delete')->name('get.user.comment.delete'); // xoá commend 
-
-		Route::get('management-transaction','UserManagementTransaction@index')->name('get.user.management_transaction'); // Biết động tài khoản
+        Route::get('comment','UserCommentController@index')->name('get.user.comment'); // commend
+        Route::get('comment/delete/{id}','UserCommentController@delete')->name('get.user.comment.delete'); // xoá commend
 
 		Route::post('/process','RechargeOnlineController@processSendData')
 			->name('post.recharge.process'); //  xử lý nạp tiền
@@ -34,11 +32,9 @@
         Route::get('favourite','UserFavouriteController@index')->name('get.user.favourite'); // sp yêu thích
         Route::get('favourite-delete/{id}','UserFavouriteController@delete')->name('get.user.favourite.delete'); // xoá sp yêu thích
 
-        // Route::get('management-transaction','UserManagementTransaction@index')->name('get.user.management_transaction');
-
         Route::post('ajax-favourite/{idProduct}','UserFavouriteController@addFavourite')->name('ajax_get.user.add_favourite'); // thêm sp yêu thích
         Route::post('ajax-rating','UserRatingController@addRatingProduct')->name('ajax_post.user.rating.add'); // thêm dánh giá
-        Route::post('captcha', 'CaptchaController@authCaptchaResume')->name('ajax_post.captcha.resume'); // validation capcha 
+        Route::post('captcha', 'CaptchaController@authCaptchaResume')->name('ajax_post.captcha.resume'); // validation capcha
         Route::get('ajax-invoice-transaction/{id}','UserTransactionController@exportInvoiceTransaction')
 			->name('ajax_get.user.invoice_transaction');
     });

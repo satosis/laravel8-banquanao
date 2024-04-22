@@ -4,7 +4,6 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Services\NganLuong\ProcessNlService;
-use App\Services\Wallet\WalletPayIn;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -29,11 +28,6 @@ class ProcessRechargeOnlineController extends Controller
 					if ($user) {
 						$user->balance += $money;
 						$user->save();
-
-						WalletPayIn::addPayInByUser($user, $money, [
-							'meta_detail' => 'Nạp tiền Online',
-							'pi_provider' => 3
-						]);
 					}
 
 					\Session::flash('toastr', [

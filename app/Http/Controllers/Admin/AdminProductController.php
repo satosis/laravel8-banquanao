@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
-use App\Models\InvoiceEntered;
 use App\Models\Supplier;
 use Illuminate\Http\Request;
 use App\Http\Requests\AdminRequestProduct;
@@ -147,25 +146,6 @@ class AdminProductController extends Controller
 		$update = $product->update($data);
 
 		if ($update) {
-			$invoiceEntered =  InvoiceEntered::where('ie_product_id', $product->id)->first();
-			if ($old_number != $product->pro_number_import) {
-				//  Đồng bộ lại đơn nhập
-				if ($invoiceEntered) {
-					$invoiceEntered->ie_number = ($invoiceEntered->ie_number - $old_number + $product->pro_number_import);
-					$invoiceEntered->save();
-				}
-			}
-
-			//  Xử lý thêm mới số lượng
-			if ($addNumber = $request->add_number) {
-				$product->pro_number_import += $addNumber;
-				$product->save();
-				if ($invoiceEntered) {
-					$invoiceEntered->ie_number += $addNumber;
-					$invoiceEntered->save();
-				}
-			}
-
 			$this->syncAttribute($request->attribute, $id);
 			$this->syncKeyword($request->keywords, $id);
 

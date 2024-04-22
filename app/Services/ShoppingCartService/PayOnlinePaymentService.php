@@ -4,9 +4,7 @@
 namespace App\Services\ShoppingCartService;
 
 
-use App\Models\SystemPay\PayHistory;
 use App\Models\SystemPay\PayIn;
-use App\Models\SystemPay\PayOut;
 use App\Models\Transaction;
 use App\User;
 use Carbon\Carbon;
@@ -73,8 +71,6 @@ class PayOnlinePaymentService extends PayBaseService implements PayServiceInterf
         //3. Trừ tiền
         $this->deductionMoney($money, $userID);
 
-        //4. Lưu thống kê
-        $this->savePayOut($money, $userID, $this->idTransaction);
 
         // Mail::to($request->tst_email)->send(new TransactionSuccess($shopping));
         return $this->idTransaction;
@@ -84,35 +80,6 @@ class PayOnlinePaymentService extends PayBaseService implements PayServiceInterf
     {
         \DB::table('users')->where('id', $userId)
             ->decrement('balance', $money);
-    }
-
-    public function savePayOut($money, $userId, $transactionID)
-    {
-        $dataPayOut = [
-            'po_status'         => PayOut::STATUS_SUCCESS,
-            'po_month'          => date('m'),
-            'po_transaction_id' => $transactionID,
-            'po_year'           => date('Y'),
-            'po_user_id'        => $userId,
-            'po_money'          => $money,
-            'created_at'        => Carbon::now()
-        ];
-
-        $idPayOut = PayOut::insertGetId($dataPayOut);
-
-        if ($idPayOut) {
-            PayHistory::insert([
-                'ph_code'    => 'PAYOUT' . $idPayOut,
-                'ph_user_id' => $userId,
-                'ph_debit'   => $money,
-                'ph_balance' => \Auth::user()->balance,
-                'ph_status'  => 1,
-                'ph_month'   => date('m'),
-                'ph_year'    => date('Y'),
-                'created_at' => Carbon::now()
-            ]);
-        }
-        Log::info("save OK");
     }
 
 }

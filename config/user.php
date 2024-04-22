@@ -11,11 +11,6 @@ return [
         'icon'  => 'fa fa-address-book-o'
     ],
     [
-        'name'  => 'Biến động tài khoản',
-        'route' => 'get.user.management_transaction',
-        'icon'  => 'fa fa-money'
-    ],
-    [
         'name'  => 'Sản phẩm yêu thích',
         'route' => 'get.user.favourite',
         'icon'  => 'fa fa-heart-o'
