@@ -156,8 +156,6 @@
 
 {{--                        @if (get_data_user('admins','level') == 1)--}}
 {{--                            <li><a href="{{  route('admin.account_admin.index') }}"><i class="fa fa-circle-o text-red"></i> <span>Ql Admin</span></a></li>--}}
-{{--                            <li><a href="{{  route('admin.slide.index') }}"><i class="fa fa-circle-o text-red"></i> <span>QL Slide</span></a></li>--}}
-{{--                            <li><a href="{{  route('admin.event.index') }}"><i class="fa fa-circle-o text-red"></i> <span>Ql Event</span></a></li>--}}
 {{--                            <li><a href="{{  route('admin.static.index') }}"><i class="fa fa-circle-o text-red"></i> <span>QL Static</span></a></li>--}}
 {{--                            <li><a href="{{  route('admin.statistical') }}"><i class="fa fa-circle-o text-red"></i> <span>Thống kê</span></a></li>--}}
 {{--                        @endif--}}

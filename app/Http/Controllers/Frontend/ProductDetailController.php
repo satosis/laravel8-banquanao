@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Attribute;
 use App\Models\Comments;
-use App\Models\Event;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Services\ProcessViewService;
@@ -77,26 +76,12 @@ class ProductDetailController extends FrontendController
 
 			});
 
-			// Lấy event hiển thị đầu
-			$event1 = Cache::remember('HOME.EVENT_1', 60 * 24 * 10, function () {
-				return Event::where('e_position_1', 1)
-					->first();
-			});
-
-			$event3 = Cache::remember('HOME.EVENT_3', 60 * 24 * 10, function () {
-				return Event::where('e_position_3', 1)
-					->first();
-			});
-
 			$viewData = [
 				'isPopupCaptcha'   => 0,
 //				'isPopupCaptcha'   => \Auth::user()->count_comment ?? 0,
 				'ratingDefault'    => $ratingDefault,
 				'product'          => $product,
 				'ratings'          => $ratings,
-//				'images'           => $images,
-				'event1'           => $event1,
-				'event3'           => $event3,
 				'attribute'        => $this->syncAttributeGroup(),
 				'comments'         => $comments,
 				'attributeOld'     => $attributeOld,

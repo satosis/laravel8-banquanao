@@ -177,33 +177,4 @@ return [
 			],
 		]
 	],
-	[
-		'name' => 'Hệ thống',
-		'list-check' => ['slide','event','page-static','statistical'],
-		'icon' => 'fa  fa-usd',
-		'level'  => [1,2],
-		'sub'  => [
-			[
-				'name'  => 'Ql Slide',
-				'route' => 'admin.slide.index',
-				'namespace' => 'pay-in',
-				'level'  => [1,2],
-				'icon'  => 'fa-circle-o'
-			],
-			[
-				'name'  => 'Ql Event',
-				'route' => 'admin.event.index',
-				'namespace' => 'pay-in',
-				'level'  => [1,2],
-				'icon'  => 'fa-circle-o'
-			],
-			[
-				'name'  => 'Ql Page tĩnh',
-				'route' => 'admin.static.index',
-				'namespace' => 'pay-in',
-				'level'  => [1,2],
-				'icon'  => 'fa-circle-o'
-			]
-		]
-	],
 ];

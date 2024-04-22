@@ -7,8 +7,6 @@ use App\Models\Article;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Product;
-use App\Models\Slide;
-use App\Models\Event;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 
@@ -49,27 +47,6 @@ class HomeController extends FrontendController
 				->get();
 		});
 
-		// Lấy event hiển thị đầu
-		$event1 = Cache::remember('HOME.EVENT_1', 60 * 24 * 10, function () {
-			return Event::where('e_position_1', 1)
-				->first();
-		});
-		$event2 = Cache::remember('HOME.EVENT_2', 60 * 24 * 10, function () {
-			return Event::where('e_position_2', 1)
-				->first();
-		});
-		$event3 = Cache::remember('HOME.EVENT_3', 60 * 24 * 10, function () {
-			return Event::where('e_position_3', 1)
-				->first();
-		});
-
-		// Lấy slide trang chủ
-		$slides = Cache::remember('HOME.SLIDE', 60 * 24 * 10, function () {
-			return Slide::where('sd_active', 1)
-				->orderBy('sd_sort', 'asc')
-				->get();
-		});
-
 		$articlesHot = Cache::remember('HOME.ARTICLE_HOT', 60 * 24, function () {
 			return Article::where([
 				'a_active' => 1,
@@ -86,10 +63,6 @@ class HomeController extends FrontendController
 			'productsNew' => $productsNew,
 			'productsHot' => $productsHot,
 			'productsPay' => $productsPay,
-			'event1'      => $event1,
-			'event2'      => $event2,
-			'slides'      => $slides,
-			'event3'      => $event3,
 			'title_page'  => "Trang chủ | Đồ án tốt nghiệp",
 			'articlesHot' => $articlesHot
 		];

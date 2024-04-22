@@ -31,13 +31,21 @@
                     <div id="content-slide">
                         <div id="slider">
                             <div class="imageSlide js-banner owl-carousel">
-                                @foreach($slides as $item)
-                                    <div>
-                                        <a href="{{ $item->sd_link }}" title="{{ $item->sd_title }}">
-                                            <img alt="Đồ án tốt nghiệp" src="{{ pare_url_file($item->sd_image) }}"  style="max-width: 100%;height: 300px;" class="" />
-                                        </a>
-                                    </div>
-                                @endforeach
+                                <div>
+                                    <a href="javascript:;" title="slide">
+                                        <img alt="Đồ án tốt nghiệp" src="{{ pare_url_file('2020-04-25__banner-tgnh-thang3.jpg') }}"  style="max-width: 100%;height: 300px;" class="" />
+                                    </a>
+                                </div>
+                                <div>
+                                    <a href="javascript:;" title="slide">
+                                        <img alt="Đồ án tốt nghiệp" src="{{ pare_url_file('2024-04-21__queencard-2048x928.jpg') }}"  style="max-width: 100%;height: 300px;" class="" />
+                                    </a>
+                                </div>
+                                <div>
+                                    <a href="javascript:;" title="slide">
+                                        <img alt="Đồ án tốt nghiệp" src="{{ pare_url_file('2020-04-25__banner-web-bgxshopee.png') }}"  style="max-width: 100%;height: 300px;" class="" />
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -51,15 +59,13 @@
                 <a href="#" title="" class="main-title main-title-2">Sản phẩm bán chạy</a>
             </div>
             <div class="bot">
-                @if ($event1)
-                    <div class="left">
-                        <div class="image">
-                            <a href="{{  $event1->e_link }}" title="" class="{{ $event1->e_name }} image" target="_blank">
-                                <img style="height: 310px;" class="lazyload lazy" alt="{{ $event1->e_name }}" src="{{  asset('images/preloader.gif') }}"  data-src="{{  pare_url_file($event1->e_banner) }}" />
-                            </a>
-                        </div>
+                <div class="left">
+                    <div class="image">
+                        <a href="javascript:;" title="" class=" image" target="_blank">
+                            <img style="height: 310px;" class="lazyload lazy" alt="" src="{{  asset('images/preloader.gif') }}"  data-src="{{  pare_url_file('2024-04-21__bst-web-1.jpg') }}" />
+                        </a>
                     </div>
-                @endif
+                </div>
                 <div class="right js-product-one owl-carousel owl-theme owl-custom">
                     @foreach($productsPay as $product)
                         <div class="item">
@@ -70,11 +76,14 @@
             </div>
         </div>
 
+        <div id="flash_sale">
+            <a href="" title="" class="image" target="_blank">
+                <img  alt="" style="height:250px;"  src="/images/banner/banner-3.png" class="lazyload" width="100%" style="object-position: bottom;object-fit: cover;" />
+            </a>
 
+        </div>
+        <div class="cb"></div>
 
-        @if ($event2)
-            @include('frontend.pages.home.include._inc_flash_sale')
-        @endif
         <div class="product-three">
             <div class="top">
                 <a href="#" title="" class="main-title main-title-2">Sản phẩm mới</a>
@@ -82,11 +91,9 @@
             <div class="bot">
                 <div class="left">
                     <div class="image">
-                        @if (isset($event3->e_link))
-                            <a href="{{  $event3->e_link }}" title="" class="{{ $event3->e_name }}" target="_blank">
-                                <img style="height: 310px;" class="lazyload lazy" alt="{{ $event3->e_name }}" src="{{  asset('images/preloader.gif') }}"  data-src="{{  pare_url_file($event3->e_banner) }}" />
-                            </a>
-                        @endif
+                        <a href="javascript:;" title="" class="" target="_blank">
+                            <img style="height: 310px;" class="lazyload lazy" alt="event3" src="{{  asset('images/preloader.gif') }}"  data-src="{{  pare_url_file('2024-04-21__bst-web-1.jpg') }}" />
+                        </a>
                     </div>
                 </div>
                 <div class="right js-product-one owl-carousel owl-theme owl-custom">

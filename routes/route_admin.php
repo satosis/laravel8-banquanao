@@ -167,30 +167,6 @@
 
         });
 
-        Route::group(['prefix' => 'slide'], function(){
-            Route::get('','AdminSlideController@index')->name('admin.slide.index')->middleware('permission:full');
-            Route::get('create','AdminSlideController@create')->name('admin.slide.create')->middleware('permission:full');
-            Route::post('create','AdminSlideController@store')->middleware('permission:full');
-
-            Route::get('update/{id}','AdminSlideController@edit')->name('admin.slide.update')->middleware('permission:full');
-            Route::post('update/{id}','AdminSlideController@update')->middleware('permission:full');
-
-            Route::get('active/{id}','AdminSlideController@active')->name('admin.slide.active')->middleware('permission:full');
-            Route::get('hot/{id}','AdminSlideController@hot')->name('admin.slide.hot')->middleware('permission:full');
-            Route::get('delete/{id}','AdminSlideController@delete')->name('admin.slide.delete')->middleware('permission:full');
-        });
-
-        Route::group(['prefix' => 'event'], function(){
-            Route::get('','AdminEventController@index')->name('admin.event.index')->middleware('permission:full');
-            Route::get('create','AdminEventController@create')->name('admin.event.create')->middleware('permission:full');
-            Route::post('create','AdminEventController@store')->middleware('permission:full');
-
-            Route::get('update/{id}','AdminEventController@edit')->name('admin.event.update')->middleware('permission:full');
-            Route::post('update/{id}','AdminEventController@update')->middleware('permission:full');
-
-            Route::get('delete/{id}','AdminEventController@delete')->name('admin.event.delete')->middleware('permission:full');
-        });
-
         Route::group(['prefix' => 'page-static'], function(){
             Route::get('','AdminStaticController@index')->name('admin.static.index')->middleware('permission:full');
             Route::get('create','AdminStaticController@create')->name('admin.static.create')->middleware('permission:full');

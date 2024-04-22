@@ -117,12 +117,10 @@
                             </div>
 {{--                            @include('frontend.pages.product_detail.include._inc_keyword')--}}
                         </div>
-                        @if (isset($event1))
-                            <div class="ads">
-                                <a href="#" title="Giam giá" target="_blank"><img alt="Hoan tien" style="width: 100%"
-                                                                                  src="{{ pare_url_file($event1->e_banner) }}"></a>
-                            </div>
-                        @endif
+                        <div class="ads">
+                            <a href="#" title="Giam giá" target="_blank">
+                                <img alt="Hoan tien" style="width: 100%"  src="{{  pare_url_file('2024-04-21__bst-web-1.jpg') }}"></a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -181,16 +179,11 @@
                 </div>
             </div>
             <div class="right">
-                @if (isset($event3))
                 <a href="#" title="Giam giá" target="_blank"><img alt="Hoan tien" style="width: 100%"
-                                                                  src="{{ pare_url_file($event3->e_banner) }}"></a>
-                @endif
+                src="{{  pare_url_file('2024-04-21__bst-web-1.jpg') }}"></a>
             </div>
         </div>
     </div>
-    {{-- @if ($isPopupCaptcha >= 2)
-        @include('frontend.pages.product_detail.include._inc_popup_captcha')
-    @endif --}}
 @stop
 @section('script')
     <script>
