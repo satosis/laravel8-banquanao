@@ -1,12 +1,12 @@
 <?php
 
-    Route::group(['prefix' => 'laravel-filemanager','middleware' => 'check_admin_login'], function () {
-        \UniSharp\LaravelFilemanager\Lfm::routes();
-    });
+    // Route::group(['prefix' => 'laravel-filemanager','middleware' => 'check_admin_login'], function () {
+    //     \UniSharp\LaravelFilemanager\Lfm::routes();
+    // });
 
     Route::group(['prefix' => 'api-admin','namespace' => 'Admin','middleware' => 'check_admin_login'], function() {
         Route::get('','AdminController@index')->name('get.admin.index')->middleware('permission:statistical|full');
- 
+
         Route::get('statistical','AdminStatisticalController@index')->name('admin.statistical')->middleware('permission:statistical|full');
         Route::get('contact','AdminContactController@index')->name('admin.contact')->middleware('permission:contact|full');
 		Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->name('admin.logs.index')->middleware('permission:logs|full');
