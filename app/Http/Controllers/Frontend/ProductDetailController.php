@@ -7,6 +7,7 @@ use App\Models\Attribute;
 use App\Models\Comments;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use DB;
 use App\Services\ProcessViewService;
 use App\Models\Rating;
 use Illuminate\Support\Facades\Cache;
@@ -75,7 +76,8 @@ class ProductDetailController extends FrontendController
 					->toArray();
 
 			});
-
+			$image = DB::table('product_images')
+			->where('pi_product_id', $id)->get();
 			$viewData = [
 				'isPopupCaptcha'   => 0,
 //				'isPopupCaptcha'   => \Auth::user()->count_comment ?? 0,
@@ -86,7 +88,8 @@ class ProductDetailController extends FrontendController
 				'comments'         => $comments,
 				'attributeOld'     => $attributeOld,
 				'title_page'       => $product->pro_name,
-				'productsSuggests' => $this->getProductSuggests($product->pro_category_id)
+				'productsSuggests' => $this->getProductSuggests($product->pro_category_id),
+				'image' => $image ?? []
 			];
 			return view('frontend.pages.product_detail.index', $viewData);
 		}

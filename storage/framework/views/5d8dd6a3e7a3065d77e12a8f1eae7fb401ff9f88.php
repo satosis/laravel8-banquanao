@@ -5,6 +5,12 @@
         .number-empty, .number-empty:hover {
             cursor: not-allowed;
         }
+        .choose_image {
+            cursor:pointer;
+            height:80px;
+            width:80px;
+            padding-right:10px
+        }
     </style>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
@@ -29,11 +35,26 @@
             <div class="card-body info-detail">
                 <div class="left">
 
-                    <a href="<?php echo e(route('get.product.detail',$product->pro_slug . '-'.$product->id )); ?>" title=""
-                       class="">
-                        <img alt="" style="max-width: 100%;width: 100%;height: auto" src="<?php echo e(pare_url_file($product->pro_avatar)); ?>"
-                             class="lazyload">
-                    </a>
+                        <a href="javascript:;">
+                        <img alt="" style="max-width: 100%;width: 100%;height: 350px" src="<?php echo e(pare_url_file($product->pro_avatar)); ?>"
+                             class="lazyload target_img">
+                        </a>
+                        <?php if(isset($image)): ?>
+                            <div style="display: grid;grid-template-columns: auto auto auto auto auto auto;width:350px">
+                                <a href="javascript:;">
+                                    <div class="item">
+                                        <img src="<?php echo e(pare_url_file($product->pro_avatar)); ?>" class="choose_image"/>
+                                    </div>
+                                </a>
+                            <?php $__currentLoopData = $image; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <a href="javascript:;">
+                                    <div class="item">
+                                        <img src="<?php echo e(pare_url_file($item->pi_slug)); ?>" class="choose_image"/>
+                                    </div>
+                                </a>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            </div>
+                        <?php endif; ?>
                 </div>
                 <div class="right" id="product-detail" data-id="<?php echo e($product->id); ?>">
                     <h1><?php echo e($product->pro_name); ?></h1>

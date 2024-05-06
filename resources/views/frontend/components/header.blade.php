@@ -43,7 +43,7 @@
         <div class="container header-wrapper">
             <!--Thay đổi-->
             <div class="logo">
-                <span class="menu js-menu-cate"><i class="fa fa-list-ul"></i> </span>
+                <span class="menu js-menu-cate" style="cursor:pointer"><i class="fa fa-list-ul"></i> </span>
             </div>
             <div class="search">
 

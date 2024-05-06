@@ -36,7 +36,11 @@
         <script>
             $(function() {
                 $(".section").mouseenter(function(){
-                    $("#menu-main").toggle();
+                    $("#menu-main").hide();
+                })
+                $(".choose_image").on('mouseenter', function() {
+                    var src = $(this).attr('src');
+                    $(".target_img").attr('src', src)
                 })
     })
         </script>
