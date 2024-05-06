@@ -1587,7 +1587,7 @@ a:focus {
   color: #f9f9f9;
 }
 .small-box:hover .icon {
-  font-size: 95px;
+  font-size: 99px;
 }
 @media (max-width: 767px) {
   .small-box {

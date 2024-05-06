@@ -4,9 +4,6 @@
         $display_menu = config('layouts.component.cate.home.display');
     ?>
     <style>
-        #menu-main {
-            display: block !important;
-        }
 		<?php $style = file_get_contents('css/home_insights.min.css');echo $style;?>
     </style>
 <?php $__env->stopSection(); ?>

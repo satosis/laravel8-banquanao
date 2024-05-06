@@ -19,7 +19,9 @@
     </head>
     <body>
         @include('frontend.components.header')
+        <section class="section">
         @yield('content')
+        </section>
         @if (get_data_user('web'))
             @include('components.popup._inc_popup_wallet')
         @endif
@@ -29,4 +31,13 @@
         </script>
         @yield('script')
     </body>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+        <script>
+            $(function() {
+                $(".section").mouseenter(function(){
+                    $("#menu-main").toggle();
+                })
+    })
+        </script>
 </html>

@@ -19,7 +19,9 @@
     </head>
     <body>
         <?php echo $__env->make('frontend.components.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+        <section class="section">
         <?php echo $__env->yieldContent('content'); ?>
+        </section>
         <?php if(get_data_user('web')): ?>
             <?php echo $__env->make('components.popup._inc_popup_wallet', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
         <?php endif; ?>
@@ -29,5 +31,14 @@
         </script>
         <?php echo $__env->yieldContent('script'); ?>
     </body>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+        <script>
+            $(function() {
+                $(".section").mouseenter(function(){
+                    $("#menu-main").toggle();
+                })
+    })
+        </script>
 </html>
 <?php /**PATH D:\project\laravel8-banthoitrangtest\resources\views/layouts/app_master_frontend.blade.php ENDPATH**/ ?>

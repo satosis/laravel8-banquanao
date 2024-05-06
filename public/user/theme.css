@@ -7558,7 +7558,7 @@ h3 + .btn-round, h5 + .btn-round {
 
 @media (max-width: 1199.98px) {
   .layout-nav-side .content-container .chat-module {
-    height: calc(100vh - 105px); } }
+    height: calc(100vh - 99px); } }
 
 .checklist {
   position: relative; }
