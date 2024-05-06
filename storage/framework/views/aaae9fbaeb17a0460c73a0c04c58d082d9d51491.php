@@ -332,8 +332,8 @@
 <?php $__env->startSection('script'); ?>
 <link rel="stylesheet" href="https://code.highcharts.com/css/highcharts.css">
     <script src="https://code.highcharts.com/highcharts.js"></script>
-
-
+    
+    
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     <script type="text/javascript">
         let dataTransaction = $("#container").attr('data-json');

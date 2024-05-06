@@ -41,10 +41,10 @@ class UserFavouriteController extends Controller
                 ]);
 
             } catch (\Exception $e) {
-                $messages = 'Sản phẩm này đã được yêu thích'; 
+                $messages = 'Sản phẩm này đã được yêu thích';
             }
 
-            return response(['messages' => $messages]);
+            return response(['messages' => $messages, 'type' => 'success']);
         }
     }
 

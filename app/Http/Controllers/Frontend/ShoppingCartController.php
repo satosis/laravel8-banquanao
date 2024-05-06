@@ -12,10 +12,30 @@ use App\Models\Order;
 use App\Mail\TransactionSuccess;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 class ShoppingCartController extends Controller
 {
+    function execPostRequest($url, $data)
+    {
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+                'Content-Type: application/json',
+                'Content-Length: ' . strlen($data))
+        );
+        curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+        //execute post
+        $result = curl_exec($ch);
+        //close connection
+        curl_close($ch);
+        return $result;
+    }
     public function index()
     {
         $shopping = \Cart::content();
@@ -100,21 +120,11 @@ class ShoppingCartController extends Controller
         }
 
         $data['tst_user_id'] = \Auth::user()->id;$data['tst_user_id'] = \Auth::user()->id;
-        $data['tst_total_money'] = str_replace(',', '', \Cart::subtotal(0));
+        $amount = str_replace(',', '', \Cart::subtotal(0));
+        $data['tst_total_money'] = $amount;
         $data['created_at']      = Carbon::now();
 
-		// check nếu thanh toán ví thì kiểm tra số tiền
-		if ($request->pay == 'online')
-		{
-			if (get_data_user('web','balance') < $data['tst_total_money'])
-			{
-				\Session::flash('toastr', [
-					'type'    => 'error',
-					'message' => 'Số tiền của bạn không đủ để thanh toán. Hãy nạp thêm tiền để thanh toán từ ví của bạn'
-				]);
-				return  redirect()->back();
-			}
-		}
+
 
         // Lấy thông tin đơn hàng
         $shopping = \Cart::content();
@@ -122,20 +132,93 @@ class ShoppingCartController extends Controller
 
         $options['drive'] = $request->pay;
 
-//        dd($options);
 
         try{
-            \Cart::destroy();
+            // \Cart::destroy();
             new PayManager($data, $shopping, $options);
+
         }catch (\Exception $exception){
             Log::error("[Errors pay shopping cart]" .$exception->getMessage());
         }
-
+        $latestId = Transaction::orderBy('id', 'desc')->first()['id'];
         \Session::flash('toastr', [
             'type'    => 'success',
             'message' => 'Đơn hàng của bạn đã được lưu'
         ]);
+        // check nếu thanh toán ví thì kiểm tra số tiền
+        if ($request->pay == 'online')
+        {
+            $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
+            $partnerCode = Config::get('env.momo.partner_code');
+            $accessKey = Config::get('env.momo.access_key');
+            $secretKey = Config::get('env.momo.secret_key');
+            $orderId = $latestId . '-SA'. strtoupper(Str::random(10));
+            $orderInfo = "Thanh toán qua MoMo";
+            $ipnUrl = Config::get('env.momo.callback_url');
+            $redirectUrl = Config::get('env.momo.callback_url');
+            $extraData = "";
+            $requestId = time() . "";
+            $requestType = "payWithATM";
+            //before sign HMAC SHA256 signature
+            $rawHash = "accessKey=" . $accessKey . "&amount=" . $amount . "&extraData=" . $extraData . "&ipnUrl=" . $ipnUrl . "&orderId=" . $orderId . "&orderInfo=" . $orderInfo . "&partnerCode=" . $partnerCode . "&redirectUrl=" . $redirectUrl . "&requestId=" . $requestId . "&requestType=" . $requestType;
+            $signature = hash_hmac("sha256", $rawHash, $secretKey);
+            $data = array('partnerCode' => $partnerCode,
+                'partnerName' => "Test",
+                "storeId" => "MomoTestStore",
+                'requestId' => $requestId,
+                'amount' => $amount,
+                'orderId' => $orderId,
+                'orderInfo' => $orderInfo,
+                'redirectUrl' => $redirectUrl,
+                'ipnUrl' => $ipnUrl,
+                'lang' => 'vi',
+                'extraData' => $extraData,
+                'requestType' => $requestType,
+                'signature' => $signature);
+            $result = $this->execPostRequest($endpoint, json_encode($data));
+            $jsonResult = json_decode($result, true);
+            return redirect()->to($jsonResult['payUrl']);
+        }
+        return redirect()->to('/');
+    }
 
+    public function callback(Request $request)
+    {
+        $orderId = $request->orderId;
+        $endpoint = "https://test-payment.momo.vn/v2/gateway/api/query";
+        $partnerCode = Config::get('env.momo.partner_code');
+        $accessKey = Config::get('env.momo.access_key');
+        $secretKey = Config::get('env.momo.secret_key');
+        $requestId = time()."";
+
+
+        //before sign HMAC SHA256 signature
+        $rawHash = "accessKey=".$accessKey."&orderId=".$orderId."&partnerCode=".$partnerCode."&requestId=".$requestId;
+        // echo "<script>console.log('Debug Objects: " . $rawHash . "' );</script>";
+
+        $signature = hash_hmac("sha256", $rawHash, $secretKey);
+
+        $data = array('partnerCode' => $partnerCode,
+            'requestId' => $requestId,
+            'orderId' => $orderId,
+            'requestType' => "payWithATM",
+            'signature' => $signature,
+            'lang' => 'vi');
+        $result = $this->execPostRequest($endpoint, json_encode($data));
+        $jsonResult = json_decode($result, true);  // decode json
+        $resultCode = $jsonResult['resultCode'];
+
+        $explode = explode('-SA', $orderId);
+        $id = $explode[0];
+        $pay = Transaction::where('id',$id)->first();
+        if ($pay) {
+            if($resultCode == 0) {
+                $pay->tst_status = 3;
+            } else {
+                $pay->tst_status = -1;
+            }
+            $pay->update();
+        }
         return redirect()->to('/');
     }
 

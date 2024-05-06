@@ -109,8 +109,8 @@
                             $totalMoney = str_replace(',','',\Cart::subtotal(0));
                         ?>
                         <div class="btn-buy" style="margin-top: 10px">
-                            <button class="buy1 btn btn-pink <?php echo e(\Auth::id() ? '' : 'js-show-login'); ?> <?php echo e($totalMoney > get_data_user('web','balance') ? 'js-popup-wallet' : ''); ?>" style="width: 100%;border-radius: 5px" type="submit" name="pay" value="online">
-                                Thanh toán Online
+                            <button class="buy1 btn btn-pink <?php echo e(\Auth::id() ? '' : 'js-show-login'); ?>" style="width: 100%;border-radius: 5px" type="submit" name="pay" value="online">
+                                Thanh toán trực tuyến
                             </button>
                         </div>
                     </form>

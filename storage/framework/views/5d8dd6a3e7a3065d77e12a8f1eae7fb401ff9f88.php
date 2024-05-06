@@ -62,7 +62,7 @@
                                     </p>
                                 <?php endif; ?>
                                 <p>
-                                    <span>View :&nbsp</span>
+                                    <span>Số lượt xem :&nbsp</span>
                                     <span><?php echo e($product->pro_view); ?></span>
                                 </p>
                             </div>

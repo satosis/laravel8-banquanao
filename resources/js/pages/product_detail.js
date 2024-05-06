@@ -157,7 +157,7 @@ var ProductDetail = {
                     method: "POST",
                     url: URL,
                 }).done(function (results) {
-                    toast.warning(results.messages);
+                    toast.success(results.messages);
                 });
             }
         })

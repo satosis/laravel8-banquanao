@@ -62,7 +62,7 @@
                                     </p>
                                 @endif
                                 <p>
-                                    <span>View :&nbsp</span>
+                                    <span>Số lượt xem :&nbsp</span>
                                     <span>{{ $product->pro_view }}</span>
                                 </p>
                             </div>
