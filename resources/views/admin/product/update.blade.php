@@ -1,12 +1,12 @@
 @extends('layouts.app_master_admin')
 @section('content')
-    <!-- Content Header (Page header) -->
+    <!-- Nội dung Header (Page header) -->
     <section class="content-header">
         <h1>Cập nhật sản phẩm</h1>
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="{{  route('admin.product.index') }}"> Product</a></li>
-            <li class="active"> Update</a></li>
+            <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+            <li><a href="{{  route('admin.product.index') }}"> Sản phẩm</a></li>
+            <li class="active">Cập nhật</a></li>
         </ol>
     </section>
     <!-- Main content -->

@@ -113,7 +113,7 @@ class AdminProductController extends Controller
 			'attributeOld'   => $attributeOld,
 			'keywords'       => $keywords,
 			'keywordOld'     => $keywordOld,
-			'images'         => $images ?? []
+			'image'         => $images ?? []
 		];
 
 		return view('admin.product.update', $viewData);

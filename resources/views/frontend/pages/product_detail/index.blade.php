@@ -12,7 +12,7 @@
         <div class="breadcrumb">
             <ul>
                 <li>
-                    <a itemprop="url" href="/" title="Home"><span itemprop="title">Trang chủ</span></a>
+                    <a itemprop="url" href="/" title="Trang chủ"><span itemprop="title">Trang chủ</span></a>
                 </li>
                 <li>
                     <a itemprop="url" href="{{ route('get.product.list') }}" title="Sản phẩm"><span
@@ -69,7 +69,7 @@
                             <div class="btn-cart">
                                 <a href="{{ route('get.shopping.add', $product->id) }}" title=""
                                    onclick="add_cart_detail('17617',0);" class="muangay {{ $product->pro_number <= 0 ? 'number-empty' : '' }}">
-                                    <span>Mua ngay</span>
+                                    <span>Thêm vào giỏ</span>
                                     <span>Hotline: 1800.1800</span>
                                 </a>
                                 <a href="{{ route('ajax_get.user.add_favourite', $product->id) }}"
@@ -93,16 +93,7 @@
                                             @endif
                                         </h3>
                                     </div>
-                                    <div class="item">
-                                        <p class="text1">Ngày hết hạn:</p>
-                                        <h3 class="text2">
-                                            @php
-                                                $time = explode(' ',$product->pro_expiration);
-                                            @endphp
-                                            {{ $time[0] ?? "Chưa cập nhật" }}
-{{--                                            {{ $product->created_at->addDay($product->pro_expiration_date)->format('d-m-Y') }}--}}
-                                        </h3>
-                                    </div>
+
                                     @foreach($attribute as $key => $attr)
                                     <div class="item">
                                         @foreach($attr as  $k => $at)
@@ -164,6 +155,12 @@
         </div>
         <div class="card-body product-des">
             <div class="left">
+
+
+            <h4 style="
+                font-size: 24px;
+                margin-top: 20px;
+            ">Sản phẩm tương tự</h4>
                 <div class="tabs">
                     <div class="tabs__content">
                         <div class="product-five">

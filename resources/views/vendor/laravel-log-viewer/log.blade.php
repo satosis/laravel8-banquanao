@@ -4,11 +4,11 @@
 @stop
 @section('content')
 
-    <!-- Content Header (Page header) -->
+    <!-- Nội dung Header (Page header) -->
     <section class="content-header">
         <h1>Log System</h1>
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
             <li class="active"> Log </li>
         </ol>
     </section>
@@ -43,7 +43,7 @@
                                 @else
                                     <th>Line number</th>
                                 @endif
-                                <th>Content</th>
+                                <th>Nội dung</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -95,13 +95,13 @@
                             -
                             <a id="delete-log"
                                href="?del={{ \Illuminate\Support\Facades\Crypt::encrypt($current_file) }}{{ ($current_folder) ? '&f=' . \Illuminate\Support\Facades\Crypt::encrypt($current_folder) : '' }}">
-                                <span class="fa fa-trash"></span> Delete file
+                                <span class="fa fa-trash"></span> Xóa file
                             </a>
                             @if(count($files) > 1)
                                 -
                                 <a id="delete-all-log"
                                    href="?delall=true{{ ($current_folder) ? '&f=' . \Illuminate\Support\Facades\Crypt::encrypt($current_folder) : '' }}">
-                                    <span class="fa fa-trash-alt"></span> Delete all files
+                                    <span class="fa fa-trash-alt"></span> Xóa all files
                                 </a>
                             @endif
                         @endif

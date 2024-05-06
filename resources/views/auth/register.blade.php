@@ -9,7 +9,7 @@
         <div class="breadcrumb">
             <ul>
                 <li>
-                    <a itemprop="url" href="/" title="Home"><span itemprop="title">Trang chủ</span></a>
+                    <a itemprop="url" href="/" title="Trang chủ"><span itemprop="title">Trang chủ</span></a>
                 </li>
                 <li>
                     <a itemprop="url" href="#" title="Đồng hồ chính hãng"><span itemprop="title">Account</span></a>
@@ -25,7 +25,7 @@
             <form class="from_cart_register" action="" method="post" style="width: 500px;margin:0 auto;padding: 30px 0">
                 @csrf
                 <div class="form-group">
-                    <label for="name">Name <span class="cRed">(*)</span></label>
+                    <label for="name">Tên <span class="cRed">(*)</span></label>
                     <input name="name" id="name" type="text" value="{{  old('name') }}" class="form-control" placeholder="Nguyen Van A">
                     @if ($errors->first('name'))
                         <span class="text-danger">{{ $errors->first('name') }}</span>
@@ -55,7 +55,7 @@
                 <div class="form-group">
                     <button class="btn btn-purple">Đăng ký</button>
                     <p>
-                        <a href="{{ route('get.email_reset_password') }}">Quên mật khẩu</a>
+                        <a href="">Quên mật khẩu</a>
                         <a href="{{ route('get.login') }}">Đăng nhập</a>
                     </p>
                     @include('auth.include._inc_social')

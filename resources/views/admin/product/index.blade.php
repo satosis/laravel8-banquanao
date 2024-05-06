@@ -1,12 +1,12 @@
 @extends('layouts.app_master_admin')
 @section('content')
-    <!-- Content Header (Page header) -->
+    <!-- Nội dung Header (Page header) -->
     <section class="content-header">
         <h1>Quản lý sản phẩm</h1>
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="{{  route('admin.product.index') }}"> Product</a></li>
-            <li class="active"> List </li>
+            <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+            <li><a href="{{  route('admin.product.index') }}"> Sản phẩm</a></li>
+            <li class="active"> Danh sách</li>
         </ol>
     </section>
     <!-- Main content -->
@@ -17,7 +17,7 @@
                <div class="box-title">
                     <form class="form-inline">
                         <input type="text" class="form-control" value="{{ Request::get('id') }}" name="id" placeholder="ID">
-                        <input type="text" class="form-control" value="{{ Request::get('name') }}" name="name" placeholder="Name ...">
+                        <input type="text" class="form-control" value="{{ Request::get('name') }}" name="name" placeholder="Tên ...">
                         <select name="category" class="form-control" >
                             <option value="0">Danh mục</option>
                             @foreach($categories as $item)
@@ -25,9 +25,9 @@
                             @endforeach
                         </select>
 
-                        <button type="submit" class="btn btn-success"><i class="fa fa-search"></i> Search</button>
+                        <button type="submit" class="btn btn-success"><i class="fa fa-search"></i> Tìm kiếm</button>
                         <button type="submit" name="export" value="true" class="btn btn-info">
-                            <i class="fa fa-save"></i> Export
+                            <i class="fa fa-save"></i> Xuất
                         </button>
                         <a href="{{ route('admin.product.create') }}" class="btn btn-primary">Thêm mới <i class="fa fa-plus"></i></a>
                     </form>
@@ -40,17 +40,17 @@
                                 <tr>
                                     <th style="width: 10px">STT</th>
                                     <th style="width: 10px">ID</th>
-                                    <th>Name</th>
-                                    <th>Category</th>
-                                    <th>Avatar</th>
+                                    <th>Tên</th>
+                                    <th>Danh mục</th>
+                                    <th>Ảnh</th>
                                     <th>Số lượng</th>
-                                    <th>Price</th>
+                                    <th>Giá</th>
                                     <th>Hạn sử dụng</th>
                                     <th>Hot</th>
-                                    <th>Status</th>
-                                    <th>Action</th>
+                                    <th>Trạng thái</th>
+                                    <th>Hành động</th>
                                 </tr>
-                                
+
                             </tbody>
                             @if (isset($products))
                                     @foreach($products as $key => $product)
@@ -82,14 +82,14 @@
                                             <td>
                                                 @if ($product->pro_sale)
                                                     <span style="text-decoration: line-through;">{{ number_format($product->pro_price,0,',','.') }} vnđ</span><br>
-                                                    @php 
+                                                    @php
                                                         $price = ((100 - $product->pro_sale) * $product->pro_price)  /  100 ;
                                                     @endphp
                                                     <span>{{ number_format($price,0,',','.') }} vnđ</span>
-                                                @else 
-                                                    {{ number_format($product->pro_price,0,',','.') }} vnđ
+                                                @else
+                                                   {{ number_format($product->pro_price,0,',','.') }} vnđ
                                                 @endif
-                                                
+
                                             </td>
                                             <td>
                                                 @php
@@ -100,21 +100,21 @@
                                             <td>
                                                 @if ($product->pro_hot == 1)
                                                     <a href="{{ route('admin.product.hot', $product->id) }}" class="label label-info">Hot</a>
-                                                @else 
+                                                @else
                                                     <a href="{{ route('admin.product.hot', $product->id) }}" class="label label-default">None</a>
                                                 @endif
                                             </td>
                                             <td>
                                                 @if ($product->pro_active == 1)
-                                                    <a href="{{ route('admin.product.active', $product->id) }}" class="label label-info">Active</a>
-                                                @else 
-                                                    <a href="{{ route('admin.product.active', $product->id) }}" class="label label-default">Hide</a>
+                                                    <a href="{{ route('admin.product.active', $product->id) }}" class="label label-info">Hiện</a>
+                                                @else
+                                                    <a href="{{ route('admin.product.active', $product->id) }}" class="label label-default">Ẩn</a>
                                                 @endif
                                             </td>
 
                                             <td style="width: 160px;">
-                                                <a href="{{ route('admin.product.update', $product->id) }}" class="btn btn-xs btn-primary"><i class="fa fa-pencil"></i> Edit</a>
-                                                <a href="{{  route('admin.product.delete', $product->id) }}" class="btn btn-xs btn-danger js-delete-confirm"><i class="fa fa-trash"></i> Delete</a>
+                                                <a href="{{ route('admin.product.update', $product->id) }}" class="btn btn-xs btn-primary"><i class="fa fa-pencil"></i> Sửa</a>
+                                                <a href="{{  route('admin.product.delete', $product->id) }}" class="btn btn-xs btn-danger js-delete-confirm"><i class="fa fa-trash"></i> Xóa</a>
                                             </td>
                                         </tr>
                                     @endforeach

@@ -1,10 +1,10 @@
 @extends('layouts.app_master_admin')
 @section('content')
-    <!-- Content Header (Page header) -->
+    <!-- Nội dung Header (Page header) -->
     <section class="content-header">
         <h1>{{ config('layouts.admin.title') }}</h1>
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
         </ol>
     </section>
     <section class="content">
@@ -61,7 +61,7 @@
             </div>
             <!-- /.col -->
         </div>
-    
+
     <!-- /.row -->
     <!-- Main row -->
     <div class="row">
@@ -85,7 +85,7 @@
                                 <tr>
                                     <th>Order ID</th>
                                     <th>Item</th>
-                                    <th>Status</th>
+                                    <th>Trạng thái</th>
                                     <th>Popularity</th>
                                 </tr>
                             </thead>

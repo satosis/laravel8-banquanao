@@ -1,12 +1,12 @@
 @extends('layouts.app_master_admin')
 @section('content')
-    <!-- Content Header (Page header) -->
+    <!-- Nội dung Header (Page header) -->
     <section class="content-header">
         <h1>Quản lý các page tĩnh</h1>
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
             <li><a href="{{  route('admin.static.index') }}"> Static</a></li>
-            <li class="active"> List </li>
+            <li class="active"> Danh sách</li>
         </ol>
     </section>
     <!-- Main content -->
@@ -24,10 +24,10 @@
                                 <tr>
                                     <th style="width: 10px">STT</th>
                                     <th style="width: 10px">ID</th>
-                                    <th>Name</th>
-                                    <th>Type</th>
-                                    <th>Time</th>
-                                    <th>Action</th>
+                                    <th>Tên</th>
+                                    <th>Thể loại</th>
+                                    <th>Thời gian</th>
+                                    <th>Hành động</th>
                                 </tr>
                                 @if (isset($statics))
                                     @foreach($statics as $key => $static)
@@ -38,8 +38,8 @@
                                             <td>{{ $static->getType($static->s_type) }}</td>
                                             <td>{{  $static->created_at }}</td>
                                             <td>
-                                                <a href="{{ route('admin.static.update', $static->id) }}" class="btn btn-xs btn-primary"><i class="fa fa-pencil"></i> Edit</a>
-                                                <a href="{{  route('admin.static.delete', $static->id) }}" class="btn btn-xs btn-danger js-delete-confirm"><i class="fa fa-trash"></i> Delete</a>
+                                                <a href="{{ route('admin.static.update', $static->id) }}" class="btn btn-xs btn-primary"><i class="fa fa-pencil"></i> Sửa</a>
+                                                <a href="{{  route('admin.static.delete', $static->id) }}" class="btn btn-xs btn-danger js-delete-confirm"><i class="fa fa-trash"></i> Xóa</a>
                                             </td>
                                         </tr>
                                     @endforeach

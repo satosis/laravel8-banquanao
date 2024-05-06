@@ -2,7 +2,7 @@
 @section('css')
     <style>
 		<?php $style = file_get_contents('css/user.min.css');echo $style;?>
-        
+
         .css-tooltip:hover:after {
             content: attr(data-tooltip);
             position: absolute;
@@ -50,12 +50,12 @@
                 <thead>
                     <tr>
                         <th scope="col">Mã đơn</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Total</th>
-                        <th scope="col">Time</th>
-                        <th scope="col">Status</th>
-                        <th scope="col" style="text-align: center">Export</th>
-                        <th scope="col" style="text-align: center">Action</th>
+                        <th scope="col">Tên người dùng</th>
+                        <th scope="col">Tổng</th>
+                        <th scope="col">Thời gian</th>
+                        <th scope="col">Trạng thái</th>
+                        <th scope="col" style="text-align: center">Xuất</th>
+                        <th scope="col" style="text-align: center">Hành động</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -75,11 +75,11 @@
                         </td>
                         <td style="text-align: center">
                             <a href="{{ route('ajax_get.user.invoice_transaction',$transaction->id) }}" target="_blank"
-                               class="btn-xs label-success js-show-invoice_transaction" style="color: white"><i class="fa fa-save"></i> Export</a>
+                               class="btn-xs label-success js-show-invoice_transaction" style="color: white"><i class="fa fa-save"></i> Xuất</a>
                         </td>
                         <td style="text-align: center">
                             @if (!in_array($transaction->tst_status , [-1,2,3]) )
-                                <a href="{{ route('get.user.transaction.cancel',$transaction->id) }}" 
+                                <a href="{{ route('get.user.transaction.cancel',$transaction->id) }}"
                                    class="btn-xs label-danger" style="color: white"><i class="fa fa-save"></i> Huỷ đơn</a>
                            @endif
                         </td>
@@ -102,7 +102,7 @@
         </div>
         <div class="footer">
             <a href="#" rel="modal:close" class="btn btn-pink ">Đóng</a>
-            <a href="" class="btn btn-purple js-export-pdf"> Export PDF</a>
+            <a href="" class="btn btn-purple js-export-pdf"> Xuất PDF</a>
         </div>
     </div>
 @stop

@@ -1,12 +1,12 @@
 @extends('layouts.app_master_admin')
 @section('content')
-    <!-- Content Header (Page header) -->
+    <!-- Nội dung Header (Page header) -->
     <section class="content-header">
         <h1>Cập nhật danh mục sản phẩm</h1>
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="{{  route('admin.category.index') }}"> Category</a></li>
-            <li class="active"> Update</li>
+            <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+            <li><a href="{{  route('admin.category.index') }}"> Danh mục</a></li>
+            <li class="active"> Cập nhật</li>
         </ol>
     </section>
     <!-- Main content -->
@@ -19,8 +19,8 @@
                          @csrf
                         <div class="col-sm-8">
                             <div class="form-group {{ $errors->first('c_name') ? 'has-error' : '' }}">
-                                <label for="name">Name <span class="text-danger">(*)</span></label>
-                                <input type="text" class="form-control" value="{{ $category->c_name }}" name="c_name"  placeholder="Name ...">
+                                <label for="name">Tên <span class="text-danger">(*)</span></label>
+                                <input type="text" class="form-control" value="{{ $category->c_name }}" name="c_name"  placeholder="Tên ...">
                                 @if ($errors->first('c_name'))
                                     <span class="text-danger">{{ $errors->first('c_name') }}</span>
                                 @endif
@@ -28,7 +28,7 @@
                         </div>
                         <div class="col-sm-8">
                             <div class="form-group">
-                                <label for="name">Parent <span class="text-danger">(*)</span></label>
+                                <label for="name">Danh mục cha <span class="text-danger">(*)</span></label>
                                 <select name="c_parent_id" class="form-control" id="">
                                     <option value="0">__ROOT__</option>
                                     @foreach($categories as $item)
@@ -43,14 +43,14 @@
                         <div class="col-sm-4">
                             <div class="box box-warning">
                                 <div class="box-header with-border">
-                                    <h3 class="box-title">Avatar</h3>
+                                    <h3 class="box-title">Ảnh</h3>
                                 </div>
                                 <div class="box-body block-images">
                                     <div style="margin-bottom: 10px">
                                         <img src="{{ pare_url_file($category->c_avatar ?? '') ?? '/images/no-image.jpg' }}" onerror="this.onerror=null;this.src='/images/no-image.jpg';" alt="" class="img-thumbnail" style="width: 200px;height: 200px;">
                                     </div>
                                     <div style="position:relative;">
-                                        <a class="btn btn-primary" href="javascript:;"> Choose File... <input type="file" style="position:absolute;z-index:2;top:0;left:0;filter: alpha(opacity=0);-ms-filter:&quot;progid:DXImageTransform.Microsoft.Alpha(Opacity=0)&quot;;opacity:0;background-color:transparent;color:transparent;" name="c_avatar" size="40" class="js-upload"> </a> &nbsp; <span class="label label-info" id="upload-file-info"></span> </div>
+                                        <a class="btn btn-primary" href="javascript:;"> Chọn ảnh... <input type="file" style="position:absolute;z-index:2;top:0;left:0;filter: alpha(opacity=0);-ms-filter:&quot;progid:DXImageTransform.Microsoft.Alpha(Opacity=0)&quot;;opacity:0;background-color:transparent;color:transparent;" name="c_avatar" size="40" class="js-upload"> </a> &nbsp; <span class="label label-info" id="upload-file-info"></span> </div>
                                 </div>
                             </div>
                         </div>

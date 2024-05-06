@@ -1,12 +1,12 @@
 @extends('layouts.app_master_admin')
 @section('content')
-    <!-- Content Header (Page header) -->
+    <!-- Nội dung Header (Page header) -->
     <section class="content-header">
         <h1>Quản lý thành viên</h1>
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="{{  route('admin.user.index') }}"> User</a></li>
-            <li class="active"> List </li>
+            <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+            <li><a href="{{  route('admin.user.index') }}"> Thành viên</a></li>
+            <li class="active"> Danh sách</li>
         </ol>
     </section>
     <!-- Main content -->
@@ -19,13 +19,13 @@
                         <table class="table">
                             <tbody>
                                 <tr>
-                                    <th style="width: 10px">Stt</th>
+                                    <th style="width: 10px">STT</th>
                                     <th style="width: 10px">ID</th>
-                                    <th>Name</th>
+                                    <th>Tên</th>
                                     <th>Email</th>
-                                    <th>Phone</th>
-                                    <th>Time</th>
-                                    <th>Action</th>
+                                    <th>Số điện thoại</th>
+                                    <th>Thời gian</th>
+                                    <th>Hành động</th>
                                 </tr>
                                 @if (isset($users))
                                     @foreach($users as $key => $user)
@@ -37,8 +37,7 @@
                                             <td>{{ $user->phone }}</td>
                                             <td>{{ $user->created_at }}</td>
                                             <td>
-                                                <a href="{{ route('admin.user.transaction', $user->id) }}" class="btn btn-xs btn-primary js-show-transaction"> Nợ cần thu</a>
-                                                <a href="{{  route('admin.user.delete', $user->id) }}" class="btn btn-xs btn-danger js-delete-confirm"><i class="fa fa-trash"></i> Delete</a>
+                                                <a href="{{  route('admin.user.delete', $user->id) }}" class="btn btn-xs btn-danger js-delete-confirm"><i class="fa fa-trash"></i> Xóa</a>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -61,7 +60,7 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Đóng">
                         <span aria-hidden="true">×</span></button>
                     <h4 class="modal-title">Nợ cần thu từ khách hàng</h4>
                 </div>

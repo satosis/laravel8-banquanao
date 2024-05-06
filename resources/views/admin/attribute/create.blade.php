@@ -1,12 +1,12 @@
 @extends('layouts.app_master_admin')
 @section('content')
-    <!-- Content Header (Page header) -->
+    <!-- Nội dung Header (Page header) -->
     <section class="content-header">
         <h1>Thêm mới thông tin</h1>
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="{{  route('admin.attribute.index') }}"> Attribute</a></li>
-            <li class="active"> Create</li>
+            <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+            <li><a href="{{  route('admin.attribute.index') }}"> Thuộc tính</a></li>
+            <li class="active"> Thêm mới thông tin</li>
         </ol>
     </section>
     <!-- Main content -->
@@ -19,8 +19,8 @@
                          @csrf
                         <div class="col-sm-8">
                             <div class="form-group {{ $errors->first('atb_name') ? 'has-error' : '' }}">
-                                <label for="name">Name <span class="text-danger">(*)</span></label>
-                                <input type="text" class="form-control" name="atb_name"  placeholder="Name ...">
+                                <label for="name">Tên <span class="text-danger">(*)</span></label>
+                                <input type="text" class="form-control" name="atb_name"  placeholder="Tên ...">
                                 @if ($errors->first('atb_name'))
                                     <span class="text-danger">{{ $errors->first('atb_name') }}</span>
                                 @endif
@@ -28,7 +28,7 @@
                         </div>
                         <div class="col-sm-8">
                             <div class="form-group {{ $errors->first('atb_type') ? 'has-error' : '' }}">
-                                <label for="name">Group <span class="text-danger">(*)</span></label>
+                                <label for="name">Thể loại <span class="text-danger">(*)</span></label>
                                 <select class="form-control" name="atb_type">
                                     @foreach($attribute_type as $key => $type)
                                         <option value="{{ $key }}">{{ $type['name'] }}</option>
@@ -41,7 +41,7 @@
                         </div>
                         <div class="col-sm-8">
                             <div class="form-group  {{ $errors->first('atb_category_id') ? 'has-error' : '' }}">
-                                <label for="name">Category <span class="text-danger">(*)</span></label>
+                                <label for="name">Danh mục <span class="text-danger">(*)</span></label>
                                 <select class="form-control" name="atb_category_id">
                                     @foreach($categories as $item)
                                         <option value="1">{{ $item->c_name }}</option>
@@ -59,7 +59,7 @@
                                 <button type="submit" class="btn btn-success">Lưu dữ liệu <i class="fa fa-save"></i></button>
                             </div>
                         </div>
-                    </form>  
+                    </form>
                 </div>
             </div>
             <!-- /.box -->

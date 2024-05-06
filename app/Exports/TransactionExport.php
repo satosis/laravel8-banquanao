@@ -15,7 +15,7 @@ class TransactionExport implements FromCollection, WithHeadings
     {
         $this->transactions = $transactions;
     }
-    
+
 
     public function collection()
     {
@@ -59,7 +59,7 @@ class TransactionExport implements FromCollection, WithHeadings
     {
         return [
             '#',
-            'Total',
+            'Tổng',
             "Name",
             'Email',
             'Phone',

@@ -1,10 +1,10 @@
 @extends('layouts.app_master_admin')
 @section('content')
-    <!-- Content Header (Page header) -->
+    <!-- Nội dung Header (Page header) -->
     <section class="content-header">
         <h1>Thêm mới admin</h1>
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
             <li><a href="{{  route('admin.account_admin.index') }}"> Admin</a></li>
         </ol>
     </section>
@@ -18,8 +18,8 @@
                          @csrf
                         <div class="col-sm-8">
                             <div class="form-group {{ $errors->first('name') ? 'has-error' : '' }}">
-                                <label for="name">Name <span class="text-danger">(*)</span></label>
-                                <input type="text" class="form-control" value="{{ old('name') }}" name="name"  placeholder="Name ...">
+                                <label for="name">Tên <span class="text-danger">(*)</span></label>
+                                <input type="text" class="form-control" value="{{ old('name') }}" name="name"  placeholder="Tên ...">
                                 @if ($errors->first('name'))
                                     <span class="text-danger">{{ $errors->first('name') }}</span>
                                 @endif

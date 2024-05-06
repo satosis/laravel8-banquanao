@@ -4,27 +4,27 @@
 	<div style="display: flex">
 		<div class="col-3" style="width: 33.3333333%;float: left"></div>
 		<div class="col-3" style="width: 33.3333333%;float: left;text-align: center">
-			<p style="text-align: center;margin: 0">Phú Lưu</p>
+			<p style="text-align: center;margin: 0">Hà Huyền</p>
 		</div>
 		<div class="col-3" style="width: 33.3333333%;float: left">
-			<p style="margin: 0">Ký hiệu .....</p>
-			<p style="margin: 0">Số .....</p>
-			<p style="margin: 0">Ngày ... Tháng ... Năm 2020</p>
+			<p style="text-align:left">Ký hiệu: .....</p>
+			<p style="text-align:left">Số: .....</p>
+			<p style="text-align:left">Ngày: ... Tháng ... Năm 2020</p>
 		</div>
 		<div style="clear: both"></div>
 	</div>
 	<div style="display: flex;justify-content: space-between;margin-bottom: 10px">
 		<div style="width: 50%;text-align: left">
-			<p style="margin: 0">Đơn vị mua hàng <b>{{ $transaction->tst_name }}</b></p>
-			<p style="margin: 0">Mã số thuế ..................</p>
-			<p style="margin: 0">Địa chỉ <b>{{ $transaction->tst_address }} </b> STK ............</p>
-			<p style="margin: 0">Điện thoại <b>{{ $transaction->tst_phone }}</b></p>
+			<p style="margin: 0">Đơn vị mua hàng: <b>{{ $transaction->tst_name }}</b></p>
+			<p style="margin: 0">Mã số thuế: ..................</p>
+			<p style="margin: 0">Địa chỉ: <b>{{ $transaction->tst_address }} </b> STK ............</p>
+			<p style="margin: 0">Điện thoại: <b>{{ $transaction->tst_phone }}</b></p>
 		</div>
 		<div style="text-align: left;width: 50%">
-			<p style="margin: 0">Đơn vị bán <b>Đồ Án Tốt Nghiệp</b></p>
-			<p style="margin: 0">Mã số thuế <b>711A25177</b></p>
-			<p style="margin: 0">Địa chỉ <b>Hà Nội</b> STK <b>19034889720010</b></p>
-			<p style="margin: 0">Điện thoại <b>123456789</b></p>
+			<p style="margin: 0">Đơn vị bán: <b>Đồ Án Tốt Nghiệp</b></p>
+			<p style="margin: 0">Mã số thuế: <b>711A25177</b></p>
+			<p style="margin: 0">Địa chỉ: <b>Hà Nội</b> STK: <b>19034889720010</b></p>
+			<p style="margin: 0">Điện thoại: <b>123456789</b></p>
 		</div>
 	</div>
 	<div class="table-responsive">
@@ -49,7 +49,7 @@
 			</table>
 		</div>
 	</div>
-	<p style="margin-bottom: 5px;text-align: right">Tổng tiền thanh toán <b>{{ number_format($transaction->tst_total_money,0,',','.') }} vnđ</b></p>
+	<p style="margin-bottom: 5px;text-align: left">Tổng tiền thanh toán <b>{{ number_format($transaction->tst_total_money,0,',','.') }} vnđ</b></p>
 	<div style="">
 		<div class="col-5" style="padding-bottom: 100px; width: 50%;float: left;text-align: center">
 			<h3 style="margin:0">Người mua hàng</h3>

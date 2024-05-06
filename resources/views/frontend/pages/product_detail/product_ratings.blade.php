@@ -9,7 +9,7 @@
         <div class="breadcrumb">
             <ul>
                 <li >
-                    <a itemprop="url" href="/" title="Home"><span itemprop="title">Trang chủ</span></a>
+                    <a itemprop="url" href="/" title="Trang chủ"><span itemprop="title">Trang chủ</span></a>
                 </li>
                 <li >
                     <a itemprop="url" href="{{ route('get.product.list') }}" title="Đồng hồ chính hãng"><span itemprop="title">Đồng hồ chính hãng</span></a>
@@ -46,7 +46,7 @@
                 $.ajax({
                     type: "GET",
                     url: URL,
-                    success: function (results) { 
+                    success: function (results) {
                         $(".reviews_list").html(results.html)
                     }
                 })

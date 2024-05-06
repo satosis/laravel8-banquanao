@@ -7,9 +7,9 @@
         <div class="breadcrumb">
             <ul>
                 <li >
-                    <a href="/" title="Home"><span itemprop="title">Trang chủ</span></a>
+                    <a href="/" title="Trang chủ"><span itemprop="title">Trang chủ</span></a>
                 </li>
-                
+
                 <li >
                     <a href="javascript://" title="Đồng hồ chính hãng"><span itemprop="title">{{  $page->s_title ?? '' }}</span></a>
                 </li>

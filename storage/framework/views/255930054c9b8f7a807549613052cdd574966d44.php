@@ -53,11 +53,7 @@
                     <div class="navbar-custom-menu">
                         <ul class="nav navbar-nav">
 
-                            <li class=" user user-menu">
-                                <a href="<?php echo e(route('admin.logs.index')); ?>"  target="_blank">
-                                    <span>Logs</span>
-                                </a>
-                            </li>
+
                             <li class="dropdown user user-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <img src="<?php echo e(pare_url_file(get_data_user('admins','avatar'))); ?>" class="user-image" alt="User Image">
@@ -112,7 +108,7 @@
                         <li class="header">MAIN NAVIGATION</li>
                         <li class="">
                             <a href="/api-admin">
-                            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                            <i class="fa fa-dashboard"></i> <span>Trang chủ </span>
                             </a>
                         </li>
 
@@ -166,7 +162,7 @@
                 <!-- /.sidebar -->
             </aside>
             <!-- =============================================== -->
-            <!-- Content Wrapper. Contains page content -->
+            <!-- Nội dung Wrapper. Contains page content -->
             <div class="content-wrapper">
                 <?php echo $__env->yieldContent('content'); ?>
             </div>
@@ -341,4 +337,4 @@
         </script>
     </body>
 </html>
-<?php /**PATH D:\project\laravel8-giaythoitrang\resources\views/layouts/app_master_admin.blade.php ENDPATH**/ ?>
+<?php /**PATH D:\project\laravel8-banthoitrangtest\resources\views/layouts/app_master_admin.blade.php ENDPATH**/ ?>

@@ -18,10 +18,10 @@
                 <thead>
                     <tr>
                         <th scope="col" style="width: 50px">STT</th>
-                        <th scope="col" style="text-align: left;">Name</th>
-                        <th scope="col" style="text-align: center;">Rating</th>
-                        <th scope="col" style="text-align: center;">Time</th>
-                        <th scope="col" style="text-align: center;">Action</th>
+                        <th scope="col" style="text-align: left;">Tên người dùng</th>
+                        <th scope="col" style="text-align: center;">Sao đánh giá</th>
+                        <th scope="col" style="text-align: center;">Thời gian</th>
+                        <th scope="col" style="text-align: center;">Đánh giá</th>
                     </tr>
                     </thead>
 
@@ -40,7 +40,7 @@
                                 </td>
                                 <td style="text-align: center;">{{ $rating->created_at }}</td>
                                 <td style="text-align: center;">
-                                    <a href="{{  route('get.user.rating.delete', $rating->id) }}" class="btn btn-xs label-danger js-delete-confirm"><i class="fa fa-trash"></i> Delete</a>
+                                    <a href="{{  route('get.user.rating.delete', $rating->id) }}" class="btn btn-xs label-danger js-delete-confirm"><i class="fa fa-trash"></i> Xóa</a>
                                 </td>
                             </tr>
                         @endforeach
@@ -55,5 +55,5 @@
 @stop
 
 @section('script')
-    
+
 @stop

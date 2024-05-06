@@ -8,13 +8,13 @@
             color: #faca51;
         }
     </style>
-    <!-- Content Header (Page header) -->
+    <!-- Nội dung Header (Page header) -->
     <section class="content-header">
         <h1>Nhận xét sản phẩm</h1>
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="{{  route('admin.comment.index') }}"> Comment</a></li>
-            <li class="active"> List</li>
+            <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+            <li><a href="{{  route('admin.comment.index') }}"> Nhận xét</a></li>
+            <li class="active"> Danh sách</li>
         </ol>
     </section>
     <!-- Main content -->
@@ -28,10 +28,10 @@
                             <tbody>
                             <tr>
                                 <th style="width: 10px">STT</th>
-                                <th>Name</th>
-                                <th>Comment </th>
-                                <th>Time</th>
-                                <th>Action</th>
+                                <th>Tên</th>
+                                <th>Nội dung </th>
+                                <th>Thời gian</th>
+                                <th>Hành động</th>
                             </tr>
                             @if (isset($comments))
                                 @foreach($comments as $key => $comment)
@@ -41,7 +41,7 @@
                                         <td>{{ $comment->cmt_content ?? "[N\A]" }}</td>
                                         <td>{{ $comment->created_at }}</td>
                                         <td>
-                                            <a href="{{  route('admin.comment.delete', $comment->id) }}" class="btn btn-xs btn-danger js-delete-confirm"><i class="fa fa-trash"></i> Delete</a>
+                                            <a href="{{  route('admin.comment.delete', $comment->id) }}" class="btn btn-xs btn-danger js-delete-confirm"><i class="fa fa-trash"></i> Xóa</a>
                                         </td>
                                     </tr>
                                 @endforeach

@@ -26,7 +26,7 @@
                             <form class="form-horizontal" method="POST" enctype="multipart/form-data" action="{{ route('admin.profile.update', $admin->id) }}">
                                 @csrf
                                 <div class="form-group">
-                                    <label for="inputName" class="col-sm-2 control-label">Name</label>
+                                    <label for="inputName" class="col-sm-2 control-label">Tên</label>
                                     <div class="col-sm-10">
                                         <input type="name" class="form-control" name="name" placeholder="" value="{{ $admin->name }}">
                                     </div>
@@ -59,7 +59,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputName" class="col-sm-2 control-label">Avatar</label>
+                                    <label for="inputName" class="col-sm-2 control-label">Ảnh</label>
                                     <div class="col-sm-10">
                                         <input type="file" class="form-control" name="avatar" >
                                     </div>

@@ -17,7 +17,7 @@
                 <div class="breadcrumb">
                     <ul>
                         <li >
-                            <a itemprop="url" href="/" title="Home"><span itemprop="title">Trang chủ</span></a>
+                            <a itemprop="url" href="/" title="Trang chủ"><span itemprop="title">Trang chủ</span></a>
                         </li>
                     </ul>
                 </div>
@@ -28,7 +28,7 @@
                 @endif
                 {{-- {{  dd($products) }} --}}
                 <div class="order-tab">
-                    <span class="total-prod">Tổng số: {{ $products->total() }} sản phẩm Tính năng</span>
+                    <span class="total-prod">Tổng số: {{ $products->total() }} sản phẩm </span>
                     <div class="sort">
                         <div class="item">
                             <span class="title js-show-sort">Sắp xếp <i class="fa fa-caret-down"></i></span>
@@ -40,6 +40,7 @@
                     </div>
                 </div>
                 <div class="group">
+
                     @foreach($products as $product)
                         @include('frontend.components.product_item', ['product' => $product])
                     @endforeach

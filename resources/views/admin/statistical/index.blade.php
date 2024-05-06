@@ -1,10 +1,10 @@
 @extends('layouts.app_master_admin')
 @section('content')
-    <!-- Content Header (Page header) -->
+    <!-- Nội dung Header (Page header) -->
     <section class="content-header">
         <h1>{{ config('layouts.admin.title') }}</h1>
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
         </ol>
     </section>
     <section class="content">
@@ -121,7 +121,7 @@
             <figure class="highcharts-figure">
                 <div id="container2" data-list-day="{{ $listDay }}" data-money-default={{ $arrRevenueTransactionMonthDefault }} data-money={{ $arrRevenueTransactionMonth }}>
 
-                    
+
                 </div>
             </figure>
         </div>
@@ -152,11 +152,11 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Info</th>
-                                    <th>Money</th>
-                                    <th>Account</th>
-                                    <th>Status</th>
-                                    <th>Time</th>
+                                    <th>Thông tin</th>
+                                    <th>Số tiền</th>
+                                    <th>Tài khoản</th>
+                                    <th>Trạng thái</th>
+                                    <th>Thời gian</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -165,9 +165,9 @@
                                         <td>{{ $transaction->id }}</td>
                                         <td>
                                             <ul>
-                                                <li>Name: {{ $transaction->tst_name }}</li>
+                                                <li>Tên khách hàng: {{ $transaction->tst_name }}</li>
                                                 <li>Email: {{ $transaction->tst_email }}</li>
-                                                <li>Phone: {{ $transaction->tst_phone }}</li>
+                                                <li>Số điện thoại: {{ $transaction->tst_phone }}</li>
                                             </ul>
                                         </td>
                                         <td>{{ number_format($transaction->tst_total_money,0,',','.') }} đ</td>
@@ -215,10 +215,10 @@
                             <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Name</th>
-                                <th>Image</th>
-                                <th>Qty</th>
-                                <th>Price</th>
+                                <th>Tên sản phẩm</th>
+                                <th>Ảnh</th>
+                                <th>Số lượng</th>
+                                <th>Giá</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -280,7 +280,7 @@
                 </div>
                 <!-- /.box-body -->
                 <div class="box-footer text-center">
-                    <a href="javascript:void(0)" class="uppercase">View All Products</a>
+                    <a href="javascript:void(0)" class="uppercase">Xem tất cả sản phẩm</a>
                 </div>
                 <!-- /.box-footer -->
             </div>
@@ -316,7 +316,7 @@
                 </div>
                 <!-- /.box-body -->
                 <div class="box-footer text-center">
-                    <a href="javascript:void(0)" class="uppercase">View All Products</a>
+                    <a href="javascript:void(0)" class="uppercase">Xem tất cả sản phẩm</a>
                 </div>
                 <!-- /.box-footer -->
             </div>
@@ -343,7 +343,7 @@
 
         let listMoneyMonth = $("#container2").attr('data-money');
         listMoneyMonth = JSON.parse(listMoneyMonth);
-        
+
         let listMoneyMonthDefault = $("#container2").attr('data-money-default');
         listMoneyMonthDefault = JSON.parse(listMoneyMonthDefault);
 

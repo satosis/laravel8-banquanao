@@ -12,10 +12,10 @@
                 <thead>
                     <tr>
                         <th scope="col" style="width: 50px">STT</th>
-                        <th scope="col" style="text-align: left;">Product</th>
-                        <th scope="col" style="text-align: center;">Content</th>
-                        <th scope="col" style="text-align: center;">Time</th>
-                        <th scope="col" style="text-align: center;">Action</th>
+                        <th scope="col" style="text-align: left;">Sản phẩm</th>
+                        <th scope="col" style="text-align: center;">Mô tả</th>
+                        <th scope="col" style="text-align: center;">Thời gian</th>
+                        <th scope="col" style="text-align: center;">Hành động</th>
                     </tr>
                     </thead>
 
@@ -25,11 +25,11 @@
                             <tr>
                                 <td style="text-align: center;">{{ (($comments->currentPage() - 1) * $comments->perPage()) + ( $key + 1)  }}</td>
                                 <td style="width: 30%;text-align: left">{{ $comment->product->pro_name ?? "[N\A]" }}</td>
-                                
+
                                 <td style="text-align: center;">{{ $comment->cmt_content }}</td>
                                 <td style="text-align: center;">{{ $comment->created_at }}</td>
                                 <td style="text-align: center;">
-                                    <a href="{{  route('get.user.comment.delete', $comment->id) }}" class="btn btn-xs label-danger js-delete-confirm"><i class="fa fa-trash"></i> Delete</a>
+                                    <a href="{{  route('get.user.comment.delete', $comment->id) }}" class="btn btn-xs label-danger js-delete-confirm"><i class="fa fa-trash"></i> Xóa</a>
                                 </td>
                             </tr>
                         @endforeach
@@ -44,5 +44,5 @@
 @stop
 
 @section('script')
-    
+
 @stop

@@ -21,17 +21,12 @@ return [
         'icon'  => 'fa fa-star'
     ],
     [
-        'name'  => 'Quản lý comments',
+        'name'  => 'Quản lý bình luận',
         'route' => 'get.user.comment',
         'icon'  => 'fa fa-comments'
     ],
     [
-        'name'  => 'Sản phẩm bạn đã xem',
-        'route' => 'get.static.product_view',
-        'icon'  => 'fa fa-eye'
-    ],
-    [
-        'name'  => 'Log Login',
+        'name'  => 'Thời gian đăng nhập',
         'route' => 'get.user.log_login',
         'icon'  => 'fa fa-bug'
     ],

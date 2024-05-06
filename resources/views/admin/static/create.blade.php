@@ -1,10 +1,10 @@
 @extends('layouts.app_master_admin')
 @section('content')
-    <!-- Content Header (Page header) -->
+    <!-- Nội dung Header (Page header) -->
     <section class="content-header">
         <h1>Thêm mới page tinhx</h1>
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
             <li><a href="{{  route('admin.static.index') }}"> Static</a></li>
             <li class="active"> Create </li>
         </ol>
@@ -42,8 +42,8 @@
                                 <textarea class="form-control textarea" id="content" name="s_content"></textarea>
                             </div>
                         </div>
-                       
-                       
+
+
                         <div class="col-sm-12">
                             <div class="box-footer text-center">
                                 <a href="{{ route('admin.static.index') }}" class="btn btn-danger">
@@ -51,7 +51,7 @@
                                 <button type="submit" class="btn btn-success">Lưu dữ liệu <i class="fa fa-save"></i></button>
                             </div>
                         </div>
-                    </form>  
+                    </form>
                 </div>
             </div>
             <!-- /.box -->
@@ -73,4 +73,3 @@
         CKEDITOR.replace( 'content' ,options);
     </script>
 @stop
-

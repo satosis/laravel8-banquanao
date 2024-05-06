@@ -7,7 +7,9 @@
            title="{{  $product->pro_name }}" class="title">
             <h3>{{  $product->pro_name }}</h3>
         </a>
-        <p class="rating">
+        <p class="rating" style="
+    margin-left: 10px;
+">
             <span>
                 @php
                     $iactive = 0;
@@ -23,7 +25,9 @@
             <span class="text">{{ $product->pro_review_total }} đánh giá</span>
         </p>
         @if ($product->pro_sale)
-            <p>
+            <p style="
+    margin-left: 10px;
+">
                 <span class="percent">-{{ $product->pro_sale }}%</span>
                 @php
                     $price = ((100 - $product->pro_sale) * $product->pro_price)  /  100 ;

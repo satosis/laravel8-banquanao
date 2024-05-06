@@ -1,12 +1,12 @@
 @extends('layouts.app_master_admin')
 @section('content')
-    <!-- Content Header (Page header) -->
+    <!-- Nội dung Header (Page header) -->
     <section class="content-header">
         <h1>Cập nhật từ khoá</h1>
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
             <li><a href="{{  route('admin.keyword.index') }}"> Keyword</a></li>
-            <li class="active"> Update</a></li>
+            <li class="active">Cập nhật</a></li>
         </ol>
     </section>
     <!-- Main content -->
@@ -19,16 +19,16 @@
                          @csrf
                         <div class="col-sm-8">
                             <div class="form-group {{ $errors->first('k_name') ? 'has-error' : '' }}">
-                                <label for="name">Name <span class="text-danger">(*)</span></label>
-                                <input type="text" class="form-control" value="{{ $keyword->k_name }}" name="k_name"  placeholder="Name ...">
+                                <label for="name">Tên <span class="text-danger">(*)</span></label>
+                                <input type="text" class="form-control" value="{{ $keyword->k_name }}" name="k_name"  placeholder="Tên ...">
                                 @if ($errors->first('k_name'))
                                     <span class="text-danger">{{ $errors->first('k_name') }}</span>
                                 @endif
                             </div>
                         </div>
                         <div class="col-sm-8">
-                            <label for="name">Description </label>
-                            <textarea class="form-control" name="k_description" placeholder="Description ...">{{ $keyword->k_description }}</textarea>
+                            <label for="name">Mô tả </label>
+                            <textarea class="form-control" name="k_description" placeholder="Mô tả ...">{{ $keyword->k_description }}</textarea>
                             @if ($errors->first('k_description'))
                                 <span class="text-danger">{{ $errors->first('k_description') }}</span>
                             @endif
@@ -40,7 +40,7 @@
                                 <button type="submit" class="btn btn-success">Lưu dữ liệu <i class="fa fa-save"></i></button>
                             </div>
                         </div>
-                    </form>  
+                    </form>
                 </div>
             </div>
             <!-- /.box -->

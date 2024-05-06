@@ -1,13 +1,13 @@
 <?php
 return [
     [
-        'name' => 'Ql sản phẩm',
+        'name' => 'Quản lý sản phẩm',
         'list-check' => ['attribute','category','keyword','product','comment','rating'],
         'icon' => 'fa fa-database',
 		'level'  => [1,2],
         'sub'  => [
             [
-                'name'  => 'Thông tin',
+                'name'  => 'Thuộc tính',
                 'namespace' => 'attribute',
                 'route' => 'admin.attribute.index',
                 'icon'  => 'fa fa-key',
@@ -73,7 +73,7 @@ return [
         ]
     ],
 	[
-		'name' => 'Đối tác && Thành viên',
+		'name' => 'Đối tác & Thành viên',
 		'list-check' => ['user','ncc'],
 		'icon' => 'fa fa-user',
 		'level'  => [1,2],
@@ -85,13 +85,7 @@ return [
 				'icon'  => 'fa fa-user',
 				'level'  => [1,2],
 			],
-			[
-				'name'  => 'Nhà cung cấp',
-				'route' => 'admin.ncc.index',
-				'namespace' => 'user',
-				'icon'  => 'fa fa-users',
-				'level'  => [1,2],
-			]
+
 		]
 	],
     [
@@ -109,23 +103,5 @@ return [
             ]
         ]
     ],
-    [
-        'name'  => 'Hệ thống',
-        'label' => 'true'
-    ],
-	[
-		'name' => 'Admin',
-		'list-check' => ['account-admin'],
-		'icon' => 'fa-sitemap',
-		'level'  => [1,2],
-		'sub'  => [
-			[
-				'name'  => 'Admin',
-				'namespace' => 'account-admin',
-				'route' => 'admin.account_admin.index',
-				'icon'  => 'fa-users',
-				'level'  => [1,2],
-			],
-		]
-	],
+
 ];

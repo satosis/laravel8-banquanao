@@ -1,10 +1,10 @@
 @extends('layouts.app_master_admin')
 @section('content')
-	<!-- Content Header (Page header) -->
+	<!-- Nội dung Header (Page header) -->
 	<section class="content-header">
 		<h1>Thêm mới Slide</h1>
 		<ol class="breadcrumb">
-			<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+			<li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
 			<li><a href="{{  route('admin.slide.index') }}"> Slide</a></li>
 			<li class="active"> Create </li>
 		</ol>

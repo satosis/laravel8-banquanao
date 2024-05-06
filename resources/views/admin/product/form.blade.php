@@ -7,8 +7,8 @@
             </div>
             <div class="box-body">
                 <div class="form-group ">
-                    <label for="exampleInputEmail1">Name</label>
-                    <input type="text" class="form-control" name="pro_name" placeholder="Iphone 5s ...." autocomplete="off" value="{{  $product->pro_name ?? old('pro_name') }}">
+                    <label for="exampleInputEmail1">Tên</label>
+                    <input type="text" class="form-control" name="pro_name" placeholder="Giày cao gót ...." autocomplete="off" value="{{  $product->pro_name ?? old('pro_name') }}">
                     @if ($errors->first('pro_name'))
                         <span class="text-danger">{{ $errors->first('pro_name') }}</span>
                     @endif
@@ -35,38 +35,32 @@
                             <input type="number" name="pro_number_import" value="{{  $product->pro_number_import ?? old('pro_number_import',0) }}" class="form-control"  placeholder="5">
                         </div>
                     </div>
-                    <div class="col-sm-4">
-                        <div class="form-group" id="time">
-                            <label for="exampleInputEmail1">Ngày sử dụng ( tính từ ngày nhập )</label>
-{{--                            <input type="number" name="pro_expiration_date" value="{{  $product->pro_expiration_date ?? old('pro_expiration_date',0) }}"--}}
-{{--                                   class="form-control"  placeholder="5">--}}
-
-                            <input type="text" class="form-control" name="pro_expiration" value="{{  $product->pro_expiration ?? old('pro_expiration') }}">
+                </div>
+                <div class="col-md-12" style="margin-bottom:20px">
+                    @if(isset($image))
+                        <div class="row">
+                            @foreach($image as $item)
+                                <div class="col-sm-2 position-relative" style="margin: 10px;">
+                                    <div class="remove" style="width: 25px;height: 25px;background: red;border-radius: 50%;color: black;position: absolute;display: flex;justify-content: center;margin-top: -10px;margin-left: -15px;cursor:poiter">
+                                    <a href="{{ route('admin.product.delete_image',$item->id)}}">
+                                            <i class="fa fa-trash-o" style="color: white;padding-top:5px"></i>
+                                    </a>
+                                    </div>
+                                    <a
+                                            href="javascript:;"
+                                            style="display:block">
+                                        <img src="{{ pare_url_file($item->pi_slug)}}"
+                                                style="width:100px;height:100px;object-fit:cover"></a></div>
+                            @endforeach
                         </div>
+                    @endif
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Album ảnh</h3>
+                        <input type="file" class="file" name="file[]" id="images" multiple>
                     </div>
-{{--                    @if (isset($product))--}}
-{{--                        <div class="col-sm-3">--}}
-{{--                            <div class="form-group">--}}
-{{--                                <label for="exampleInputEmail1">Nhập thêm số lượng</label>--}}
-{{--                                <input type="number" class="form-control" name="add_number" value="0">--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    @endif--}}
-{{--                    <div class="col-sm-9">--}}
-{{--                        <div class="form-group">--}}
-{{--                            <label for="tag">Keyword</label>--}}
-{{--                            <select name="keywords[]" class="form-control js-select2-keyword" multiple="">--}}
-{{--                                <option value="">__Click__</option>--}}
-{{--                                @foreach($keywords as $keyword)--}}
-{{--                                    <option value="{{ $keyword->id }}" {{ in_array($keyword->id, $keywordOld ) ? "selected='selected'"  : '' }}>--}}
-{{--                                        {{ $keyword->k_name }}</option>--}}
-{{--                                @endforeach--}}
-{{--                            </select>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
                 </div>
                 <div class="form-group ">
-                    <label for="exampleInputEmail1">Description</label>
+                    <label for="exampleInputEmail1">Mô tả</label>
                     <textarea name="pro_description" class="form-control" cols="5" rows="2" autocomplete="off">{{  $product->pro_description ?? old('pro_description') }}</textarea>
                     @if ($errors->first('pro_description'))
                         <span class="text-danger">{{ $errors->first('pro_description') }}</span>
@@ -137,7 +131,6 @@
             </div>
             <div class="box-body">
                 <div class="form-group " id="time">
-                    <label for="exampleInputEmail1">Content</label>
                     <textarea name="pro_content" id="content" class="form-control textarea" required="" cols="5" rows="2" >{{ $product->pro_content ?? '' }}</textarea>
                     @if ($errors->first('pro_content'))
                         <span class="text-danger">{{ $errors->first('pro_content') }}</span>
@@ -155,7 +148,7 @@
                 <div style="margin-bottom: 10px">
                     <img src="{{ pare_url_file($product->pro_avatar ?? '') ?? '/images/no-image.jpg' }}" onerror="this.onerror=null;this.src='/images/no-image.jpg';" alt="" class="img-thumbnail" style="width: 200px;height: 200px;">
                 </div>
-                <div style="position:relative;"> <a class="btn btn-primary" href="javascript:;"> Choose File... <input type="file" style="position:absolute;z-index:2;top:0;left:0;filter: alpha(opacity=0);-ms-filter:&quot;progid:DXImageTransform.Microsoft.Alpha(Opacity=0)&quot;;opacity:0;background-color:transparent;color:transparent;" name="pro_avatar" size="40" class="js-upload"> </a> &nbsp; <span class="label label-info" id="upload-file-info"></span> </div>
+                <div style="position:relative;"> <a class="btn btn-primary" href="javascript:;"> Chọn ảnh... <input type="file" style="position:absolute;z-index:2;top:0;left:0;filter: alpha(opacity=0);-ms-filter:&quot;progid:DXImageTransform.Microsoft.Alpha(Opacity=0)&quot;;opacity:0;background-color:transparent;color:transparent;" name="pro_avatar" size="40" class="js-upload"> </a> &nbsp; <span class="label label-info" id="upload-file-info"></span> </div>
             </div>
         </div>
     </div>
@@ -170,4 +163,3 @@
 @section('script')
 
 @stop
-

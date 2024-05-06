@@ -36,7 +36,7 @@
                 <div class="collapse navbar-collapse flex-column" id="navbar-collapse">
                     <ul class="navbar-nav d-lg-block">
                         <li class="nav-item">
-                            <a class="nav-link" href="/account">Home</a>
+                            <a class="nav-link" href="/account">Trang chủ</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{  route('get.user.update_info') }}">Cập nhật thông tin</a>

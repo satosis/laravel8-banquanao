@@ -1,12 +1,12 @@
 
 <?php $__env->startSection('content'); ?>
-    <!-- Content Header (Page header) -->
+    <!-- Nội dung Header (Page header) -->
     <section class="content-header">
         <h1>Quản lý bài viết</h1>
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="<?php echo e(route('admin.article.index')); ?>"> Article</a></li>
-            <li class="active"> List </li>
+            <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+            <li><a href="<?php echo e(route('admin.article.index')); ?>"> Bài viết</a></li>
+            <li class="active"> Danh sách</li>
         </ol>
     </section>
     <!-- Main content -->
@@ -24,18 +24,18 @@
                                 <tr>
                                     <th style="width: 10px">STT</th>
                                     <th style="width: 10px">ID</th>
-                                    <th style="width: 25%">Name</th>
-                                    <th>Category</th>
-                                    <th>Avatar</th>
+                                    <th style="width: 25%">Tên</th>
+                                    <th>Danh mục</th>
+                                    <th>Ảnh</th>
                                     <th>Hot</th>
-                                    <th>Status</th>
-                                    <th>Time</th>
-                                    <th>Action</th>
+                                    <th>Trạng thái</th>
+                                    <th>Thời gian</th>
+                                    <th>Hành động</th>
                                 </tr>
 
                             </tbody>
                             <?php if(isset($articles)): ?>
-                            
+
                                     <?php $__currentLoopData = $articles; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $article): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <tr>
                                             <td><?php echo e((($articles->currentPage() - 1) * $articles->perPage()) + ( $key + 1)); ?></td>
@@ -64,8 +64,8 @@
                                             </td>
                                             <td><?php echo e($article->created_at); ?></td>
                                             <td style="width: 120px">
-                                                <a href="<?php echo e(route('admin.article.update', $article->id)); ?>" class="btn btn-xs btn-primary"><i class="fa fa-pencil"></i> Edit</a>
-                                                <a href="<?php echo e(route('admin.article.delete', $article->id)); ?>" class="btn btn-xs btn-danger js-delete-confirm"><i class="fa fa-trash"></i> Delete</a>
+                                                <a href="<?php echo e(route('admin.article.update', $article->id)); ?>" class="btn btn-xs btn-primary"><i class="fa fa-pencil"></i> Sửa</a>
+                                                <a href="<?php echo e(route('admin.article.delete', $article->id)); ?>" class="btn btn-xs btn-danger js-delete-confirm"><i class="fa fa-trash"></i> Xóa</a>
                                             </td>
                                         </tr>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -85,4 +85,4 @@
     <!-- /.content -->
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('layouts.app_master_admin', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\project\laravel8-giaythoitrang\resources\views/admin/article/index.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.app_master_admin', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\project\laravel8-banthoitrangtest\resources\views/admin/article/index.blade.php ENDPATH**/ ?>

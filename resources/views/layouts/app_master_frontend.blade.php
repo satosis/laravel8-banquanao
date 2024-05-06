@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="vi">
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta http-equiv="Nội dung-Type" content="text/html; charset=utf-8">
         <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
         <title>{{ strtolower($title_page ?? "Đồ án tốt nghiệp")   }}</title>

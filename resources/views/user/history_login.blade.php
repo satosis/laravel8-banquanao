@@ -4,17 +4,17 @@
 @stop
 @section('content')
     <section>
-        <div class="title">Lịch sử login</div>
+        <div class="title">Lịch sử đăng nhập</div>
         <div class="content">
             <table class="table">
                 <thead>
                 <tr>
-                    <th style="width: 100px;">Device</th>
-                    <th style="width: 10%">Platform</th>
-                    <th class="text-center">Platform_ver</th>
-                    <th class="text-center">Browser</th>
-                    <th class="text-center">Browser_ver</th>
-                    <th style="width: 30%" class="text-center">Time</th>
+                    <th style="width: 100px;">Thiết bị</th>
+                    <th style="width: 10%">Nền tảng</th>
+                    <th class="text-center">Phiên bản nền tảng</th>
+                    <th class="text-center">Trình duyệt</th>
+                    <th class="text-center">Phiên bản trình duyệt</th>
+                    <th style="width: 30%" class="text-center">Thời gian</th>
                 </tr>
                 </thead>
                 <tbody>

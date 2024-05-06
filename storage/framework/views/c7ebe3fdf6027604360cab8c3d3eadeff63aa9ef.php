@@ -1,12 +1,12 @@
 
 <?php $__env->startSection('content'); ?>
-    <!-- Content Header (Page header) -->
+    <!-- Nội dung Header (Page header) -->
     <section class="content-header">
-        <h1>Quản lý thông tin</h1>
+        <h1>Quản lý thuộc tính</h1>
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="<?php echo e(route('admin.attribute.index')); ?>"> Attribute</a></li>
-            <li class="active"> List </li>
+            <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+            <li><a href="<?php echo e(route('admin.attribute.index')); ?>"> Thuộc tính</a></li>
+            <li class="active"> Danh sách </li>
         </ol>
     </section>
     <!-- Main content -->
@@ -24,11 +24,11 @@
                                 <tr>
                                     <th style="width: 10px">STT</th>
                                     <th style="width: 10px">ID</th>
-                                    <th>Name</th>
-                                    <th>Type</th>
-                                    <th>Category</th>
-                                    <th>Time</th>
-                                    <th>Action</th>
+                                    <th>Tên thuộc tính</th>
+                                    <th>Thể loại</th>
+                                    <th>Danh mục</th>
+                                    <th>Thời gian</th>
+                                    <th>Hành động</th>
                                 </tr>
                                 <?php if(isset($attibutes)): ?>
                                     <?php $__currentLoopData = $attibutes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $attribute): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -37,7 +37,7 @@
                                             <td><?php echo e($attribute->id); ?></td>
                                             <td><?php echo e($attribute->atb_name); ?></td>
                                             <td>
-                                                <span class="<?php echo e($attribute->getType($attribute->atb_type)['class']); ?>" 
+                                                <span class="<?php echo e($attribute->getType($attribute->atb_type)['class']); ?>"
                                                 ><?php echo e($attribute->getType($attribute->atb_type)['name']); ?></span>
                                             </td>
                                             <td>
@@ -45,8 +45,8 @@
                                             </td>
                                             <td><?php echo e($attribute->created_at); ?></td>
                                             <td>
-                                                <a href="<?php echo e(route('admin.attribute.update', $attribute->id)); ?>" class="btn btn-xs btn-primary"><i class="fa fa-pencil"></i> Edit</a>
-                                                <a href="<?php echo e(route('admin.attribute.delete', $attribute->id)); ?>" class="btn btn-xs btn-danger js-delete-confirm"><i class="fa fa-trash"></i> Delete</a>
+                                                <a href="<?php echo e(route('admin.attribute.update', $attribute->id)); ?>" class="btn btn-xs btn-primary"><i class="fa fa-pencil"></i> Sửa</a>
+                                                <a href="<?php echo e(route('admin.attribute.delete', $attribute->id)); ?>" class="btn btn-xs btn-danger js-delete-confirm"><i class="fa fa-trash"></i> Xóa</a>
                                             </td>
                                         </tr>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -60,4 +60,5 @@
     </section>
     <!-- /.content -->
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.app_master_admin', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\project\laravel8-giaythoitrang\resources\views/admin/attribute/index.blade.php ENDPATH**/ ?>
+
+<?php echo $__env->make('layouts.app_master_admin', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\project\laravel8-banthoitrangtest\resources\views/admin/attribute/index.blade.php ENDPATH**/ ?>

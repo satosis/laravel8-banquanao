@@ -8,13 +8,13 @@
         color: #faca51;
     }
 </style>
-    <!-- Content Header (Page header) -->
+    <!-- Nội dung Header (Page header) -->
     <section class="content-header">
         <h1>Danh sách đánh giá, review sản phẩm</h1>
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="{{  route('admin.rating.index') }}"> Rating</a></li>
-            <li class="active"> List </li>
+            <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+            <li><a href="{{  route('admin.rating.index') }}"> Đánh giá</a></li>
+            <li class="active"> Danh sách</li>
         </ol>
     </section>
     <!-- Main content -->
@@ -29,11 +29,11 @@
                                 <tr>
                                     <th style="width: 10px">STT</th>
                                     <th style="width: 10px">ID</th>
-                                    <th>Name</th>
-                                    <th> User </th>
-                                    <th>Rating</th>
-                                    <th>Time</th>
-                                    <th>Action</th>
+                                    <th>Tên</th>
+                                    <th> Người dùng </th>
+                                    <th>Xếp loại</th>
+                                    <th>Thời gian</th>
+                                    <th>Hành động</th>
                                 </tr>
                                 @if (isset($ratings))
                                     @foreach($ratings as $key => $rating)
@@ -51,7 +51,7 @@
                                             </td>
                                             <td>{{ $rating->created_at }}</td>
                                             <td>
-                                                <a href="{{  route('admin.rating.delete', $rating->id) }}" class="btn btn-xs btn-danger js-delete-confirm"><i class="fa fa-trash"></i> Delete</a>
+                                                <a href="{{  route('admin.rating.delete', $rating->id) }}" class="btn btn-xs btn-danger js-delete-confirm"><i class="fa fa-trash"></i> Xóa</a>
                                             </td>
                                         </tr>
                                     @endforeach
