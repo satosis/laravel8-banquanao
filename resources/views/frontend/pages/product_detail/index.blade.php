@@ -109,21 +109,19 @@
                                         <h3 class="text2">
                                             @if (isset($product->category->c_name))
                                                 <a href="{{  route('get.category.list', $product->category->c_slug).'-'.$product->pro_category_id }}">{{ $product->category->c_name }}</a>
-                                            @else
-                                                "[N\A]"
                                             @endif
                                         </h3>
                                     </div>
 
                                     @foreach($attribute as $key => $attr)
-                                    <div class="item">
                                         @foreach($attr as  $k => $at)
                                             @if (in_array($k, $attributeOld))
+                                    <div class="item">
                                                 <p class="text1">{{ $key }}:</p>
                                                 <h3 class="text2">{{ $at['atb_name'] }}</h3>
+                                    </div>
                                             @endif
                                         @endforeach
-                                    </div>
                                     @endforeach
                                 </div>
                             </div>
