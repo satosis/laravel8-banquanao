@@ -27,7 +27,7 @@
 		</section>
 	<?php endif; ?>
 <?php else: ?>
-    <?php if(isset($articlesHot) && $articlesHot): ?>
+    <?php if(isset($articlesHot) && count($articlesHot)): ?>
 	<section id="box-news" style="margin-bottom: 30px;">
 		<div class="top"><a href="#" class="main-title main-title-2">Tin tức</a></div>
 		<div class="bot" style="padding: 10px;background-color: white">
@@ -67,4 +67,5 @@
 		</div>
 	</section>
         <?php endif; ?>
-<?php endif; ?><?php /**PATH D:\project\laravel8-banthoitrangtest\resources\views/frontend/pages/home/include/_inc_article.blade.php ENDPATH**/ ?>
+<?php endif; ?>
+<?php /**PATH D:\project\laravel8-banthoitrangtest\resources\views/frontend/pages/home/include/_inc_article.blade.php ENDPATH**/ ?>

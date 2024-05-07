@@ -24,7 +24,7 @@
                 <div class="left" style="width: 250px">
 
                 </div>
-                <div class="right" style=" width: calc(100% - 250px);">
+                <div class="right" style=" width: 100% ;">
                     <div id="content-slide">
                         <div id="slider">
                             <div class="imageSlide js-banner owl-carousel">

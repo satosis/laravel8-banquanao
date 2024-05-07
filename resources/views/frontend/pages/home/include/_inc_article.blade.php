@@ -27,7 +27,7 @@
 		</section>
 	@endif
 @else
-    @if (isset($articlesHot) && $articlesHot)
+    @if (isset($articlesHot) && count($articlesHot))
 	<section id="box-news" style="margin-bottom: 30px;">
 		<div class="top"><a href="#" class="main-title main-title-2">Tin tức</a></div>
 		<div class="bot" style="padding: 10px;background-color: white">
