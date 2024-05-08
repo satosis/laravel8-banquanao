@@ -142,10 +142,8 @@ var Comments = {
                             <textarea name="comment" class="form-control" id="" cols="30" rows="5">@${name}: </textarea>
                         </div>
                         <div class="footer">
-                            <p>
                                 <a href="" title="Gửi ảnh"  class="js-update-image"><i class="la la-camera"></i> Gửi ảnh</a>
                                 <input type="file" class="js-input-image" id="document" name="images[]" multiple style="opacity: 0;display: none" >
-                                <a href="">Quy định đăng bình luận</a>
                             </p>
                             <button class="js-reply-comment" data-reply="">Gửi bình luận</button>
                         </div>

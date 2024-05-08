@@ -161,7 +161,6 @@
                             <p>
                                 <a href="" title="Gửi ảnh"  class="js-update-image"><i class="la la-camera"></i> Gửi ảnh</a>
                                 <input type="file" class="js-input-image" id="document" name="images[]" multiple style="opacity: 0;display: none" >
-                                <a href="">Quy định đăng bình luận</a>
                             </p>
                             <button class=" {{ \Auth::id() ? 'js-save-comment' : 'js-show-login' }}">Gửi bình luận</button>
                         </div>

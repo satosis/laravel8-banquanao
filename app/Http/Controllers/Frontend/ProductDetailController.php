@@ -54,15 +54,13 @@ class ProductDetailController extends FrontendController
 			// Lấy album ảnh
 			//  4 Lấy comment
 			$page_comment = $request->page ?? 1;
-			$comments = Cache::remember('COMMENT_PRODUCT_'. $id.'_PAGE_'. $page_comment, 60 * 24 * 24, function () use ($id) {
-				return Comments::with('user:id,name', 'reply')
-					->where([
-						'cmt_product_id' => $id,
-						'cmt_parent_id'  => 0
-					])
-					->orderByDesc('id')
-					->paginate(10);
-			});
+			$comments = Comments::with('user:id,name', 'reply')
+			->where([
+				'cmt_product_id' => $id,
+				'cmt_parent_id'  => 0
+			])
+			->orderByDesc('id')
+			->paginate(10);
 
 			if ($request->ajax()) {
 				$html = view('frontend.pages.product_detail.include._inc_list_comments', compact('comments', 'product'))->render();

@@ -69,8 +69,6 @@ class CommentsController extends Controller
                 $comment = Comments::with('user:id,name')->find($commentId);
                 \DB::table('users')->where('id', \Auth::user()->id)
                         ->increment('count_comment');
-				Cache::forget('COMMENT_PRODUCT_'. $productID);
-
                 $html    = view('frontend.pages.product_detail.include._inc_comment_item', compact('comment'))->render();
                 return response([
                     'code' => '200',
