@@ -4,7 +4,7 @@
         <meta http-equiv="Nội dung-Type" content="text/html; charset=utf-8">
         <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
-        <title>{{ strtolower($title_page ?? "Đồ án tốt nghiệp")   }}</title>
+        <title>{{ $title_page ?? "Đồ án tốt nghiệp"   }}</title>
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <link rel="icon" sizes="32x32" type="image/png" href="{{ asset('ico.png') }}" />
         @yield('css')
