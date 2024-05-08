@@ -34,7 +34,7 @@
                                 <div class="form-group">
                                     <label for="inputEmail" class="col-sm-2 control-label">Email</label>
                                     <div class="col-sm-10">
-                                        <input type="email" class="form-control" name="email"  placeholder="Email" value="{{ $admin->email }}">
+                                        <input type="email" class="form-control" name="email"  placeholder="Email" value="{{ $admin->email }}" disabled>
                                         @if ($errors->first('email'))
                                             <span class="text-danger">{{ $errors->first('email') }}</span>
                                         @endif
@@ -50,12 +50,6 @@
                                     <label for="inputName" class="col-sm-2 control-label">Address</label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" name="address" placeholder="Nhập địa chỉ cá nhân" value="{{ $admin->address }}">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputName" class="col-sm-2 control-label">Class</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" name="class" placeholder="Lớp học" value="{{ $admin->class }}">
                                     </div>
                                 </div>
                                 <div class="form-group">

@@ -117,12 +117,11 @@ class ShoppingCartController extends Controller
             return redirect()->back();
         }
 
-        $data['tst_user_id'] = \Auth::user()->id;$data['tst_user_id'] = \Auth::user()->id;
+        $data['tst_user_id'] = \Auth::user()->id;
         $amount = str_replace(',', '', \Cart::subtotal(0));
         $data['tst_total_money'] = $amount;
+        $data['tst_type'] = (int) $data['tst_type'];
         $data['created_at']      = Carbon::now();
-
-
 
         // Lấy thông tin đơn hàng
         $shopping = \Cart::content();
@@ -132,7 +131,7 @@ class ShoppingCartController extends Controller
 
 
         try{
-            // \Cart::destroy();
+            \Cart::destroy();
             new PayManager($data, $shopping, $options);
 
         }catch (\Exception $exception){
@@ -144,7 +143,7 @@ class ShoppingCartController extends Controller
             'message' => 'Đơn hàng của bạn đã được lưu'
         ]);
         // check nếu thanh toán ví thì kiểm tra số tiền
-        if ($request->pay == 'online')
+        if ($request->tst_type == Transaction::TYPE_ONLINE)
         {
             $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
             $partnerCode = Config::get('env.momo.partner_code');
@@ -211,7 +210,7 @@ class ShoppingCartController extends Controller
         $pay = Transaction::where('id',$id)->first();
         if ($pay) {
             if($resultCode == 0) {
-                $pay->tst_status = 3;
+                $pay->tst_status = 2;
             } else {
                 $pay->tst_status = -1;
             }

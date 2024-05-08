@@ -21,7 +21,7 @@ class ProductDetailController extends FrontendController
 
 		if ($id) {
 			//1. Lấy thông tin sp
-			$product = Product::with('category:id,c_name,c_slug', 'keywords')->findOrFail($id)
+			$product = Product::with('category:id,c_name,c_slug', 'keywords')->findOrFail($id);
 
 			//2. Xử lý view
 			ProcessViewService::view('products', 'pro_view', 'product', $id);

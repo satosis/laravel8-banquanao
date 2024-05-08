@@ -18,16 +18,15 @@
                 <div class="list__content">
                     <div class="table-responsive">
                         <table class="table table-striped">
-
-                        <thead>
-                        <tr>
-                            <th style="width: 100px;"></th>
-                            <th style="width: 30%">Sản phẩm</th>
-                            <th>Giá</th>
-                            <th>Số lượng</th>
-                            <th>Thành tiền</th>
-                        </tr>
-                        </thead>
+                            <thead>
+                                <tr>
+                                    <th style="width: 100px;"></th>
+                                    <th style="width: 30%">Sản phẩm</th>
+                                    <th>Giá</th>
+                                    <th>Số lượng</th>
+                                    <th>Thành tiền</th>
+                                </tr>
+                            </thead>
                         <tbody>
                             @foreach($shopping as $key => $item)
                                 <tr>
@@ -101,7 +100,7 @@
                             <textarea name="tst_note" id="note" cols="3" style="min-height: 100px;" rows="2" class="form-control"></textarea>
                         </div>
                         <div class="btn-buy">
-                            <button class="buy1 btn btn-purple {{ \Auth::id() ? '' : 'js-show-login' }}" style="width: 100%;border-radius: 5px" type="submit" name="pay" value="transfer">
+                            <button class="buy1 btn btn-purple {{ \Auth::id() ? '' : 'js-show-login' }}" style="width: 100%;border-radius: 5px" type="submit" name="tst_type" value="1">
                                 Thanh toán khi nhận hàng
                             </button>
                         </div>
@@ -109,7 +108,7 @@
                             $totalMoney = str_replace(',','',\Cart::subtotal(0));
                         @endphp
                         <div class="btn-buy" style="margin-top: 10px">
-                            <button class="buy1 btn btn-pink {{ \Auth::id() ? '' : 'js-show-login' }}" style="width: 100%;border-radius: 5px" type="submit" name="pay" value="online">
+                            <button class="buy1 btn btn-pink {{ \Auth::id() ? '' : 'js-show-login' }}" style="width: 100%;border-radius: 5px" type="submit" name="tst_type" value="2">
                                 Thanh toán trực tuyến (Momo)
                             </button>
                         </div>

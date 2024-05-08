@@ -66,7 +66,7 @@
                     </a>
                 </li>
                 <li class="desktop">
-                    <a href="tel:18006005" title="" class="info-user js-show-dropdown">
+                    <a href="javascript:;" title="" class="info-user js-show-dropdown">
                         @if (Auth::check() && Auth::user()->avatar)
                             <img src="{{ pare_url_file(Auth::user()->avatar) }}" alt="">
                         @else

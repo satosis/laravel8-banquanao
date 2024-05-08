@@ -22,9 +22,9 @@
         @else
             <div class="container" style="display: flex">
                 <div class="left" style="width: 250px">
-
+                <img alt="Đồ án tốt nghiệp" src="/images/banner/banner-2.png"  style="max-width: 130%;height: 300px;object-fit: cover;object-position: right;" class="" />
                 </div>
-                <div class="right" style=" width: 100% ;">
+                <div class="right" style="width: calc(100% - 250px);">
                     <div id="content-slide">
                         <div id="slider">
                             <div class="imageSlide js-banner owl-carousel">
@@ -75,7 +75,7 @@
 
         <div id="flash_sale">
             <a href="" title="" class="image" target="_blank">
-                <img  alt="" style="height:250px;"  src="/images/banner/banner-3.png" class="lazyload" width="100%" style="object-position: bottom;object-fit: cover;" />
+                <img  alt="" src="/images/banner/banner-3.png" class="lazyload" width="100%" style="height:250px;object-fit: contain;" />
             </a>
 
         </div>

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\AdminRequestUpdateProfile;
 use App\Models\Admin;
 use Illuminate\Http\Request;
 
@@ -18,7 +17,7 @@ class AdminProfileController extends Controller
         return view('admin.profile.index', $viewData);
     }
 
-    public function update(AdminRequestUpdateProfile $request, $id)
+    public function update(Request $request, $id)
     {
         $data = $request->except('_token','avatar');
         if ($request->avatar) {

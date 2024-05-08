@@ -1,6 +1,13 @@
 <?php
 return [
     [
+        'name' => 'Đơn hàng',
+        'list-check' => ['transaction'],
+        'icon' => 'fa-shopping-cart',
+        'route' => 'admin.transaction.index',
+		'level'  => [1,2],
+    ],
+    [
         'name' => 'Quản lý sản phẩm',
         'list-check' => ['attribute','category','keyword','product','comment','rating'],
         'icon' => 'fa fa-database',
@@ -73,35 +80,11 @@ return [
         ]
     ],
 	[
-		'name' => 'Đối tác & Thành viên',
+		'name' => 'Khách hàng',
 		'list-check' => ['user','ncc'],
+        'route' => 'admin.user.index',
 		'icon' => 'fa fa-user',
 		'level'  => [1,2],
-		'sub'  => [
-			[
-				'name'  => 'Khách hàng',
-				'route' => 'admin.user.index',
-				'namespace' => 'user',
-				'icon'  => 'fa fa-user',
-				'level'  => [1,2],
-			],
-
-		]
 	],
-    [
-        'name' => 'Đơn hàng',
-        'list-check' => ['transaction'],
-        'icon' => 'fa-shopping-cart',
-		'level'  => [1,2],
-        'sub'  => [
-            [
-                'name'  => 'Danh sách',
-                'namespace' => 'transaction',
-                'route' => 'admin.transaction.index',
-                'icon'  => 'fa-opencart',
-				'level'  => [1,2],
-            ]
-        ]
-    ],
 
 ];
