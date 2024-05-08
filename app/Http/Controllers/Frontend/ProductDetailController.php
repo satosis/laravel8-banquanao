@@ -10,7 +10,6 @@ use App\Models\Product;
 use DB;
 use App\Services\ProcessViewService;
 use App\Models\Rating;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 
 class ProductDetailController extends FrontendController
@@ -22,28 +21,23 @@ class ProductDetailController extends FrontendController
 
 		if ($id) {
 			//1. Lấy thông tin sp
-			$product = Cache::remember('PRODUCT_DETAIL_'. $id, 60 * 24 * 24, function () use ($id) {
-				return Product::with('category:id,c_name,c_slug', 'keywords')->findOrFail($id);
-			});
+			$product = Product::with('category:id,c_name,c_slug', 'keywords')->findOrFail($id)
 
 			//2. Xử lý view
 			ProcessViewService::view('products', 'pro_view', 'product', $id);
 
 			// 3. Lấy đánh giá
-			$ratings = Cache::remember('RATING_PRODUCT_'. $id, 60 * 24 * 24, function () use ($id) {
-				return Rating::with('user:id,name')
-					->where('r_product_id', $id)
-					->orderByDesc('id')
-					->limit(5)
-					->get();
-			});
-			$ratingsDashboard = Cache::remember('RATING_DASHBOARD_'. $id, 60 * 24 * 24, function () use ($id) {
-				return Rating::groupBy('r_number')
-					->where('r_product_id', $id)
-					->select(\DB::raw('count(r_number) as count_number'), \DB::raw('sum(r_number) as total'))
-					->addSelect('r_number')
-					->get()->toArray();
-			});
+			$ratings = Rating::with('user:id,name')
+			->where('r_product_id', $id)
+			->orderByDesc('id')
+			->limit(5)
+			->get();
+
+			$ratingsDashboard = Rating::groupBy('r_number')
+			->where('r_product_id', $id)
+			->select(\DB::raw('count(r_number) as count_number'), \DB::raw('sum(r_number) as total'))
+			->addSelect('r_number')
+			->get()->toArray();
 
 			$ratingDefault = $this->mapRatingDefault();
 
@@ -67,13 +61,11 @@ class ProductDetailController extends FrontendController
 				return response(['html' => $html]);
 			}
 
-			$attributeOld = Cache::remember('ATTRIBUTE_PRODUCT_'. $id, 60 * 24 * 24, function () use ($id) {
-				return \DB::table('products_attributes')
-					->where('pa_product_id', $id)
-					->pluck('pa_attribute_id')
-					->toArray();
+			$attributeOld = \DB::table('products_attributes')
+			->where('pa_product_id', $id)
+			->pluck('pa_attribute_id')
+			->toArray();
 
-			});
 			$image = DB::table('product_images')
 			->where('pi_product_id', $id)->get();
 			$viewData = [
@@ -165,8 +157,7 @@ class ProductDetailController extends FrontendController
 
 	private function getProductSuggests($categoriID)
 	{
-		$products = Cache::remember('PRODUCT_RELATE_'.$categoriID, 60 * 24 * 10, function () use ($categoriID) {
-			return Product::where([
+		$products = Product::where([
 				'pro_active'      => 1,
 				'pro_category_id' => $categoriID
 			])
@@ -174,7 +165,6 @@ class ProductDetailController extends FrontendController
 				->select('id', 'pro_name', 'pro_slug', 'pro_sale', 'pro_number','pro_avatar', 'pro_price', 'pro_review_total', 'pro_review_star')
 				->limit(12)
 				->get();
-		});
 
 		return $products;
 	}

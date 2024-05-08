@@ -21,8 +21,6 @@ class AdminProductController extends Controller
 {
 	public function index(Request $request)
 	{
-		Cache::forget('HOME.PRODUCT_NEW');
-		Cache::forget('HOME.PRODUCT_HOT');
 		$sumNumber = Product::sum('pro_number');
 		$products  = Product::with('category:id,c_name');
 		if ($id = $request->id) $products->where('id', $id);

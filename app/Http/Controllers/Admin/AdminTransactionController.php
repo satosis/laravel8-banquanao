@@ -8,7 +8,6 @@ use App\Models\Transaction;
 use App\Models\Order;
 use App\Models\Product;
 use App\Exports\TransactionExport;
-use Illuminate\Support\Facades\Cache;
 
 class AdminTransactionController extends Controller
 {
@@ -132,9 +131,7 @@ class AdminTransactionController extends Controller
 		{
 			foreach ($orders as $order)
 			{
-				Cache::forget('PRODUCT_DETAIL_'. $order->od_product_id);
-				\DB::table('products')
-					->where('id', $order->od_product_id)
+				Product::where('id', $order->od_product_id)
 					->decrement("pro_number",$order->od_qty);
 			}
 		}
