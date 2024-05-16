@@ -7,6 +7,7 @@ namespace App\Services\ShoppingCartService;
 use App\Models\Order;
 use Carbon\Carbon;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Log;
 
 class PayBaseService
 {
@@ -40,7 +41,8 @@ class PayBaseService
             'od_product_id'     => $order->id,
             'od_sale'           => $order->options->sale,
             'od_qty'            => $order->qty,
-            'od_price'          => $order->price
+            'od_price'          => $order->price,
+            'od_size'           => $order->options->size
         ];
     }
 
@@ -62,6 +64,7 @@ class PayBaseService
      */
     public function syncOrder($orders, $transactionID)
     {
+        Log::error("123: " .$orders);
         if($orders) {
             foreach ($orders as $key => $item) {
                 $order = $this->getDataOrder($item, $transactionID);

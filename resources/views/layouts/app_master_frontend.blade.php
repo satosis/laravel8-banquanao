@@ -42,6 +42,15 @@
                     var src = $(this).attr('src');
                     $(".target_img").attr('src', src)
                 })
+
+                $(".sku-variable-name").on("click", function () {
+                    $(".sku-variable-name").removeClass("active")
+                    var kichco = $(this).attr('title')
+                    $(this).addClass("active")
+                    var id = $('.muangay').data("id");
+                    $('.muangay').attr("href", "/shopping/add/" + id + "?type=1&kichco=" + kichco)
+                    $('.muatragop').attr("href", "/shopping/add/" + id + "?type=2&kichco=" + kichco)
+                })
     })
         </script>
 </html>

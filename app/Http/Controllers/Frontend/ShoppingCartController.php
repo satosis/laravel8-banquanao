@@ -14,6 +14,9 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
+use Auth;
+use Cart;
+use Session;
 
 class ShoppingCartController extends Controller
 {
@@ -37,7 +40,7 @@ class ShoppingCartController extends Controller
     }
     public function index()
     {
-        $shopping = \Cart::content();
+        $shopping = Cart::content();
         $viewData = [
             'title_page' => 'Danh sách giỏ hàng',
             'shopping'   => $shopping
@@ -48,8 +51,10 @@ class ShoppingCartController extends Controller
     /**
      * Thêm giỏ hàng
      * */
-    public function add($id)
+    public function add(Request $request, $id)
     {
+        $type = $request->type;
+        $kichco = $request->kichco;
         $product = Product::find($id);
 
         //1. Kiểm tra tồn tại sản phẩm
@@ -58,22 +63,22 @@ class ShoppingCartController extends Controller
         // 2. Kiểm tra số lượng sản phẩm
         if ($product->pro_number < 1) {
             //4. Thông báo
-            \Session::flash('toastr', [
+            Session::flash('toastr', [
                 'type'    => 'error',
                 'message' => 'Số lượng sản phẩm không đủ'
             ]);
 
             return redirect()->back();
         }
-		$cart = \Cart::content();
+		$cart = Cart::content();
 		$idCartProduct = $cart->search(function ($cartItem) use ($product){
 			if ($cartItem->id == $product->id) return $cartItem->id;
 		});
 		if ($idCartProduct) {
-			$productByCart = \Cart::get($idCartProduct);
+			$productByCart = Cart::get($idCartProduct);
 			if ($product->pro_number < ($productByCart->qty + 1))
 			{
-				\Session::flash('toastr', [
+				Session::flash('toastr', [
 					'type'    => 'error',
 					'message' => 'Số lượng sản phẩm không đủ'
 				]);
@@ -82,7 +87,7 @@ class ShoppingCartController extends Controller
 		}
 
         // 3. Thêm sản phẩm vào giỏ hàng
-        \Cart::add([
+        Cart::add([
             'id'      => $product->id,
             'name'    => $product->pro_name,
             'qty'     => 1,
@@ -91,16 +96,19 @@ class ShoppingCartController extends Controller
             'options' => [
                 'sale'      => $product->pro_sale,
                 'price_old' => $product->pro_price,
-                'image'     => $product->pro_avatar
+                'image'     => $product->pro_avatar,
+                'size'     => $kichco
             ]
         ]);
 
         //4. Thông báo
-        \Session::flash('toastr', [
+        Session::flash('toastr', [
             'type'    => 'success',
             'message' => 'Thêm giỏ hàng thành công'
         ]);
-
+        if ($type == 2) {
+            return redirect()->route('get.shopping.list');
+        }
         return redirect()->back();
     }
 
@@ -109,7 +117,7 @@ class ShoppingCartController extends Controller
         $data = $request->except("_token");
         if (!\Auth::user()->id) {
             //4. Thông báo
-            \Session::flash('toastr', [
+            Session::flash('toastr', [
                 'type'    => 'error',
                 'message' => 'Đăng nhập để thực hiện tính năng này'
             ]);
@@ -118,29 +126,24 @@ class ShoppingCartController extends Controller
         }
 
         $data['tst_user_id'] = \Auth::user()->id;
-        $amount = str_replace(',', '', \Cart::subtotal(0));
+        $amount = str_replace(',', '', Cart::subtotal(0));
         $data['tst_total_money'] = $amount;
         $data['tst_type'] = (int) $data['tst_type'];
         $data['created_at']      = Carbon::now();
 
         // Lấy thông tin đơn hàng
-        $shopping = \Cart::content();
+        $shopping = Cart::content();
         $data['options']['orders'] = $shopping;
 
-        $options['drive'] = $request->pay;
+        $options['drive'] = $request->tst_type == 1 ? 'transfer' : 'online';
 
+        Cart::destroy();
+        $this->storeTransaction($data);
 
-        try{
-            \Cart::destroy();
-            new PayManager($data, $shopping, $options);
-
-        }catch (\Exception $exception){
-            Log::error("[Errors pay shopping cart]" .$exception->getMessage());
-        }
         $latestId = Transaction::orderBy('id', 'desc')->first()['id'];
-        \Session::flash('toastr', [
+        Session::flash('toastr', [
             'type'    => 'success',
-            'message' => 'Đơn hàng của bạn đã được lưu'
+            'message' => 'Mua hàng thành công'
         ]);
         // check nếu thanh toán ví thì kiểm tra số tiền
         if ($request->tst_type == Transaction::TYPE_ONLINE)
@@ -240,11 +243,11 @@ class ShoppingCartController extends Controller
             }
 
             //4. Update
-            \Cart::update($id, $qty);
+            Cart::update($id, $qty);
 
             return response([
                 'messages'   => 'Cập nhật thành công',
-                'totalMoney' => \Cart::subtotal(0),
+                'totalMoney' => Cart::subtotal(0),
                 'totalItem'  => number_format(number_price($product->pro_price, $product->pro_sale) * $qty, 0, ',', '.')
             ]);
         }
@@ -257,12 +260,52 @@ class ShoppingCartController extends Controller
     {
         if ($request->ajax())
         {
-            \Cart::remove($rowId);
+            Cart::remove($rowId);
             return response([
-                'totalMoney' => \Cart::subtotal(0),
+                'totalMoney' => Cart::subtotal(0),
                 'type'       => 'success',
                 'message'    => 'Xoá sản phẩm khỏi đơn hàng thành công'
             ]);
         }
     }
+
+      //store transaction to database
+      public function storeTransaction($data)
+      {
+          $transaction = Transaction::create([
+              'tst_user_id' => Auth::id(),
+              'tst_total_money' => $data['tst_total_money'],
+              'tst_name' => $data['tst_name'],
+              'tst_email' => $data['tst_email'],
+              'tst_phone' => $data['tst_phone'],
+              'tst_address' => $data['tst_address'],
+              'tst_note' => $data['tst_note'],
+              'tst_code' => $data['tst_code'] ?? '',
+              'tst_status' => 1,
+              'tst_type' => $data['tst_type'],
+          ]);
+          if ($transaction) {
+              $shopping = Cart::content();
+              foreach ($shopping as $key => $item) {
+                  Order::insert([
+                      'od_transaction_id' => $transaction->id,
+                      'od_product_id' => $item->id,
+                      'od_sale' => $item->options->sale,
+                      'od_qty' => $item->qty,
+                      'od_price' => $item->price
+                  ]);
+                  //Tăng số lượt mua của sản phẩm
+                  $product = Product::find($item->id);
+                  $product->pro_pay = $product->pro_pay + 1;
+                  $product->pro_amount = $product->pro_amount - $item->qty;
+              }
+          }
+
+          Session::flash('toastr', [
+              'type' => 'success',
+              'message' => 'Đặt hàng thành công'
+          ]);
+          // Cart::destroy();
+          return $transaction->id;
+      }
 }

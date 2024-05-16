@@ -69,17 +69,10 @@ class PayOnlinePaymentService extends PayBaseService implements PayServiceInterf
         $money  = $dataTransaction['tst_total_money'];
         $userID = $dataTransaction['tst_user_id'];
         //3. Trừ tiền
-        $this->deductionMoney($money, $userID);
 
 
         // Mail::to($request->tst_email)->send(new TransactionSuccess($shopping));
         return $this->idTransaction;
-    }
-
-    public function deductionMoney($money, $userId)
-    {
-        \DB::table('users')->where('id', $userId)
-            ->decrement('balance', $money);
     }
 
 }

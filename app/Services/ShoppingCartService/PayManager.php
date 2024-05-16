@@ -17,7 +17,6 @@ class PayManager
         $drive          = Arr::get($options, 'drive', 'transfer');
         $configDrive    = config('shopping_cart.drive_pay.' . $drive);
         $this->data     = $data;
-
         $this->drivePay = new $configDrive['process']($data, $shopping);
     }
 }

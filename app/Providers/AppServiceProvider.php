@@ -7,7 +7,7 @@ use View;
 use Illuminate\Support\Facades\Schema;
 use App\Models\Category;
 use App\Models\Menu;
-
+use Illuminate\Pagination\Paginator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -31,6 +31,9 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
+        Paginator::useBootstrap();
+        // \URL::forceScheme('https');
+
         $this->bootDBLogger();
         try{
             $categories = Category::with('children:id,c_name,c_slug,c_parent_id')

@@ -44,6 +44,7 @@ Route::group(['namespace' => 'Frontend'], function() {
 
 //    Route::get('ajax-load-slide','HomeController@loadSlideHome')->name('ajax_get.slide');
     Route::get('san-pham','ProductController@index')->name('get.product.list'); // list sp
+    Route::get('dan-muc','CategoryController@index')->name('get.category.index'); // list sp theo danh mục
     Route::get('dan-muc/{slug}','CategoryController@index')->name('get.category.list'); // list sp theo danh mục
 
     Route::get('san-pham/{slug}','ProductDetailController@getProductDetail')->name('get.product.detail'); // chi tiet sp

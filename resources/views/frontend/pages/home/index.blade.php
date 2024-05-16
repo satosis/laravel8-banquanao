@@ -75,7 +75,8 @@
 
         <div id="flash_sale">
             <a href="" title="" class="image" target="_blank">
-                <img  alt="" src="/images/banner/banner-3.png" class="lazyload" width="100%" style="height:250px;object-fit: contain;" />
+                <img  alt="" src="/images/banner/banner-3.png" class="lazyload" style="width:49%;height:250px;object-fit: cover;" />
+                <img  alt="" src="/images/banner/banner-2.png" class="lazyload" style="width:49%;height:250px;object-fit: cover;" />
             </a>
 
         </div>

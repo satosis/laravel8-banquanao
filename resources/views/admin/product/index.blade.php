@@ -38,14 +38,13 @@
                         <table class="table">
                             <tbody>
                                 <tr>
-                                    <th style="width: 10px">STT</th>
-                                    <th style="width: 10px">ID</th>
+                                    <th style="width: 70px">STT</th>
+                                    <th style="width: 70px">ID</th>
                                     <th>Tên</th>
                                     <th>Danh mục</th>
                                     <th>Ảnh</th>
                                     <th>Số lượng</th>
                                     <th>Giá</th>
-                                    <th>Hạn sử dụng</th>
                                     <th>Hot</th>
                                     <th>Trạng thái</th>
                                     <th>Hành động</th>
@@ -90,12 +89,6 @@
                                                    {{ number_format($product->pro_price,0,',','.') }} vnđ
                                                 @endif
 
-                                            </td>
-                                            <td>
-                                                @php
-                                                    $time = explode(' ',$product->pro_expiration);
-                                                @endphp
-                                                {{ $time[0] ?? "Chưa cập nhật" }}
                                             </td>
                                             <td>
                                                 @if ($product->pro_hot == 1)

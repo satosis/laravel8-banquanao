@@ -27,8 +27,8 @@
                         <table class="table">
                             <tbody>
                                 <tr>
-                                    <th style="width: 10px">STT</th>
-                                    <th style="width: 10px">ID</th>
+                                    <th style="width: 70px">STT</th>
+                                    <th style="width: 70px">ID</th>
                                     <th>Tên</th>
                                     <th> Người dùng </th>
                                     <th>Xếp loại</th>

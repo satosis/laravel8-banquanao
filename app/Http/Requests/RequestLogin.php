@@ -19,16 +19,16 @@ class RequestLogin extends FormRequest
     public function rules()
     {
         return [
-            'email'     => 'required',
-            'password'  => 'required',
+            'email'               =>'required|email|exists:users',
+            'password'            =>'required',
         ];
     }
-
-    public function messages()
-    {
+    public function messages(){
         return [
-            'email.required'         => 'Dữ liệu không được để trống',
-            'password.required'      => 'Dữ liệu không được để trống',
+            'email.required'      =>'Bạn cần điền email',
+            'password.required'   =>'Bạn cần điền mật khẩu',
+            'email.email'         =>"Email không đúng định dạng",
+            'email.exists'        =>"Email chưa được đăng ký",
         ];
     }
 }

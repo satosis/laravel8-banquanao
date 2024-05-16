@@ -22,12 +22,12 @@
                         <table class="table">
                             <tbody>
                                 <tr>
-                                    <th style="width: 10px">STT</th>
-                                    <th style="width: 10px">ID</th>
+                                    <th style="width: 70px">STT</th>
+                                    <th style="width: 70px">ID</th>
                                     <th>Tên</th>
                                     <th>Ảnh</th>
                                     <th>Trạng thái</th>
-                                    <th>Hot</th>
+                                    <th style="width: 150px">Hot</th>
                                     <th>Thời gian</th>
                                     <th>Hành động</th>
                                 </tr>

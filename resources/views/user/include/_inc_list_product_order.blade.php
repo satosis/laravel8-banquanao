@@ -19,7 +19,8 @@
             </td>
             <td>
                 <a href="{{ route('get.product.detail',\Str::slug($item->product->pro_slug ?? '').'-'.$item->od_product_id) }}">
-                    <strong>{{ strtolower($item->product->pro_name ?? '') }}</strong>
+                    <strong>{{ $item->product->pro_name }}</strong>
+                    <p>Kích cỡ: {{ $item->od_size }}</p>
                 </a>
             </td>
             <td class="text-center">

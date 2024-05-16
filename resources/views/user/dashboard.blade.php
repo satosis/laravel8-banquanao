@@ -23,7 +23,7 @@
             <div class="col-3">
                 <div class="box-count" style="background: #f39c12">
                     <div class="count-text">{{ $totalTransactionProcess }}</div>
-                    <p class="count-name">Tiếp nhận && Giao hàng</p>
+                    <p class="count-name">Tiếp nhận & Giao hàng</p>
                 </div>
             </div>
             <div class="col-3">

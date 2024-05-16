@@ -12,7 +12,10 @@
         @foreach($orders as $item)
             <tr>
                 <td>#{{ $item->id }}.</td>
-                <td><a href="">{{ $item->product->pro_name ?? "[N\A]" }}</a></td>
+                <td>
+                    <a href="">{{ $item->product->pro_name ?? "[N\A]" }}</a>
+                    <p>Kích cỡ: {{ $item->od_size }}</p>
+                </td>
                 <td>
                     <img alt="" style="width: 60px;height: 80px" src="{{ pare_url_file($item->product->pro_avatar ?? "") }}" class="lazyload">
                 </td>

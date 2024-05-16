@@ -24,6 +24,9 @@
         <div class="auth" style="background: white;">
             <form class="from_cart_register" action="" method="post" style="width: 500px;margin:0 auto;padding: 30px 0">
                 @csrf
+                @if($errors->first('msg'))
+                    <span class="red">{{$errors->first('msg')}}</span>
+                @endif
                 <div class="form-group">
                     <label for="name">Email <span class="cRed">(*)</span></label>
                     <input name="email" id="name" type="email" class="form-control" value="khachhang1@gmail.com" placeholder="nguyenvana@gmail.com">
@@ -41,7 +44,6 @@
                 <div class="form-group">
                     <button class="btn btn-purple">Đăng nhập</button>
                     <p>
-                        <a href="">Quên mật khẩu</a>
                         <a href="{{ route('get.register') }}">Đăng ký</a>
                     </p>
                     @include('auth.include._inc_social')

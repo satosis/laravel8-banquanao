@@ -24,10 +24,10 @@ class RequestRegister extends FormRequest
     public function rules()
     {
         return [
-            'email'     => 'required|max:190|min:3|unique:users,email,'.$this->id,
-            'name'      => 'required',
-            'phone'     => 'required|unique:users,phone,'.$this->id,
-            'password'  => 'required',
+            'email'             =>'required|email|min:5|max:180|unique:users,email',
+            'name'              =>'required|min:5|max:180',
+            'password'          =>'required|min:8|max:16|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\x])(?=.*[!$#%]).*$/',
+            'phone'             =>'required|min:10|max:11|unique:users,phone',
 //            'g-recaptcha-response' => 'required|captcha'
         ];
     }
@@ -35,11 +35,25 @@ class RequestRegister extends FormRequest
     public function messages()
     {
         return [
-            'email.required'         => 'Dữ liệu không được để trống',
-            'email.unique'           => 'Dữ liệu đã tồn tại',
-            'phone.unique'           => 'Dữ liệu đã tồn tại',
-            'phone.required'         => 'Dữ liệu không được để trống',
-            'password.required'      => 'Dữ liệu không được để trống',
+            'email.required'    =>"Bạn cần điền email",
+            'email.min'         =>"Email phải lớn hơn 5 ký tự",
+            'email.max'         =>"Email phải ít hơn 180 ký tự",
+            'email.unique'      =>"Email đã được đăng ký",
+            'email.email'       =>"Email không đúng định dạng",
+
+            'name.required'     =>"Bạn cần điền tên người dùng",
+            'name.min'          =>"Tên người dùng phải lớn hơn 5 ký tự",
+            'name.max'          =>"Tên người dùng phải ít hơn 180 ký tự",
+
+            'password.required' =>"Bạn cần điền mật khẩu",
+            'password.min'      =>"Mật khẩu phải lớn hơn 8 ký tự bao gồm chữ và số",
+            'password.max'      =>"Mật khẩu phải ít hơn 16 ký tự bao gồm chữ và số",
+            'password.regex'    =>"Mật khẩu phải bao gồm chữ và số",
+
+            'phone.required'    =>"Bạn cần điền số điện thọai",
+            'phone.min'         =>"Số điện thoại tối thiểu 10 số",
+            'phone.max'         =>"Số điện thoại tối đa 11 số",
+            'phone.unique'      =>"Số điện thoại đã được đăng ký",
         ];
     }
 }

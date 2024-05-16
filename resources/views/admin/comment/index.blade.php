@@ -27,7 +27,7 @@
                         <table class="table">
                             <tbody>
                             <tr>
-                                <th style="width: 10px">STT</th>
+                                <th style="width: 70px">STT</th>
                                 <th>Tên</th>
                                 <th>Nội dung </th>
                                 <th>Thời gian</th>

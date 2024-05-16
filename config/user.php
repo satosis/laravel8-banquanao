@@ -25,9 +25,4 @@ return [
         'route' => 'get.user.comment',
         'icon'  => 'fa fa-comments'
     ],
-    [
-        'name'  => 'Thời gian đăng nhập',
-        'route' => 'get.user.log_login',
-        'icon'  => 'fa fa-bug'
-    ],
 ];

@@ -407,6 +407,7 @@ CREATE TABLE `orders` (
   `od_sale` int(11) NOT NULL DEFAULT 0,
   `od_qty` tinyint(4) NOT NULL DEFAULT 0,
   `od_price` int(11) NOT NULL DEFAULT 0,
+  `od_size` int(11) NOT NULL DEFAULT 0,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

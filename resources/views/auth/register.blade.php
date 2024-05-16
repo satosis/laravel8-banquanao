@@ -55,7 +55,6 @@
                 <div class="form-group">
                     <button class="btn btn-purple">Đăng ký</button>
                     <p>
-                        <a href="">Quên mật khẩu</a>
                         <a href="{{ route('get.login') }}">Đăng nhập</a>
                     </p>
                     @include('auth.include._inc_social')

@@ -86,18 +86,51 @@
                                     <span>Số lượt xem :&nbsp</span>
                                     <span>{{ $product->pro_view }}</span>
                                 </p>
+                                <p>
+                                    <span>Kích cỡ :&nbsp</span>
+                                    <span class="sku-variable-name active" title="37">
+                                        <span class="sku-variable-name-text">37</span>
+                                    </span>
+                                    <span class="sku-variable-name" title="38">
+                                        <span class="sku-variable-name-text">38</span>
+                                    </span>
+                                    <span class="sku-variable-name" title="39">
+                                        <span class="sku-variable-name-text">39</span>
+                                    </span>
+                                    <span class="sku-variable-name" title="40">
+                                        <span class="sku-variable-name-text">40</span>
+                                    </span>
+                                </p>
                             </div>
                             <div class="btn-cart">
-                                <a href="{{ route('get.shopping.add', $product->id) }}" title=""
-                                   onclick="add_cart_detail('17617',0);" class="muangay {{ $product->pro_number <= 0 ? 'number-empty' : '' }}">
+                            <a href="{{ route('ajax_get.user.add_favourite', $product->id) }}"
+                                    title="Thêm sản phẩm yêu thích"
+                                    class="muatragop  {{ !\Auth::id() ? 'js-show-login' : 'js-add-favourite' }}"
+                                    style="background:#dc0021;color:white">
+                                    <span>Yêu thích</span>
+                                </a>
+                            </div>
+                            <div class="btn-cart">
+                                <a href="{{ route('get.shopping.add',[
+          'type'=> 1,
+          'id'=> $product->id,
+          'kichco'=> 37
+          ]) }}" title=""
+                                    data-id="{{ $product->id }}"
+                                    onclick="add_cart_detail('17617',0);" class="muangay {{ $product->pro_number <= 0 ? 'number-empty' : '' }}">
                                     <span>Thêm vào giỏ</span>
                                     <span>Hotline: 1800.1800</span>
                                 </a>
-                                <a href="{{ route('ajax_get.user.add_favourite', $product->id) }}"
-                                   title="Thêm sản phẩm yêu thích"
-                                   class="muatragop  {{ !\Auth::id() ? 'js-show-login' : 'js-add-favourite' }}">
-                                    <span>Yêu thích</span>
-                                    <span>Sản phẩm</span>
+                                <a href="{{ route('get.shopping.add',[
+          'type'=> 2,
+          'id'=> $product->id,
+          'kichco'=> 37
+          ]) }}"
+                                    data-id="{{ $product->id }}"
+                                    title="Thêm sản phẩm yêu thích"
+                                    class="muatragop {{ $product->pro_number <= 0 ? 'number-empty' : '' }}">
+                                    <span>Mua ngay</span>
+                                    <span>Hotline: 1800.1800</span>
                                 </a>
                             </div>
                             <div class="infomation">
@@ -106,22 +139,33 @@
 
                                     <div class="item">
                                         <p class="text1">Danh mục:</p>
+                                        <div style="display: grid;grid-template-columns: auto auto auto auto;width: 100%;">
                                         <h3 class="text2">
                                             @if (isset($product->category->c_name))
                                                 <a href="{{  route('get.category.list', $product->category->c_slug).'-'.$product->pro_category_id }}">{{ $product->category->c_name }}</a>
                                             @endif
+                                        </div>
                                         </h3>
                                     </div>
-
                                     @foreach($attribute as $key => $attr)
+                                    @php
+                                    $check = \Arr::where($attr, function ($value, $key) use ($attributeOld) {
+                                        if (in_array($key, $attributeOld))
+                                               return true;
+                                    });
+                                    @endphp
+                                    @if ($check)
+                                    <div class="item">
+                                        <p class="text1">{{ $key }}:</p>
+                                        <div style="display: grid;grid-template-columns: auto auto auto auto;width: 100%;">
                                         @foreach($attr as  $k => $at)
                                             @if (in_array($k, $attributeOld))
-                                    <div class="item">
-                                                <p class="text1">{{ $key }}:</p>
                                                 <h3 class="text2">{{ $at['atb_name'] }}</h3>
-                                    </div>
                                             @endif
                                         @endforeach
+                                        </div>
+                                    </div>
+                                    @endif
                                     @endforeach
                                 </div>
                             </div>
@@ -205,6 +249,7 @@
 		var ROUTE_COMMENT = '{{ route('ajax_post.comment') }}';
 		var CSS = "{{ asset('css/product_detail.min.css') }}";
 		var URL_CAPTCHA = '{{ route('ajax_post.captcha.resume') }}'
+
     </script>
     <script src="{{ asset('js/product_detail.js') }}" type="text/javascript"></script>
 

@@ -33,8 +33,8 @@
                         <div class="item">
                             <span class="title js-show-sort">Sắp xếp <i class="fa fa-caret-down"></i></span>
                             <ul>
-                                <li><a class="{{ Request::get('sort') == 'desc' ? "active" : "" }}" href="{{ request()->fullUrlWithQuery(['sort'=> 'desc']) }}">Mới nhất</a></li>
-                                <li><a class="{{ Request::get('sort') == 'asc' ? "active" : "" }}" href="{{ request()->fullUrlWithQuery(['sort'=> 'asc']) }}">Cũ nhất</a></li>
+                                <li><a class="{{ Request::get('orderprice') == 'asc' ? "active" : "" }}" href="{{ request()->fullUrlWithQuery(['orderprice'=> 'asc']) }}">Giá thấp đến cao</a></li>
+                                <li><a class="{{ Request::get('orderprice') == 'desc' ? "active" : "" }}" href="{{ request()->fullUrlWithQuery(['orderprice'=> 'desc']) }}">Giá cao xuống thấp</a></li>
                             </ul>
                         </div>
                     </div>

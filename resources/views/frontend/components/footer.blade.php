@@ -7,6 +7,10 @@
             {{ config('layouts.component.footer.title') }};
         }
     @endif
+    footer div {
+        line-height: 40px;
+        text-align: center;
+    }
 </style>
 <div id="footer" style="background: {{ config('layouts.component.footer.background') }}">
     <div class="container footer">
@@ -64,15 +68,9 @@
                 <div class="social">
                     <div class="title">Fanpage của chúng tôi</div>
                     <p>
-                        <a href="" class="fa fa fa-youtube" style="
-    font-size: 34px;
-"></a>
-                        <a href="" class="fa fa-facebook-official" style="
-    font-size: 34px;
-"></a>
-                        <a href="" class="fa fa-twitter" style="
-    font-size: 34px;
-"></a>
+                        <a href="" class="fa fa fa-youtube" style="font-size: 34px;"></a>
+                        <a href="" class="fa fa-facebook-official" style="font-size: 34px;"></a>
+                        <a href="" class="fa fa-twitter" style="font-size: 34px;"></a>
                     </p>
                 </div>
             </div>
@@ -81,7 +79,7 @@
         </div>
 
     </div>
-
 </div>
+<footer><div>Copyright © {{ date('Y') }} | Powered by Hà Huyền</div></footer>
 {{-- <div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v6.0&appId=3205159929509308&autoLogAppEvents=1"></script> --}}

@@ -42,9 +42,9 @@
                         <table class="table">
                             <tbody>
                                 <tr>
-                                    <th style="width: 10px">STT</th>
-                                    <th style="width: 10px">ID</th>
-                                    <th style="width: 30%">Thông tin</th>
+                                    <th style="width: 70px">STT</th>
+                                    <th style="width: 70px">ID</th>
+                                    <th style="width: 30%;padding-left: 30px;">Thông tin</th>
                                     <th>Số tiền</th>
                                     <th>Tài khoản</th>
                                     <th>Thể loại</th>

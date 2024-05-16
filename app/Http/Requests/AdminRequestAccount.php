@@ -26,10 +26,10 @@ class AdminRequestAccount extends FormRequest
         $rules = [
             'email'     => 'required|max:190|min:3|unique:admins,email,'.$this->id,
             'name'      => 'required',
-            'phone'     => 'required|unique:admins,phone,'.$this->id,
+            'phone'     => 'required|min:10|max:10|unique:admins,phone,'.$this->id,
         ];
 
-        if (!$this->id) 
+        if (!$this->id)
         {
             $rules['password'] = 'required';
         }

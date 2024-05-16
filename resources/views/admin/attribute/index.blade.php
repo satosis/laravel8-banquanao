@@ -22,8 +22,7 @@
                         <table class="table">
                             <tbody>
                                 <tr>
-                                    <th style="width: 10px">STT</th>
-                                    <th style="width: 10px">ID</th>
+                                    <th style="width: 120px">ID</th>
                                     <th>Tên thuộc tính</th>
                                     <th>Thể loại</th>
                                     <th>Danh mục</th>
@@ -33,7 +32,6 @@
                                 @if (isset($attibutes))
                                     @foreach($attibutes as $key => $attribute)
                                         <tr>
-                                            <td>{{ ($key + 1 ) }}</td>
                                             <td>{{ $attribute->id }}</td>
                                             <td>{{ $attribute->atb_name }}</td>
                                             <td>

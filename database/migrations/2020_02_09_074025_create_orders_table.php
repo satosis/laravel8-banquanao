@@ -20,6 +20,7 @@ class CreateOrdersTable extends Migration
             $table->integer('od_sale')->default(0);
             $table->tinyInteger('od_qty')->default(0);
             $table->integer('od_price')->default(0);
+            $table->integer('od_size')->default(0);
             $table->timestamps();
         });
     }
