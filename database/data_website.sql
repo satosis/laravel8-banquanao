@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 22, 2024 at 05:25 PM
+-- Generation Time: May 25, 2024 at 02:37 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.1.25
 
@@ -20,7 +20,7 @@ use data_website;
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `data_website`
+-- Database: `mypham`
 --
 
 -- --------------------------------------------------------
@@ -247,9 +247,9 @@ CREATE TABLE `comments` (
   `cmt_content` text DEFAULT NULL,
   `cmt_parent_id` int(11) NOT NULL DEFAULT 0,
   `cmt_images` text DEFAULT NULL,
-  `cmt_product_id` int(11) NOT NULL DEFAULT 0,
+  `cmt_product_id` bigint(11) UNSIGNED NOT NULL DEFAULT 0,
   `cmt_admin_id` int(11) NOT NULL DEFAULT 0,
-  `cmt_user_id` int(11) NOT NULL DEFAULT 0,
+  `cmt_user_id` bigint(11) UNSIGNED NOT NULL DEFAULT 0,
   `cmt_like` int(11) NOT NULL DEFAULT 0,
   `cmt_disk_like` int(11) NOT NULL DEFAULT 0,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -402,8 +402,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 
 CREATE TABLE `orders` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `od_transaction_id` int(11) NOT NULL DEFAULT 0,
-  `od_product_id` int(11) NOT NULL DEFAULT 0,
+  `od_transaction_id` bigint(11) UNSIGNED NOT NULL DEFAULT 0,
+  `od_product_id` bigint(11) UNSIGNED NOT NULL DEFAULT 0,
   `od_sale` int(11) NOT NULL DEFAULT 0,
   `od_qty` tinyint(4) NOT NULL DEFAULT 0,
   `od_price` int(11) NOT NULL DEFAULT 0,
@@ -416,15 +416,15 @@ CREATE TABLE `orders` (
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`id`, `od_transaction_id`, `od_product_id`, `od_sale`, `od_qty`, `od_price`, `created_at`, `updated_at`) VALUES
-(1, 1, 50, 2, 1, 11760, '2020-04-28 02:06:31', NULL),
-(2, 1, 52, 12, 1, 220000, '2020-04-28 02:06:31', NULL),
-(3, 3, 52, 12, 2, 220000, '2020-06-07 09:42:21', NULL),
-(4, 4, 45, 3, 1, 504400, '2020-06-07 09:45:50', NULL),
-(5, 5, 47, 1, 1, 237600, '2020-06-08 15:58:19', NULL),
-(6, 6, 50, 2, 2, 11760, '2020-06-15 11:48:55', NULL),
-(7, 7, 53, 20, 2, 8000, '2020-06-18 12:17:30', NULL),
-(8, 8, 52, 12, 2, 220000, '2024-04-21 06:31:26', NULL);
+INSERT INTO `orders` (`id`, `od_transaction_id`, `od_product_id`, `od_sale`, `od_qty`, `od_price`, `od_size`, `created_at`, `updated_at`) VALUES
+(1, 1, 50, 2, 1, 11760, 0, '2020-04-28 02:06:31', NULL),
+(2, 1, 52, 12, 1, 220000, 0, '2020-04-28 02:06:31', NULL),
+(3, 3, 52, 12, 2, 220000, 0, '2020-06-07 09:42:21', NULL),
+(4, 4, 45, 3, 1, 504400, 0, '2020-06-07 09:45:50', NULL),
+(5, 5, 47, 1, 1, 237600, 0, '2020-06-08 15:58:19', NULL),
+(6, 6, 50, 2, 2, 11760, 0, '2020-06-15 11:48:55', NULL),
+(7, 7, 53, 20, 2, 8000, 0, '2020-06-18 12:17:30', NULL),
+(8, 8, 52, 12, 2, 220000, 0, '2024-04-21 06:31:26', NULL);
 
 -- --------------------------------------------------------
 
@@ -438,7 +438,7 @@ CREATE TABLE `products` (
   `pro_slug` varchar(191) NOT NULL,
   `pro_price` int(11) NOT NULL DEFAULT 0,
   `pro_price_entry` int(11) NOT NULL DEFAULT 0 COMMENT 'giá nhập',
-  `pro_category_id` int(11) NOT NULL DEFAULT 0,
+  `pro_category_id` bigint(11) UNSIGNED NOT NULL DEFAULT 0,
   `pro_supplier_id` int(11) NOT NULL DEFAULT 0,
   `pro_admin_id` int(11) NOT NULL DEFAULT 0,
   `pro_sale` tinyint(4) NOT NULL DEFAULT 0,
@@ -530,8 +530,8 @@ INSERT INTO `products` (`id`, `pro_name`, `pro_slug`, `pro_price`, `pro_price_en
 
 CREATE TABLE `products_attributes` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `pa_product_id` int(11) NOT NULL DEFAULT 0,
-  `pa_attribute_id` int(11) NOT NULL DEFAULT 0
+  `pa_product_id` bigint(11) UNSIGNED NOT NULL DEFAULT 0,
+  `pa_attribute_id` bigint(11) UNSIGNED NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -755,8 +755,8 @@ INSERT INTO `products_attributes` (`id`, `pa_product_id`, `pa_attribute_id`) VAL
 
 CREATE TABLE `products_keywords` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `pk_product_id` int(11) NOT NULL DEFAULT 0,
-  `pk_keyword_id` int(11) NOT NULL DEFAULT 0
+  `pk_product_id` bigint(11) UNSIGNED NOT NULL DEFAULT 0,
+  `pk_keyword_id` bigint(11) UNSIGNED NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -769,7 +769,7 @@ CREATE TABLE `product_images` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `pi_name` varchar(191) DEFAULT NULL,
   `pi_slug` varchar(191) DEFAULT NULL,
-  `pi_product_id` int(11) NOT NULL DEFAULT 0,
+  `pi_product_id` bigint(11) UNSIGNED NOT NULL DEFAULT 0,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -782,8 +782,8 @@ CREATE TABLE `product_images` (
 
 CREATE TABLE `ratings` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `r_user_id` int(11) NOT NULL DEFAULT 0,
-  `r_product_id` int(11) NOT NULL DEFAULT 0,
+  `r_user_id` bigint(11) UNSIGNED NOT NULL DEFAULT 0,
+  `r_product_id` bigint(11) UNSIGNED NOT NULL DEFAULT 0,
   `r_number` tinyint(4) NOT NULL DEFAULT 0,
   `r_status` tinyint(4) NOT NULL DEFAULT 0,
   `r_content` text DEFAULT NULL,
@@ -806,7 +806,7 @@ INSERT INTO `ratings` (`id`, `r_user_id`, `r_product_id`, `r_number`, `r_status`
 
 CREATE TABLE `transactions` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `tst_user_id` int(11) NOT NULL DEFAULT 0,
+  `tst_user_id` bigint(11) UNSIGNED NOT NULL DEFAULT 0,
   `tst_admin_id` int(11) NOT NULL DEFAULT 0,
   `tst_total_money` int(11) NOT NULL DEFAULT 0,
   `tst_name` varchar(191) DEFAULT NULL,
@@ -874,8 +874,8 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `ph
 
 CREATE TABLE `user_favourite` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `uf_product_id` int(11) NOT NULL DEFAULT 0,
-  `uf_user_id` int(11) NOT NULL DEFAULT 0
+  `uf_product_id` bigint(11) UNSIGNED NOT NULL DEFAULT 0,
+  `uf_user_id` bigint(11) UNSIGNED NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -966,7 +966,9 @@ ALTER TABLE `migrations`
 -- Indexes for table `orders`
 --
 ALTER TABLE `orders`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `od_transaction_id` (`od_transaction_id`,`od_product_id`),
+  ADD KEY `od_product_id` (`od_product_id`);
 
 --
 -- Indexes for table `products`
@@ -976,7 +978,10 @@ ALTER TABLE `products`
   ADD UNIQUE KEY `products_pro_slug_unique` (`pro_slug`),
   ADD KEY `products_pro_hot_index` (`pro_hot`),
   ADD KEY `products_pro_active_index` (`pro_active`),
-  ADD KEY `products_pro_supplier_id_index` (`pro_supplier_id`);
+  ADD KEY `products_pro_supplier_id_index` (`pro_supplier_id`),
+  ADD KEY `pro_category_id` (`pro_category_id`),
+  ADD KEY `pro_admin_id` (`pro_admin_id`),
+  ADD KEY `pro_category_id_2` (`pro_category_id`);
 
 --
 -- Indexes for table `products_attributes`
@@ -998,13 +1003,16 @@ ALTER TABLE `products_keywords`
 -- Indexes for table `product_images`
 --
 ALTER TABLE `product_images`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `pi_product_id` (`pi_product_id`);
 
 --
 -- Indexes for table `ratings`
 --
 ALTER TABLE `ratings`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `r_user_id` (`r_user_id`,`r_product_id`),
+  ADD KEY `r_product_id` (`r_product_id`);
 
 --
 -- Indexes for table `transactions`
@@ -1028,7 +1036,8 @@ ALTER TABLE `users`
 --
 ALTER TABLE `user_favourite`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `user_favourite_uf_product_id_uf_user_id_unique` (`uf_product_id`,`uf_user_id`);
+  ADD UNIQUE KEY `user_favourite_uf_product_id_uf_user_id_unique` (`uf_product_id`,`uf_user_id`),
+  ADD KEY `uf_user_id` (`uf_user_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -1141,6 +1150,62 @@ ALTER TABLE `users`
 --
 ALTER TABLE `user_favourite`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `orders`
+--
+ALTER TABLE `orders`
+  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`od_transaction_id`) REFERENCES `transactions` (`id`),
+  ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`od_product_id`) REFERENCES `products` (`id`);
+
+--
+-- Constraints for table `products`
+--
+ALTER TABLE `products`
+  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`pro_category_id`) REFERENCES `categories` (`id`);
+
+--
+-- Constraints for table `products_attributes`
+--
+ALTER TABLE `products_attributes`
+  ADD CONSTRAINT `products_attributes_ibfk_1` FOREIGN KEY (`pa_attribute_id`) REFERENCES `attributes` (`id`);
+
+--
+-- Constraints for table `products_keywords`
+--
+ALTER TABLE `products_keywords`
+  ADD CONSTRAINT `products_keywords_ibfk_1` FOREIGN KEY (`pk_product_id`) REFERENCES `products` (`id`),
+  ADD CONSTRAINT `products_keywords_ibfk_2` FOREIGN KEY (`pk_keyword_id`) REFERENCES `keywords` (`id`);
+
+--
+-- Constraints for table `product_images`
+--
+ALTER TABLE `product_images`
+  ADD CONSTRAINT `product_images_ibfk_1` FOREIGN KEY (`pi_product_id`) REFERENCES `products` (`id`);
+
+--
+-- Constraints for table `ratings`
+--
+ALTER TABLE `ratings`
+  ADD CONSTRAINT `ratings_ibfk_1` FOREIGN KEY (`r_user_id`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `ratings_ibfk_2` FOREIGN KEY (`r_product_id`) REFERENCES `products` (`id`);
+
+--
+-- Constraints for table `transactions`
+--
+ALTER TABLE `transactions`
+  ADD CONSTRAINT `transactions_ibfk_1` FOREIGN KEY (`tst_user_id`) REFERENCES `users` (`id`);
+
+--
+-- Constraints for table `user_favourite`
+--
+ALTER TABLE `user_favourite`
+  ADD CONSTRAINT `user_favourite_ibfk_1` FOREIGN KEY (`uf_user_id`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `user_favourite_ibfk_2` FOREIGN KEY (`uf_product_id`) REFERENCES `products` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
