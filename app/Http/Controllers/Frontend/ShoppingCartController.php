@@ -292,7 +292,8 @@ class ShoppingCartController extends Controller
                       'od_product_id' => $item->id,
                       'od_sale' => $item->options->sale,
                       'od_qty' => $item->qty,
-                      'od_price' => $item->price
+                      'od_price' => $item->price,
+                      'od_size' => $item->options->size,
                   ]);
                   //Tăng số lượt mua của sản phẩm
                   $product = Product::find($item->id);
