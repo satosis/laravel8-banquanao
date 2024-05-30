@@ -137,8 +137,8 @@ class ShoppingCartController extends Controller
 
         $options['drive'] = $request->tst_type == 1 ? 'transfer' : 'online';
 
-        Cart::destroy();
         $this->storeTransaction($data);
+        Cart::destroy();
 
         $latestId = Transaction::orderBy('id', 'desc')->first()['id'];
         Session::flash('toastr', [
@@ -301,7 +301,6 @@ class ShoppingCartController extends Controller
                   $product->pro_amount = $product->pro_amount - $item->qty;
               }
           }
-
           Session::flash('toastr', [
               'type' => 'success',
               'message' => 'Đặt hàng thành công'
