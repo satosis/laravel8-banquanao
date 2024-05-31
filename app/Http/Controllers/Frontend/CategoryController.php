@@ -20,7 +20,7 @@ class CategoryController extends FrontendController
         ]);
         if ($slug && $id) {
             $category = Category::find($id);
-            $products->pro_category_id = $id;
+            $products->where('pro_category_id',$id);
         }
 
         $paramAtbSearch =  $request->except('price','page','k','country','rv','sort', 'orderprice');
@@ -63,7 +63,7 @@ class CategoryController extends FrontendController
         if ($request->sort) $products->orderBy('id',$request->sort);
         if ($request->orderprice) $products->orderBy('pro_price',$request->orderprice);
 
-        $products = $products->select('id','pro_name','pro_slug','pro_sale','pro_number','pro_avatar','pro_price','pro_review_total','pro_review_star')
+        $products = $products->select('id', 'pro_name','pro_slug','pro_sale','pro_number','pro_avatar','pro_price','pro_review_total','pro_review_star')
             ->paginate(12);
 
         $modelProduct = new Product();
