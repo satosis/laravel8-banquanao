@@ -1159,53 +1159,53 @@ ALTER TABLE `user_favourite`
 -- Constraints for table `orders`
 --
 ALTER TABLE `orders`
-  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`od_transaction_id`) REFERENCES `transactions` (`id`),
-  ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`od_product_id`) REFERENCES `products` (`id`);
+  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`od_transaction_id`) REFERENCES `transactions` (`id`)  ON DELETE CASCADE,
+  ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`od_product_id`) REFERENCES `products` (`id`)  ON DELETE CASCADE;
 
 --
 -- Constraints for table `products`
 --
 ALTER TABLE `products`
-  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`pro_category_id`) REFERENCES `categories` (`id`);
+  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`pro_category_id`) REFERENCES `categories` (`id`)  ON DELETE CASCADE;
 
 --
 -- Constraints for table `products_attributes`
 --
 ALTER TABLE `products_attributes`
-  ADD CONSTRAINT `products_attributes_ibfk_1` FOREIGN KEY (`pa_attribute_id`) REFERENCES `attributes` (`id`);
+  ADD CONSTRAINT `products_attributes_ibfk_1` FOREIGN KEY (`pa_attribute_id`) REFERENCES `attributes` (`id`)  ON DELETE CASCADE;
 
 --
 -- Constraints for table `products_keywords`
 --
 ALTER TABLE `products_keywords`
-  ADD CONSTRAINT `products_keywords_ibfk_1` FOREIGN KEY (`pk_product_id`) REFERENCES `products` (`id`),
-  ADD CONSTRAINT `products_keywords_ibfk_2` FOREIGN KEY (`pk_keyword_id`) REFERENCES `keywords` (`id`);
+  ADD CONSTRAINT `products_keywords_ibfk_1` FOREIGN KEY (`pk_product_id`) REFERENCES `products` (`id`)  ON DELETE CASCADE,
+  ADD CONSTRAINT `products_keywords_ibfk_2` FOREIGN KEY (`pk_keyword_id`) REFERENCES `keywords` (`id`)  ON DELETE CASCADE;
 
 --
 -- Constraints for table `product_images`
 --
 ALTER TABLE `product_images`
-  ADD CONSTRAINT `product_images_ibfk_1` FOREIGN KEY (`pi_product_id`) REFERENCES `products` (`id`);
+  ADD CONSTRAINT `product_images_ibfk_1` FOREIGN KEY (`pi_product_id`) REFERENCES `products` (`id`)  ON DELETE CASCADE;
 
 --
 -- Constraints for table `ratings`
 --
 ALTER TABLE `ratings`
-  ADD CONSTRAINT `ratings_ibfk_1` FOREIGN KEY (`r_user_id`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `ratings_ibfk_2` FOREIGN KEY (`r_product_id`) REFERENCES `products` (`id`);
+  ADD CONSTRAINT `ratings_ibfk_1` FOREIGN KEY (`r_user_id`) REFERENCES `users` (`id`)  ON DELETE CASCADE,
+  ADD CONSTRAINT `ratings_ibfk_2` FOREIGN KEY (`r_product_id`) REFERENCES `products` (`id`)  ON DELETE CASCADE;
 
 --
 -- Constraints for table `transactions`
 --
 ALTER TABLE `transactions`
-  ADD CONSTRAINT `transactions_ibfk_1` FOREIGN KEY (`tst_user_id`) REFERENCES `users` (`id`);
+  ADD CONSTRAINT `transactions_ibfk_1` FOREIGN KEY (`tst_user_id`) REFERENCES `users` (`id`)  ON DELETE CASCADE;
 
 --
 -- Constraints for table `user_favourite`
 --
 ALTER TABLE `user_favourite`
-  ADD CONSTRAINT `user_favourite_ibfk_1` FOREIGN KEY (`uf_user_id`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `user_favourite_ibfk_2` FOREIGN KEY (`uf_product_id`) REFERENCES `products` (`id`);
+  ADD CONSTRAINT `user_favourite_ibfk_1` FOREIGN KEY (`uf_user_id`) REFERENCES `users` (`id`)  ON DELETE CASCADE,
+  ADD CONSTRAINT `user_favourite_ibfk_2` FOREIGN KEY (`uf_product_id`) REFERENCES `products` (`id`)  ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

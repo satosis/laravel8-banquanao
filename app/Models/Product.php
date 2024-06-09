@@ -38,8 +38,26 @@ class Product extends Model
         return $this->belongsToMany(Attribute::class,'products_attributes','pa_product_id','pa_attribute_id');
     }
 
+    public function orders(){
+        return $this->belongsTo(Order::class, 'od_product_id');
+    }
+
     public function favourite()
     {
         return $this->belongsToMany(User::class,'user_favourite','uf_product_id','uf_user_id');
+    }
+
+    public function images(){
+        return $this->hasMany(ProductImage::class, 'pi_product_id');
+    }
+
+    protected static function booted () {
+        static::deleting(function(Product $product) {
+             $product->orders()->delete();
+             $product->images()->delete();
+             $product->keywords()->delete();
+             $product->attributes()->delete();
+             $product->favourite()->delete();
+        });
     }
 }

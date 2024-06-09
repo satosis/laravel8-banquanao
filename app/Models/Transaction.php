@@ -67,4 +67,14 @@ class Transaction extends Model
 	{
 		return $this->belongsTo(Admin::class,'tst_admin_id','id');
 	}
+
+    public function orders(){
+        return $this->belongsTo(Order::class, 'od_transaction_id');
+    }
+
+    protected static function booted () {
+        static::deleting(function(Transaction $transaction) {
+             $transaction->orders()->delete();
+        });
+    }
 }

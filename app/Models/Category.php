@@ -39,4 +39,10 @@ class Category extends Model
             }
         }
     }
+
+    protected static function booted () {
+        static::deleting(function(Category $category) {
+            Product::where("pro_category_id", $category->id)->delete();
+        });
+    }
 }

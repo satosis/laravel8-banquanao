@@ -38,7 +38,7 @@
                         <table class="table">
                             <tbody>
                                 <tr>
-                                    <th style="width: 70px">STT</th>
+                                    <th>STT</th>
                                     <th style="width: 70px">ID</th>
                                     <th>Tên</th>
                                     <th>Danh mục</th>

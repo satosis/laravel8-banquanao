@@ -318,16 +318,17 @@
                         type: 'red',
                         buttons: {
                             ok: {
-                                text: "ok!",
+                                text: "ĐỒNG Ý",
                                 btnClass: 'btn-primary',
                                 keys: ['enter'],
                                 action: function(){
                                      window.location.href = URL;
                                 }
                             },
-                            cancel: function(){
-
-                            }
+                            cancel: {
+                                text: "HỦY",
+                                btnClass: 'btn-danger',
+                            },
                         }
                     });
                 })
