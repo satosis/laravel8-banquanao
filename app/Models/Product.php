@@ -51,13 +51,25 @@ class Product extends Model
         return $this->hasMany(ProductImage::class, 'pi_product_id');
     }
 
+    public function comment()
+    {
+        return $this->belongsTo(Comments::class, 'cmt_product_id');
+    }
+
+    public function rating()
+    {
+        return $this->belongsTo(Rating::class, 'r_product_id');
+    }
+
     protected static function booted () {
         static::deleting(function(Product $product) {
-             $product->orders()->delete();
-             $product->images()->delete();
-             $product->keywords()->delete();
-             $product->attributes()->delete();
-             $product->favourite()->delete();
+            $product->orders()->delete();
+            $product->images()->delete();
+            $product->keywords()->delete();
+            $product->attributes()->delete();
+            $product->favourite()->delete();
+            $product->comment()->delete();
+            $product->rating()->delete();
         });
     }
 }

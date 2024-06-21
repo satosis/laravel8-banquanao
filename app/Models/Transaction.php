@@ -69,12 +69,12 @@ class Transaction extends Model
 	}
 
     public function orders(){
-        return $this->belongsTo(Order::class, 'od_transaction_id');
+        return $this->hasMany(Order::class, 'od_transaction_id');
     }
 
     protected static function booted () {
         static::deleting(function(Transaction $transaction) {
-             $transaction->orders()->delete();
+            $transaction->orders()->delete();
         });
     }
 }
