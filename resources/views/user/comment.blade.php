@@ -24,7 +24,11 @@
                         @foreach($comments as $key => $comment)
                             <tr>
                                 <td style="text-align: center;">{{ (($comments->currentPage() - 1) * $comments->perPage()) + ( $key + 1)  }}</td>
-                                <td style="width: 30%;text-align: left">{{ $comment->product->pro_name ?? "[N\A]" }}</td>
+                                <td style="width: 30%;text-align: left">
+                                    <a href="{{ route('get.product.detail',$comment->product->pro_slug . '-'.$comment->product->id ) }}" style="color:blue;text-decoration:underline">
+                                        {{ $comment->product->pro_name ?? "[N\A]" }}
+                                    </a>
+                                </td>
 
                                 <td style="text-align: center;">{{ $comment->cmt_content }}</td>
                                 <td style="text-align: center;">{{ $comment->created_at }}</td>

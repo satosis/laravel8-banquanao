@@ -14,7 +14,7 @@
                         <a href="" title="SaleOff" class="cate sale">-{{ $product->pro_sale }}%</a>
                     @endif
                     <a href="{{ route('get.product.detail',$product->pro_slug . '-'.$product->id ) }}" title="Đồng hồ Diamond D DD6014B" class="name">{{  $product->pro_name }}</a>
-                    @if ($product->pro_sale) 
+                    @if ($product->pro_sale)
                         <p class="price">
                             <span>Giá bán: </span>
                             <span class="new">{{ number_format(number_price($product->pro_price,$product->pro_sale),0,',','.') }} đ</span>
@@ -23,13 +23,13 @@
                             <span>Giá gốc: </span>
                             <span class="old">{{  number_format($product->pro_price,0,',','.') }} đ</span>
                         </p>
-                    @else 
+                    @else
                         <p class="price">
                             <span>Giá bán: </span>
                             <span class="new">{{  number_format($product->pro_price,0,',','.') }} đ</span>
                         </p>
                     @endif
-                    
+
                 </div>
             </div>
         @endforeach

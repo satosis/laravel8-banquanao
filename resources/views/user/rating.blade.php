@@ -30,7 +30,11 @@
                         @foreach($ratings as $key => $rating)
                             <tr>
                                 <td style="text-align: center;">{{ (($ratings->currentPage() - 1) * $ratings->perPage()) + ( $key + 1)  }}</td>
-                                <td style="width: 30%;text-align: left">{{ $rating->product->pro_name ?? "[N\A]" }}</td>
+                                <td style="width: 30%;text-align: left">
+                                    <a href="{{ route('get.product.detail',$rating->product->pro_slug . '-'.$rating->product->id ) }}" style="color:blue;text-decoration:underline">
+                                        {{ $rating->product->pro_name ?? "[N\A]" }}
+                                    </a>
+                                </td>
                                 <td style="text-align: center;">
                                     <div class="ratings">
                                         @for($i = 1 ; $i <= 5 ; $i ++)

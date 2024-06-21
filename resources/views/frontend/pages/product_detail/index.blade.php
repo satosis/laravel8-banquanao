@@ -36,7 +36,7 @@
                 <div class="left">
 {{--                    @include('frontend.pages.product_detail.include._inc_album')--}}
                         <a href="javascript:;">
-                        <img alt="" style="max-width: 100%;width: 100%;height: 350px" src="{{ pare_url_file($product->pro_avatar) }}"
+                        <img alt="" style="max-width: 100%;width: 100%;height: 450px" src="{{ pare_url_file($product->pro_avatar) }}"
                              class="lazyload target_img">
                         </a>
                         @if(isset($image))
