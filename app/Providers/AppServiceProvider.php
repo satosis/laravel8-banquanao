@@ -61,7 +61,7 @@ class AppServiceProvider extends ServiceProvider
 				if ($query->time >= 4)
 				{
 					\Log::channel('queries')->debug($query->sql, [
-						'time' => $query->time . ' ms', // milisecond
+						'time' => $query->time . ' ms', 
 						'bindings' => $query->bindings,
 						'url' => \Request::url(),
 					]);
