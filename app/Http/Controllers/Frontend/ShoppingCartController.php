@@ -148,71 +148,106 @@ class ShoppingCartController extends Controller
         // check nếu thanh toán ví thì kiểm tra số tiền
         if ($request->tst_type == Transaction::TYPE_ONLINE)
         {
-            $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
-            $partnerCode = Config::get('env.momo.partner_code');
-            $accessKey = Config::get('env.momo.access_key');
-            $secretKey = Config::get('env.momo.secret_key');
-            $orderId = $latestId . '-SA'. strtoupper(Str::random(10));
-            $orderInfo = "Thanh toán qua MoMo";
-            $ipnUrl = Config::get('env.momo.callback_url');
-            $redirectUrl = Config::get('env.momo.callback_url');
-            $extraData = "";
-            $requestId = time() . "";
-            $requestType = "payWithATM";
-            //before sign HMAC SHA256 signature
-            $rawHash = "accessKey=" . $accessKey . "&amount=" . $amount . "&extraData=" . $extraData . "&ipnUrl=" . $ipnUrl . "&orderId=" . $orderId . "&orderInfo=" . $orderInfo . "&partnerCode=" . $partnerCode . "&redirectUrl=" . $redirectUrl . "&requestId=" . $requestId . "&requestType=" . $requestType;
-            $signature = hash_hmac("sha256", $rawHash, $secretKey);
-            $data = array('partnerCode' => $partnerCode,
-                'partnerName' => "Test",
-                "storeId" => "MomoTestStore",
-                'requestId' => $requestId,
-                'amount' => $amount,
-                'orderId' => $orderId,
-                'orderInfo' => $orderInfo,
-                'redirectUrl' => $redirectUrl,
-                'ipnUrl' => $ipnUrl,
-                'lang' => 'vi',
-                'extraData' => $extraData,
-                'requestType' => $requestType,
-                'signature' => $signature);
-            $result = $this->execPostRequest($endpoint, json_encode($data));
-            $jsonResult = json_decode($result, true);
-            return redirect()->to($jsonResult['payUrl']);
+            $code = 'SA'. strtoupper(Str::random(10));
+            $vnp_TmnCode = Config::get('env.vnpay.code'); //Mã website tại VNPAY
+            $vnp_HashSecret = Config::get('env.vnpay.secret'); //Chuỗi bí mật
+            $vnp_Url = Config::get('env.vnpay.url');
+            $vnp_Returnurl = Config::get('env.vnpay.callback');
+            $vnp_TxnRef = $latestId; //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
+            $vnp_OrderInfo = "Thanh toán hóa đơn phí dich vụ";
+            $vnp_OrderType = 'billpayment';
+            $vnp_Amount = $amount * 100;
+            $vnp_Locale = 'vn';
+            $vnp_IpAddr = request()->ip();
+            $startTime = date("YmdHis");
+            $inputData = array(
+                "vnp_Version" => "2.1.0",
+                "vnp_TmnCode" => $vnp_TmnCode,
+                "vnp_Amount" => $vnp_Amount,
+                "vnp_Command" => "pay",
+                "vnp_CreateDate" => date('YmdHis'),
+                "vnp_CurrCode" => "VND",
+                "vnp_IpAddr" => $vnp_IpAddr,
+                "vnp_Locale" => $vnp_Locale,
+                "vnp_OrderInfo" => $vnp_OrderInfo,
+                "vnp_OrderType" => $vnp_OrderType,
+                "vnp_ReturnUrl" => $vnp_Returnurl,
+                "vnp_TxnRef" => $vnp_TxnRef,
+                "vnp_ExpireDate"=> date('YmdHis',strtotime('+15 minutes',strtotime($startTime)))
+            );
+
+            if (isset($vnp_BankCode) && $vnp_BankCode != "") {
+                $inputData['vnp_BankCode'] = $vnp_BankCode;
+            }
+            ksort($inputData);
+            $query = "";
+            $i = 0;
+            $hashdata = "";
+            foreach ($inputData as $key => $value) {
+                if ($i == 1) {
+                    $hashdata .= '&' . urlencode($key) . "=" . urlencode($value);
+                } else {
+                    $hashdata .= urlencode($key) . "=" . urlencode($value);
+                    $i = 1;
+                }
+                $query .= urlencode($key) . "=" . urlencode($value) . '&';
+            }
+            $vnp_Url = $vnp_Url . "?" . $query;
+            if (isset($vnp_HashSecret)) {
+                $vnpSecureHash =   hash_hmac('sha512', $hashdata, $vnp_HashSecret);//
+                $vnp_Url .= 'vnp_SecureHash=' . $vnpSecureHash;
+            }
+            return redirect()->to($vnp_Url);
         }
         return redirect()->to('/');
     }
 
     public function callback(Request $request)
     {
-        $orderId = $request->orderId;
-        $endpoint = "https://test-payment.momo.vn/v2/gateway/api/query";
-        $partnerCode = Config::get('env.momo.partner_code');
-        $accessKey = Config::get('env.momo.access_key');
-        $secretKey = Config::get('env.momo.secret_key');
-        $requestId = time()."";
+        $apiUrl = "https://sandbox.vnpayment.vn/merchant_webapi/api/transaction";
+        $vnp_TmnCode = Config::get('env.vnpay.code'); //Mã website tại VNPAY
+        $vnp_TransactionDate = $request->vnp_PayDate; // Thời gian ghi nhận giao dịch
+        $vnp_HashSecret = Config::get('env.vnpay.secret'); //Chuỗi bí mật
+        $vnp_RequestId = rand(1,10000); // Mã truy vấn
+        $vnp_Command = "querydr"; // Mã api
+        $vnp_TxnRef = $request->vnp_TxnRef; // Mã tham chiếu của giao dịch
+        $vnp_OrderInfo = "Query transaction"; // Mô tả thông tin
+        //$vnp_TransactionNo= ; // Tuỳ chọn, Mã giao dịch thanh toán của CTT VNPAY
+        $vnp_CreateDate = date('YmdHis'); // Thời gian phát sinh request
+        $vnp_IpAddr = $_SERVER['REMOTE_ADDR']; // Địa chỉ IP của máy chủ thực hiện gọi API
 
 
-        //before sign HMAC SHA256 signature
-        $rawHash = "accessKey=".$accessKey."&orderId=".$orderId."&partnerCode=".$partnerCode."&requestId=".$requestId;
-        // echo "<script>console.log('Debug Objects: " . $rawHash . "' );</script>";
+        $datarq = array(
+            "vnp_RequestId" => $vnp_RequestId,
+            "vnp_Version" => "2.1.0",
+            "vnp_Command" => $vnp_Command,
+            "vnp_TmnCode" => $vnp_TmnCode,
+            "vnp_TxnRef" => $vnp_TxnRef,
+            "vnp_OrderInfo" => $vnp_OrderInfo,
+            //$vnp_TransactionNo= ;
+            "vnp_TransactionDate" => $vnp_TransactionDate,
+            "vnp_CreateDate" => $vnp_CreateDate,
+            "vnp_IpAddr" => $vnp_IpAddr
+        );
 
-        $signature = hash_hmac("sha256", $rawHash, $secretKey);
+        $format = '%s|%s|%s|%s|%s|%s|%s|%s|%s';
 
-        $data = array('partnerCode' => $partnerCode,
-            'requestId' => $requestId,
-            'orderId' => $orderId,
-            'requestType' => "payWithATM",
-            'signature' => $signature,
-            'lang' => 'vi');
-        $result = $this->execPostRequest($endpoint, json_encode($data));
-        $jsonResult = json_decode($result, true);  // decode json
-        $resultCode = $jsonResult['resultCode'];
+        $dataHash = sprintf(
+            $format,
+            $datarq['vnp_RequestId'], //1
+            $datarq['vnp_Version'], //2
+            $datarq['vnp_Command'], //3
+            $datarq['vnp_TmnCode'], //4
+            $datarq['vnp_TxnRef'], //5
+            $datarq['vnp_TransactionDate'], //6
+            $datarq['vnp_CreateDate'], //7
+            $datarq['vnp_IpAddr'], //8
+            $datarq['vnp_OrderInfo']//9
+        );
 
-        $explode = explode('-SA', $orderId);
-        $id = $explode[0];
-        $pay = Transaction::where('id',$id)->first();
+        $pay = Transaction::where('id', $request->vnp_TxnRef)->first();
         if ($pay) {
-            if($resultCode == 0) {
+            if($request->vnp_ResponseCode == "00") {
                 $pay->tst_status = 2;
             } else {
                 $pay->tst_status = -1;

@@ -1644,13 +1644,6 @@ ALTER TABLE `transactions`
   ADD KEY `transactions_tst_admin_id_index` (`tst_admin_id`);
 
 --
--- Indexes for table `orders`
---
-ALTER TABLE `orders`
-  ADD KEY `orders_od_transaction_id_index` (`od_transaction_id`),
-  ADD KEY `orders_od_product_id_index` (`od_product_id`);
-
---
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -1889,8 +1882,7 @@ ALTER TABLE `videos`
 -- Constraints for table `orders`
 --
 ALTER TABLE `orders`
-  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`od_transaction_id`) REFERENCES `transactions` (`id`)  ON DELETE CASCADE,
-  ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`od_product_id`) REFERENCES `products` (`id`)  ON DELETE CASCADE;
+  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`od_transaction_id`) REFERENCES `transactions` (`id`)  ON DELETE CASCADE;
 
 --
 -- Constraints for table `products`

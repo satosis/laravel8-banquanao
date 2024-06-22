@@ -110,7 +110,7 @@
                         @endphp
                         <div class="btn-buy" style="margin-top: 10px">
                             <button class="buy1 btn btn-pink {{ \Auth::id() ? '' : 'js-show-login' }}" style="width: 100%;border-radius: 5px" type="submit" name="tst_type" value="2">
-                                Thanh toán trực tuyến (Momo)
+                                Thanh toán trực tuyến (VNPAY)
                             </button>
                         </div>
                     </form>

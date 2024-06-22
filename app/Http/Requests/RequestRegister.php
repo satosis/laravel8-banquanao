@@ -26,7 +26,7 @@ class RequestRegister extends FormRequest
         return [
             'email'             =>'required|email|min:5|max:180|unique:users,email',
             'name'              =>'required|min:5|max:180',
-            'password'          =>'required|min:8|max:16|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\x])(?=.*[!$#%]).*$/',
+            'password'          =>'required|min:8|max:16',
             'phone'             =>'required|min:10|max:11|unique:users,phone',
 //            'g-recaptcha-response' => 'required|captcha'
         ];
@@ -48,7 +48,6 @@ class RequestRegister extends FormRequest
             'password.required' =>"Bạn cần điền mật khẩu",
             'password.min'      =>"Mật khẩu phải lớn hơn 8 ký tự bao gồm chữ và số",
             'password.max'      =>"Mật khẩu phải ít hơn 16 ký tự bao gồm chữ và số",
-            'password.regex'    =>"Mật khẩu phải bao gồm chữ và số",
 
             'phone.required'    =>"Bạn cần điền số điện thọai",
             'phone.min'         =>"Số điện thoại tối thiểu 10 số",

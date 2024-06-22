@@ -32,7 +32,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
         Paginator::useBootstrap();
-        // \URL::forceScheme('https');
+        \URL::forceScheme('https');
 
         $this->bootDBLogger();
         try{
