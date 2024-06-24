@@ -6,22 +6,22 @@
 	</li>
 	<li class="{{ Request::get('price') == 2 ? "active" : "" }}">
 		<a href="{{ request()->fullUrlWithQuery(['price' =>  2]) }}">
-			{{  "Giá dưới " . number_format(100000,0,',','.')  ." vnđ"  }}
+			{{  "Giá từ " . number_format(50000,0,',','.')  ." tới " . number_format(100000,0,',','.')  ." vnđ"  }}
 		</a>
 	</li>
 	<li class="{{ Request::get('price') == 3 ? "active" : "" }}">
 		<a href="{{ request()->fullUrlWithQuery(['price' =>  3]) }}">
-			{{  "Giá dưới " . number_format(200000,0,',','.')  ." vnđ"  }}
+			{{  "Giá từ " . number_format(100000,0,',','.')  ." tới " . number_format(200000,0,',','.')  ." vnđ"  }}
 		</a>
 	</li>
 	<li class="{{ Request::get('price') == 4 ? "active" : "" }}">
 		<a href="{{ request()->fullUrlWithQuery(['price' =>  4]) }}">
-			{{  "Giá dưới " . number_format(300000,0,',','.')  ." vnđ"  }}
+			{{  "Giá từ " . number_format(200000,0,',','.')  ." tới " . number_format(300000,0,',','.')  ." vnđ"  }}
 		</a>
 	</li>
 	<li class="{{ Request::get('price') == 5 ? "active" : "" }}">
 		<a href="{{ request()->fullUrlWithQuery(['price' =>  5]) }}">
-			{{  "Giá dưới " . number_format(500000,0,',','.')  ." vnđ"  }}
+			{{  "Giá từ " . number_format(300000,0,',','.')  ." tới " . number_format(500000,0,',','.')  ." vnđ"  }}
 		</a>
 	</li>
 	<li class="{{ Request::get('price') == 6 ? "active" : "" }}">

@@ -21,16 +21,14 @@
             </div>
         @else
             <div class="container" style="display: flex">
-                <div class="left" style="width: 250px">
-                <img alt="Đồ án tốt nghiệp" src="/images/banner/banner-2.png"  style="max-width: 130%;height: 300px;object-fit: cover;object-position: right;" class="" />
-                </div>
-                <div class="right" style="width: calc(100% - 250px);">
+
+                <div class="right" style="width: 100%;">
                     <div id="content-slide">
                         <div id="slider">
                             <div class="imageSlide js-banner owl-carousel">
                                 <div>
                                     <a href="javascript:;" title="slide">
-                                        <img alt="Đồ án tốt nghiệp" src="{{ pare_url_file('2020-04-25__banner-tgnh-thang3.jpg') }}"  style="max-width: 100%;height: 300px;" class="" />
+                                        <img alt="Đồ án tốt nghiệp" src="{{ pare_url_file('2024-04-21__banner-tgnh-thang3.jpg') }}"  style="max-width: 100%;height: 300px;" class="" />
                                     </a>
                                 </div>
                                 <div>
@@ -40,7 +38,7 @@
                                 </div>
                                 <div>
                                     <a href="javascript:;" title="slide">
-                                        <img alt="Đồ án tốt nghiệp" src="{{ pare_url_file('2020-04-25__banner-web-bgxshopee.png') }}"  style="max-width: 100%;height: 300px;" class="" />
+                                        <img alt="Đồ án tốt nghiệp" src="{{ pare_url_file('2024-04-21__banner-web-bgxshopee.png') }}"  style="max-width: 100%;height: 300px;" class="" />
                                     </a>
                                 </div>
                             </div>

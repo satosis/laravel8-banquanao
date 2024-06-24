@@ -22,7 +22,6 @@ class ProductController extends FrontendController
             });
         }
 
-        if ($name = $request->k) $products->where('pro_name','like','%'.$name.'%');
         if ($country = $request->country) $products->where('pro_country',$country);
 
         if ($request->price) {
@@ -50,7 +49,6 @@ class ProductController extends FrontendController
                 $products->where('pro_price','>', 500000);
             }
         }
-
         if ($request->k) $products->where('pro_name','like','%'.$request->k.'%');
         if ($request->rv) $products->where('pro_review_star','>', $request->rv);
         if ($request->sort) $products->orderBy('id',$request->sort);

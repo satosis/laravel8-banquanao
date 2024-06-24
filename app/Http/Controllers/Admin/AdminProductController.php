@@ -55,7 +55,8 @@ class AdminProductController extends Controller
 	{
 		$data                      = $request->except('_token', 'pro_avatar', 'attribute', 'keywords', 'file', 'pro_sale');
 		$data['pro_slug']          = Str::slug($request->pro_name);
-		$data['pro_number'] = $request->pro_number_import;
+		$data['pro_number'] 	   = $request->pro_number_import;
+		$data['pro_number_import'] = $request->pro_number_import;
 		$data['created_at']        = Carbon::now();
 		if ($request->pro_sale) {
 			$data['pro_sale'] = $request->pro_sale;
@@ -126,12 +127,10 @@ class AdminProductController extends Controller
 	{
 		$product                   = Product::find($id);
 		$productOld = $product;
-		$data                      = $request->except('_token', 'pro_avatar', 'attribute', 'keywords', 'file', 'pro_sale','add_number');
+		$data                      = $request->except('_token', 'pro_avatar', 'attribute', 'keywords', 'file', 'add_number');
 		$data['pro_slug']          = Str::slug($request->pro_name);
 		$data['updated_at']        = Carbon::now();
-		if ($request->pro_sale) {
-			$data['pro_sale'] = $request->pro_sale;
-		}
+		$data['pro_number'] = $request->pro_number_import;
 
 		if ($request->pro_avatar) {
 			$image = upload_image('pro_avatar');

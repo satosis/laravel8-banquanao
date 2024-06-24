@@ -19,7 +19,7 @@ class Attribute extends Model
             'class' => 'label label-default'
         ],
 		3 => [
-			'name' => 'Kích cỡ',
+			'name' => 'Phân loại',
 			'class' => 'label label-primary'
 		],
 		4 => [

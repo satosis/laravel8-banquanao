@@ -18,9 +18,21 @@ class Product extends Model
         "4" => "Mỹ"
     ];
 
+    public $size = [
+        37 => "S",
+        38 => "M",
+        39 => "L",
+        40 => "XL"
+    ];
+
     public function getCountry()
     {
         return Arr::get($this->country, $this->pro_country,"[N\A]");
+    }
+
+    public function getSize($size)
+    {
+        return $this->size[$size];
     }
 
     public function category()

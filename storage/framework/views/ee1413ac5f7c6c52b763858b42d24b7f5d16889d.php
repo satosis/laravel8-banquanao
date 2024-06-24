@@ -87,19 +87,19 @@
                                     <span><?php echo e($product->pro_view); ?></span>
                                 </p>
                                 <p>
+                                <?php if($product->pro_number <= 0): ?>
+                                    <span class="text-danger">Còn lại: <b>Hết hàng</b></span>
+                                <?php else: ?>
+                                    <span class="text-info">Còn lại:  <b><?php echo e($product->pro_number); ?></b></span>
+                                <?php endif; ?>
+                                </p>
+                                <p>
                                     <span>Kích cỡ :&nbsp</span>
-                                    <span class="sku-variable-name active" title="37">
-                                        <span class="sku-variable-name-text">37</span>
+                                    <?php $__currentLoopData = $size; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <span class="sku-variable-name <?php if($key == 37): ?> active <?php endif; ?>" title="<?php echo e($key); ?>">
+                                        <span class="sku-variable-name-text"><?php echo e($item); ?></span>
                                     </span>
-                                    <span class="sku-variable-name" title="38">
-                                        <span class="sku-variable-name-text">38</span>
-                                    </span>
-                                    <span class="sku-variable-name" title="39">
-                                        <span class="sku-variable-name-text">39</span>
-                                    </span>
-                                    <span class="sku-variable-name" title="40">
-                                        <span class="sku-variable-name-text">40</span>
-                                    </span>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </p>
                             </div>
                             <div class="btn-cart">

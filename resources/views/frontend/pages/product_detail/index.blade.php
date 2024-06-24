@@ -87,19 +87,19 @@
                                     <span>{{ $product->pro_view }}</span>
                                 </p>
                                 <p>
+                                @if ($product->pro_number <= 0)
+                                    <span class="text-danger">Còn lại: <b>Hết hàng</b></span>
+                                @else
+                                    <span class="text-info">Còn lại:  <b>{{ $product->pro_number }}</b></span>
+                                @endif
+                                </p>
+                                <p>
                                     <span>Kích cỡ :&nbsp</span>
-                                    <span class="sku-variable-name active" title="37">
-                                        <span class="sku-variable-name-text">37</span>
+                                    @foreach($size as $key => $item)
+                                    <span class="sku-variable-name @if($key == 37) active @endif" title="{{ $key }}">
+                                        <span class="sku-variable-name-text">{{ $item }}</span>
                                     </span>
-                                    <span class="sku-variable-name" title="38">
-                                        <span class="sku-variable-name-text">38</span>
-                                    </span>
-                                    <span class="sku-variable-name" title="39">
-                                        <span class="sku-variable-name-text">39</span>
-                                    </span>
-                                    <span class="sku-variable-name" title="40">
-                                        <span class="sku-variable-name-text">40</span>
-                                    </span>
+                                    @endforeach
                                 </p>
                             </div>
                             <div class="btn-cart">

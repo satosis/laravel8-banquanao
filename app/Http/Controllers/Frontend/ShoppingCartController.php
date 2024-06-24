@@ -41,8 +41,10 @@ class ShoppingCartController extends Controller
     public function index()
     {
         $shopping = Cart::content();
+        $modelProduct = new Product();
         $viewData = [
             'title_page' => 'Danh sách giỏ hàng',
+            'size'       => $modelProduct->size,
             'shopping'   => $shopping
         ];
         return view('frontend.pages.shopping.index', $viewData);

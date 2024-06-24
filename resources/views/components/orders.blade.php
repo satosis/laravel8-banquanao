@@ -14,7 +14,7 @@
                 <td>#{{ $item->id }}.</td>
                 <td>
                     <a href="">{{ $item->product->pro_name ?? "[N\A]" }}</a>
-                    <p>Kích cỡ: {{ $item->od_size }}</p>
+                    <p>Kích cỡ: {{ $size[$item->od_size] }}</p>
                 </td>
                 <td>
                     <img alt="" style="width: 60px;height: 80px" src="{{ pare_url_file($item->product->pro_avatar ?? "") }}" class="lazyload">

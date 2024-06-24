@@ -39,7 +39,7 @@
                                     <td>
                                         <div style="" class="name-product">
                                             <a href="<?php echo e(route('get.product.detail',\Str::slug($item->name).'-'.$item->id)); ?>"><strong><?php echo e($item->name); ?></strong></a>
-                                            <p>Kích cỡ: <?php echo e(isset($item->options['size']) ? $item->options['size'] : 37); ?></p>
+                                            <p>Kích cỡ: <?php echo e(isset($item->options['size']) ? $size[$item->options['size']] : S); ?></p>
                                         </div>
                                     </td>
                                     <td>

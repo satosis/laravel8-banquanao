@@ -18,6 +18,7 @@ class ProductDetailController extends FrontendController
 	{
 		$arraySlug = explode('-', $slug);
 		$id        = array_pop($arraySlug);
+        $modelProduct = new Product();
 
 		if ($id) {
 			//1. Lấy thông tin sp
@@ -78,6 +79,7 @@ class ProductDetailController extends FrontendController
 				'comments'         => $comments,
 				'attributeOld'     => $attributeOld,
 				'title_page'       => $product->pro_name,
+				'size'      	   => $modelProduct->size,
 				'productsSuggests' => $this->getProductSuggests($product->pro_category_id),
 				'image' => $image ?? []
 			];
@@ -126,7 +128,6 @@ class ProductDetailController extends FrontendController
 			foreach ($ratingsDashboard as $key => $item) {
 				$ratingDefault[$item['r_number']] = $item;
 			}
-
 			$viewData = [
 				'product'       => $product,
 				'ratings'       => $ratings,

@@ -7,25 +7,25 @@
 	</li>
 	<li class="<?php echo e(Request::get('price') == 2 ? "active" : ""); ?>">
 		<a href="<?php echo e(request()->fullUrlWithQuery(['price' =>  2])); ?>">
-			<?php echo e("Giá dưới " . number_format(100000,0,',','.')  ." vnđ"); ?>
+			<?php echo e("Giá từ " . number_format(50000,0,',','.')  ." tới " . number_format(100000,0,',','.')  ." vnđ"); ?>
 
 		</a>
 	</li>
 	<li class="<?php echo e(Request::get('price') == 3 ? "active" : ""); ?>">
 		<a href="<?php echo e(request()->fullUrlWithQuery(['price' =>  3])); ?>">
-			<?php echo e("Giá dưới " . number_format(200000,0,',','.')  ." vnđ"); ?>
+			<?php echo e("Giá từ " . number_format(100000,0,',','.')  ." tới " . number_format(200000,0,',','.')  ." vnđ"); ?>
 
 		</a>
 	</li>
 	<li class="<?php echo e(Request::get('price') == 4 ? "active" : ""); ?>">
 		<a href="<?php echo e(request()->fullUrlWithQuery(['price' =>  4])); ?>">
-			<?php echo e("Giá dưới " . number_format(300000,0,',','.')  ." vnđ"); ?>
+			<?php echo e("Giá từ " . number_format(200000,0,',','.')  ." tới " . number_format(300000,0,',','.')  ." vnđ"); ?>
 
 		</a>
 	</li>
 	<li class="<?php echo e(Request::get('price') == 5 ? "active" : ""); ?>">
 		<a href="<?php echo e(request()->fullUrlWithQuery(['price' =>  5])); ?>">
-			<?php echo e("Giá dưới " . number_format(500000,0,',','.')  ." vnđ"); ?>
+			<?php echo e("Giá từ " . number_format(300000,0,',','.')  ." tới " . number_format(500000,0,',','.')  ." vnđ"); ?>
 
 		</a>
 	</li>

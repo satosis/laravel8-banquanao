@@ -50,12 +50,13 @@ class AdminTransactionController extends Controller
 
     public function getTransactionDetail(Request $request, $id)
     {
-
+        $modelProduct = new Product();
         if ($request->ajax()) {
+			$size = $modelProduct->size;
             $orders = Order::with('product:id,pro_name,pro_slug,pro_avatar')->where('od_transaction_id', $id)
                 ->get();
 
-            $html = view("components.orders", compact('orders'))->render();
+            $html = view("components.orders", compact('orders', 'size'))->render();
 
             return response([
                 'html' => $html
