@@ -1,20 +1,13 @@
 <?php
 return [
     [
-        'name' => 'Đơn hàng',
-        'list-check' => ['transaction'],
-        'icon' => 'fa-shopping-cart',
-        'route' => 'admin.transaction.index',
-		'level'  => [1,2],
-    ],
-    [
-        'name' => 'Quản lý sản phẩm',
+        'name' => 'Ql sản phẩm',
         'list-check' => ['attribute','category','keyword','product','comment','rating'],
         'icon' => 'fa fa-database',
 		'level'  => [1,2],
         'sub'  => [
             [
-                'name'  => 'Thuộc tính',
+                'name'  => 'Thông tin',
                 'namespace' => 'attribute',
                 'route' => 'admin.attribute.index',
                 'icon'  => 'fa fa-key',
@@ -80,11 +73,108 @@ return [
         ]
     ],
 	[
-		'name' => 'Khách hàng',
+		'name' => 'Đối tác && Thành viên',
 		'list-check' => ['user','ncc'],
-        'route' => 'admin.user.index',
 		'icon' => 'fa fa-user',
 		'level'  => [1,2],
+		'sub'  => [
+			[
+				'name'  => 'Khách hàng',
+				'route' => 'admin.user.index',
+				'namespace' => 'user',
+				'icon'  => 'fa fa-user',
+				'level'  => [1,2],
+			],
+			[
+				'name'  => 'Nhà cung cấp',
+				'route' => 'admin.ncc.index',
+				'namespace' => 'user',
+				'icon'  => 'fa fa-users',
+				'level'  => [1,2],
+			]
+		]
 	],
-
+    [
+        'name' => 'Đơn hàng',
+        'list-check' => ['transaction'],
+        'icon' => 'fa-shopping-cart',
+		'level'  => [1,2],
+        'sub'  => [
+            [
+                'name'  => 'Danh sách',
+                'namespace' => 'transaction',
+                'route' => 'admin.transaction.index',
+                'icon'  => 'fa-opencart',
+				'level'  => [1,2],
+            ]
+        ]
+    ],
+	[
+        'name' => 'Kho',
+        'list-check' => ['inventory','import','export','invoice_entered'],
+        'icon' => 'fa-folder-open-o',
+		'level'  => [1,2],
+        'sub'  => [
+            [
+                'name'  => 'Nhập kho',
+                'namespace' => 'import',
+                'route' => 'admin.invoice_entered.index',
+                'icon'  => 'fa-plus-square',
+				'level'  => [1,2],
+            ],
+			[
+				'name'  => 'Xuất kho',
+				'namespace' => 'export',
+				'route' => 'admin.inventory.out_of_stock',
+				'icon'  => 'fa-plus-square',
+				'level'  => [1,2],
+			],
+        ]
+    ],
+//    [
+//        'name' => 'SystemPay',
+//        'list-check' => ['pay-in'],
+//        'icon' => 'fa  fa-usd',
+//        'sub'  => [
+//            [
+//                'name'  => 'Nạp tiền',
+//                'route' => 'admin.system_pay_in.index',
+//                'namespace' => 'pay-in',
+//                'icon'  => 'fa fa-money'
+//            ]
+//        ]
+//    ],
+    [
+        'name'  => 'Hệ thống',
+        'label' => 'true'
+    ],
+	[
+		'name' => 'Admin',
+		'list-check' => ['account-admin','permission','role'],
+		'icon' => 'fa-sitemap',
+		'level'  => [1,2],
+		'sub'  => [
+			[
+				'name'  => 'Quyền',
+				'namespace' => 'permission',
+				'route' => 'admin.permission.list',
+				'icon'  => 'fa-ban',
+				'level'  => [1,2],
+			],
+			[
+				'name'  => 'Nhóm quyền',
+				'namespace' => 'role',
+				'route' => 'admin.role.list',
+				'icon'  => 'fa-user',
+				'level'  => [1,2],
+			],
+			[
+				'name'  => 'Admin',
+				'namespace' => 'account-admin',
+				'route' => 'admin.account_admin.index',
+				'icon'  => 'fa-users',
+				'level'  => [1,2],
+			],
+		]
+	],
 ];

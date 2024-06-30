@@ -59,13 +59,9 @@ class AdminAccountController extends Controller
             $admin->password   =  Hash::make($request->password);
         }
 		$admin->fill($data)->save();
+		DB::table('model_has_roles')->where('model_id',$id)->delete();
 		$admin->assignRole($request->input('roles'));
 
-//		if (isset($roles)) {
-//			$admin->roles()->sync($roles);  //If one or more role is selected associate user to roles
-//		} else {
-//			$admin->roles()->detach(); //If no role is selected remove exisiting role associated to a user
-//		}
         return redirect()->back();
     }
 
