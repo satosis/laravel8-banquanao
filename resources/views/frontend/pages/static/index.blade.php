@@ -19,7 +19,7 @@
             <div class="left">
                 <div class="post-detail">
                     <div class="post-detail__content">
-                        {!! $page->s_content ?? '' !!}
+                      {!!html_entity_decode($page->s_content)!!}
                     </div>
 
                 </div>

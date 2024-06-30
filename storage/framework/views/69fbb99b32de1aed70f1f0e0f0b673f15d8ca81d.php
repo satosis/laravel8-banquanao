@@ -1,11 +1,11 @@
-@extends('layouts.app_master_admin')
-@section('content')
+
+<?php $__env->startSection('content'); ?>
     <!-- Nội dung Header (Page header) -->
     <section class="content-header">
         <h1>Cập nhật page tĩnh</h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
-            <li><a href="{{  route('admin.static.index') }}"> Static</a></li>
+            <li><a href="<?php echo e(route('admin.static.index')); ?>"> Static</a></li>
             <li class="active">Cập nhật</a></li>
         </ol>
     </section>
@@ -16,37 +16,37 @@
             <div class="box-header with-border">
                 <div class="box-body">
                     <form role="form" action="" method="POST" enctype="multipart/form-data">
-                         @csrf
+                         <?php echo csrf_field(); ?>
                         <div class="col-sm-8">
-                            <div class="form-group {{ $errors->first('s_title') ? 'has-error' : '' }}">
+                            <div class="form-group <?php echo e($errors->first('s_title') ? 'has-error' : ''); ?>">
                                 <label for="name">Title <span class="text-danger">(*)</span></label>
-                                <input type="text" class="form-control" name="s_title"  placeholder="Title ..." value="{{ $static->s_title }}">
-                                @if ($errors->first('s_title'))
-                                    <span class="text-danger">{{ $errors->first('s_title') }}</span>
-                                @endif
+                                <input type="text" class="form-control" name="s_title"  placeholder="Title ..." value="<?php echo e($static->s_title); ?>">
+                                <?php if($errors->first('s_title')): ?>
+                                    <span class="text-danger"><?php echo e($errors->first('s_title')); ?></span>
+                                <?php endif; ?>
                             </div>
                         </div>
                         <div class="col-sm-8">
-                            <div class="form-group {{ $errors->first('e_link') ? 'has-error' : '' }}">
+                            <div class="form-group <?php echo e($errors->first('e_link') ? 'has-error' : ''); ?>">
                                 <label for="name">Loại Page <span class="text-danger">(*)</span></label>
                                 <select class="form-control" name="s_type">
-                                    @foreach($type as $key => $item)
-                                        <option value="{{  $key }}" {{ $static->s_type == $key ? "selected='selected'" : "" }}>{{  $item }}</option>
-                                    @endforeach
+                                    <?php $__currentLoopData = $type; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <option value="<?php echo e($key); ?>" <?php echo e($static->s_type == $key ? "selected='selected'" : ""); ?>><?php echo e($item); ?></option>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </select>
                             </div>
                         </div>
                          <div class="col-sm-8">
-                            <div class="form-group {{ $errors->first('e_link') ? 'has-error' : '' }}">
+                            <div class="form-group <?php echo e($errors->first('e_link') ? 'has-error' : ''); ?>">
                                 <label for="name">Nội dung <span class="text-danger">(*)</span></label>
-                                <textarea class="form-control textarea" id="content" name="s_content">{!! $static->s_content !!}</textarea>
+                                <textarea class="form-control textarea" id="content" name="s_content"><?php echo $static->s_content; ?></textarea>
                             </div>
                         </div>
 
 
                         <div class="col-sm-12">
                             <div class="box-footer text-center">
-                                <a href="{{ route('admin.static.index') }}" class="btn btn-danger">
+                                <a href="<?php echo e(route('admin.static.index')); ?>" class="btn btn-danger">
                                 Quay lại <i class="fa fa-undo"></i></a>
                                 <button type="submit" class="btn btn-success">Lưu dữ liệu <i class="fa fa-save"></i></button>
                             </div>
@@ -57,10 +57,10 @@
             <!-- /.box -->
     </section>
     <!-- /.content -->
-@stop
-@section('script')
-    <script src="{{  asset('admin/bower_components/jquery/dist/jquery.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('admin/ckeditor/ckeditor.js') }}"></script>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('script'); ?>
+    <script src="<?php echo e(asset('admin/bower_components/jquery/dist/jquery.min.js')); ?>"></script>
+    <script type="text/javascript" src="<?php echo e(asset('admin/ckeditor/ckeditor.js')); ?>"></script>
     <script type="text/javascript">
 
         var options = {
@@ -72,4 +72,6 @@
 
         CKEDITOR.replace( 'content' ,options);
     </script>
-@stop
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app_master_admin', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\project\laravel8-banquanao\resources\views/admin/static/update.blade.php ENDPATH**/ ?>
